@@ -1,10 +1,70 @@
 \documentclass {article}
 
-\usepackage{bbm}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
 
 \begin{document}
 \title{Lineare Algebra II - Mitschrift}
 \author{Sebastian Pretzsch, Finn Ribbeck, Jonas Heitz}
 \maketitle
 
+\section{Relationen}
+Relationen beschreiben Beziehungen zwischen Elementen von Mengen. \\
+Wdh. $X{\times}Y := \{(x,y) | x \in X, y \in Y\}$ \\
+Menge der (geordneten) Paare, "kartesiches Produkt".
+
+\subsection*{Definition 1.1.}
+Seien X,Y Mengen. Eine \textbf{Relation} zwischen X und Y ist eine Teilmenge $R \subseteq X{\times}Y$. \\
+\underline{Notation}: für $(x,y)\in R$ auch $xRy$. \\
+Falls $X=Y$ sage auch Relation "auf X".
+
+\subsection*{Beispiel}
+$X$ Punktmenge, $Y$ Geradenmenge
+$$xRy :\iff \textnormal{Punkt x liegt auf Gerade y}$$
+
+\subsection*{Bemerkung}
+Eine Abbildung (Funktion) $f:X{\to}Y$ weist zu jedem $x\in X$ genau ein $
+y\in Y$ zu. \\
+Wir werden diese fortan als spezielle Relation
+$$R_f = \{(x, f(x)) | x\in X\} \subseteq X{\times}Y$$
+auffassen. \\\\
+Wir betrachten insbesondere Relation auf X.
+
+\subsection*{Definition 1.2.}
+Sei X eine Menge. Eine Relation $R \subseteq X{\times}X$ ist
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{reflexiv} falls $xRx \hspace*{2mm}\forall x\in X$,
+\item \textbf{symmetrisch} falls $xRy \Rightarrow yRx \hspace*{2mm}\forall x,y\in X$ (denn auch "$\Leftarrow$" gilt),
+\item \textbf{anti-symmetrisch} falls $xRy \land yRx \Rightarrow x=y$,
+\item \textbf{transitiv} falls $xRy \land yRz \Rightarrow xRz$.
+\end{enumerate}
+
+\subsection*{Beispiel} 
+Sei $X = \mathbb R$. \\
+\begin{enumerate}[label=(\alph*)]
+\item $ R:=\{(x,x) | x\in X\}$ (d.h. $xRy \Rightarrow x=y$) erfüllt a), b), c), d).
+\item $ xRy :\iff |x|=|y|$ erfüllt a), b), d) (nicht c), da $|1|=|-1|$)
+\item $ xRy :\iff x\leq y$ erfüllt a), c), d) (nicht b), da $2\leq 3$ aber $2 \neq 3$
+\end{enumerate}
+Nun definieren wir die wichtigsten Arten von Relationen.
+
+\subsection*{Definition 1.3.}
+Eine Relation R auf X heißt
+\begin{enumerate}
+\item \textbf{Äquivalenzrelation} falls sie reflexiv, symmetrisch und transitiv ist (typische Notation "~"),
+\item \textbf{Ordnungsrelation} falls sie reflexiv, anti-symmetrisch und transitiv ist (Notation "$\leq$").
+\end{enumerate}
+Im Fall 2. heißt R auch \textbf{(partielle) Ordnung}, und falls 
+$$ xRy \lor yRx \hspace*{2mm} \forall x,y \in X$$
+zusätzlich gilt \textbf{totatle/ lineare Ordnung}
+
+\subsection*{Beispiel}
+Kleiner Ausblick:
+\begin{enumerate}[label=(\alph*)]
+\item Zwei Matrizen $A,B \in \textnormal{Mat}_{n{\times}m}(K)$ heißen \textbf{ähnlich} falls $S \in \textnormal{GL}_n(K)$ existiert mit \\$B=S^{-1}{\cdot}A{\cdot}S$.
+\item Sei M Menge und $X:=\mathfrak P(M)$ Potenzmenge von M\\
+ Zu $A,B \in X$ definiere $A\leq B :\iff A\subseteq B$ eine Ordnungsrelation.
+\end{enumerate}
 \end{document}
