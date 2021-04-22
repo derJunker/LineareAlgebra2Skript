@@ -5,12 +5,40 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{enumitem}
+\usepackage{stmaryrd}
+
+%-------------------------------commands definitionen-------------------------------
+%für methoden die eine fallunterscheidung haben aufrufen mit: 
+%\twopartdef { x } {x \geq 0} {-x} {x < 0} (bsp. Betrag)
+\newcommand{\twopartdef}[4] {
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4
+		\end{array}
+	\right.
+}
+%für methoden mit 3 fällen zwischen denen entschieden werden muss
+\newcommand{\threepartdef}[6]
+{
+	\left\{
+		\begin{array}{lll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6
+		\end{array}
+	\right.
+}
+
+%abkürzung von \textnormal
+\newcommand{\tn}[1]{\textnormal {#1}}
+%-----------------------------ende commands definitionen-----------------------------
 
 \begin{document}
 \title{Lineare Algebra II - Mitschrift}
 \author{Sebastian Pretzsch, Finn Ribbeck, Jonas Heitz}
 \maketitle
-
+%------------------------------------Vorlesung 1------------------------------------
 \section{Relationen}
 Relationen beschreiben Beziehungen zwischen Elementen von Mengen. \\
 Wdh. $X{\times}Y := \{(x,y) | x \in X, y \in Y\}$ \\
@@ -23,7 +51,7 @@ Falls $X=Y$ sage auch Relation "auf X".
 
 \subsection*{Beispiel}
 $X$ Punktmenge, $Y$ Geradenmenge
-$$xRy :\iff \textnormal{Punkt x liegt auf Gerade y}$$
+$$xRy :\iff \tn{Punkt x liegt auf Gerade y}$$
 
 \subsection*{Bemerkung}
 Eine Abbildung (Funktion) $f:X{\to}Y$ weist zu jedem $x\in X$ genau ein $
@@ -52,7 +80,7 @@ Nun definieren wir die wichtigsten Arten von Relationen.
 
 \subsection*{Definition 1.3.}
 Eine Relation R auf X heißt
-\begin{enumerate}
+\begin{enumerate}[label=(\arabic*)]
 \item \textbf{Äquivalenzrelation} falls sie reflexiv, symmetrisch und transitiv ist (typische Notation "~"),
 \item \textbf{Ordnungsrelation} falls sie reflexiv, anti-symmetrisch und transitiv ist (Notation "$\leq$").
 \end{enumerate}
@@ -63,8 +91,64 @@ zusätzlich gilt \textbf{totatle/ lineare Ordnung}.
 \subsection*{Beispiel}
 Kleiner Ausblick:
 \begin{enumerate}[label=(\alph*)]
-\item Zwei Matrizen $A,B \in \textnormal{Mat}_{n{\times}m}(K)$ heißen \textbf{ähnlich} falls $S \in \textnormal{GL}_n(K)$ existiert mit \\$B=S^{-1}{\cdot}A{\cdot}S$.
+\item Zwei Matrizen $A,B \in \tn{Mat}_{n{\times}m}(K)$ heißen \textbf{ähnlich} falls $S \in \tn{GL}_n(K)$ existiert mit \\$B=S^{-1}{\cdot}A{\cdot}S$.
 \item Sei M Menge und $X:=\mathfrak P(M)$ Potenzmenge von M\\
  Zu $A,B \in X$ definiere $A\leq B :\iff A\subseteq B$ eine Ordnungsrelation.
 \end{enumerate}
+%----------------------------------Ende Vorlesung 1----------------------------------
+%Hier Vorlesung 2&3 rein!
+%------------------------------------Vorlesung 4------------------------------------
+\subsection*{Satz 2.6. (Lemma von Zorn)}
+Sei $(X, \leq)$ geordnete Menge sodass jede Kette in $Y \subseteq X$ eine obere Schranke hat. Dann hat $X$ ein maximales Element.\\
+\subsubsection*{Diskussion:}
+\begin{enumerate}[label=(\arabic*)]
+\item Nicht interessant (trivial) für $X$ endlich, oder für $(X,\leq )$ total geordnet: betrachte Kette $Y=X$.
+\item Anwendungsfall oft $X\subseteq \mathfrak P(M)$. Kette $Y\subseteq X$ hat obere Schranke z.B. 
+falls $\bigcup_{A\in Y}A\in X$ gilt.
+\item Beweis ist technisch anspruchsvoller (Mengenlehre) und benutzt Auswahlaxiom; umgekehrt kann Auswahlaxium aus Zorn folgern (vgl. Halmos).
+\end{enumerate}
+Nun zu Basen für beliebige Vektorräume. \\
+In Lineare Algebra I haben wir gesehen, dass jeder endlich erzeugte K-Vektorraum V eine (endliche) Basis $S\subseteq V$ hat; \\
+Dann gilt $V\cong K^n$, $n:=\tn{dim}_KV$.\\
+\underline{Erinnerung:} Eine Teilmenge $S\subseteq V$ heißt Erzeugendensystem falls 
+$$span \hspace*{1mm} S := \{\sum_{i=1}^n
+\lambda_i v_i | \lambda_i \in K, v_i \in S, n \in \mathbb N\} = V \tn{ gilt.}$$
+Und $S\subseteq V$ heißt linear unabhängig falls $\sum_{i=1}^n \lambda_i v_i = 0$ mit $v_i\in S$ verschieden stets $\lambda_i = 0$, $\forall i$ impliziert.
+\subsection*{Proposition 2.7.}
+Zu I Menge sei $K^{(I)} := \{f:I\rightarrow K | f(i) \neq 0$ nur für endliche viele $i\in I\}$. \\
+Dann ist $K^{(I)}$ ein K-Vektorraum mit Basis $\{e_i|i\in I\}$, wobei $e_i(j):= \twopartdef { 1 } {\tn{falls } j=i} {0} {\tn{sonst}}$. \\
+Umgekehrt ist jeder K-Vektorraum mit Basis isomorph zu einem $K^{(I)}$.
+\subsubsection*{Beweis:}
+\begin{itemize}
+\item[--] "K-Vektorraum": $K^{(I)}$ ist Untervektorraum von $K^I := \{f:I\rightarrow K\}$.
+\item[--] "Erzeugendensystem": sei $f\in K^{(I)}$ und sei $I_0 := \{i_1,...,i_n\} \subseteq I$ mit $f(i) = 0$ $\forall i \notin I_0;$ setze $\lambda_k := f(i_k)$, $k=1,...n$ 
+$$ \Rightarrow f = \sum_{k=1}^n \lambda_k e_{i_k}\tn{, denn }\lambda_j = f(i_j) = \sum_{k=1}^n \lambda_k e_{i_k}(i_j) = \lambda_j, \hspace*{1mm} \forall j = 1,...,n$$
+\item[--] "linear unabhängig": angenommen $\sum \lambda_k e_{i_k} = 0 \Rightarrow \lambda_j = \sum \lambda_k e_{i_k}(i_j) = 0$ $\forall j$
+\end{itemize}
+Zusatz: Sei V ein K-Vektorraum mit Basis $\{e_i | i \in I\}$, so ist die Linearkombinationsabbildung (vgl. Lin-Alg.I, Bem. 8.3)
+$\gamma: K^{(I)} \rightarrow V$, $f\mapsto \sum_{i\in I} f(i)e_i$ ein K-Isomorphismus.
+\subsection*{Bemerkung}
+$K^{(I)}=K^I \iff$ I endlich. \\
+Aber z.B. ist $\mathbb Q^{(\mathbb N)}$ abzählbar und $\mathbb Q^\mathbb N$ überabzählbar (Übung). \\
+Basen z.B. für $K^I$?
+\subsection*{Satz 2.8.}
+Jeder Vektorraum besitzt eine Basis.
+\subsubsection*{Beweis (via Lemma von Zorn)}
+Sei V ein K-Vektorraum und sei $X \subseteq \mathfrak P(V)$ die Menge aller linear unabhängigen Teilmengen $S \subseteq Y$. \\
+Sei $Y\subseteq X$ Kette. Behauptung: $T:=\bigcup_{S\in Y} S$ ist linear unabhängig. \\
+Gelte $\sum_{i=1}^n \lambda_i v_i = 0$ mit $\lambda_i \in K$ und $v_i \in T$ verschieden. \\
+$$\Rightarrow \exists S_i \in Y\tn{ mit }v_i \in S_i\tn{, }\forall i=1,...n$$
+$$\Rightarrow_{\tn(S_1,...,S_n \tn{Kette)}} \exists i_0\tn{ mit }S_i \subseteq S_{i_0}\tn{, } \forall i\tn{, somit }v_i \in S_{i_0}$$
+$$\Rightarrow_{S_{i_0}\tn{ lin. unabh.}}\tn{ alle }\lambda_i=0$$
+$$\Rightarrow_{\tn{Satz 2.6 (Zorn)}}\tn{ es existiert ein maximales Element S in X.}$$
+Behauptung dieses S ist auch erzeugend (dann fertig).\\
+Angenommen es existiert $v\in V\backslash\tn{span }S$ sei $S':= S\cup \{v\}$. Dann ist S' linear unabhängig.\\
+Betrachte $\sum_{i=1}^n\lambda_iv_i=0$ mit $v_i\in S'$ verschieden.
+\begin{itemize}
+\item falls alle $v_i\in S \Rightarrow$ alle $\lambda_i = 0$
+\item sonst $\lambda v = \sum \lambda_j v_j$, wäre $\lambda \neq 0 \Rightarrow v\in \tn{span }S \lightning$\\
+$\Rightarrow \lambda = 0 \Rightarrow$ alle $\lambda_j=0$
+\end{itemize}
+Weil aber $S\subsetneq S'$ Widerspruch zur Maximalität von S.
+%----------------------------------Ende Vorlesung 4----------------------------------
 \end{document}
