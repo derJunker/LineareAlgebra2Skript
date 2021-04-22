@@ -86,7 +86,9 @@ Eine Relation R auf X heißt
 \end{enumerate}
 Im Fall 2. heißt R auch \textbf{(partielle) Ordnung}, und falls 
 $$ xRy \lor yRx \hspace*{2mm} \forall x,y \in X$$
-zusätzlich gilt \textbf{totatle/ lineare Ordnung}.
+zusätzlich gilt \textbf{totatle/ lineare Ordnung}.\\
+\textbf{Äquivalenzrelationen} auf X entsprechen genau den Zerlegungen von X.
+Zwei Mengen A, B heißen \textbf{disjunkt} falls $A \cap B = \emptyset$.
 
 \subsection*{Beispiel}
 Kleiner Ausblick:
@@ -95,8 +97,93 @@ Kleiner Ausblick:
 \item Sei M Menge und $X:=\mathfrak P(M)$ Potenzmenge von M\\
  Zu $A,B \in X$ definiere $A\leq B :\iff A\subseteq B$ eine Ordnungsrelation.
 \end{enumerate}
-%----------------------------------Ende Vorlesung 1----------------------------------
-%Hier Vorlesung 2&3 rein!
+
+%------------------------------------Vorlesung 2------------------------------------
+\subsection*{Definition 1.4.}
+Sei X Menge. Eine \textbf{Zerlegung} von X ist eine Menge $\mathcal{C}$ von paarweise disjunkten nicht-leeren Mengen $A \subseteq X$ mit $\bigcup_{A \in \mathcal{C}} A = X$.
+
+\subsection*{Beispiel}
+Eine Zerlegung von $\{ a, b, c\}$ ist $\{\{ a\}, \{ b, c\}\}$.
+
+\subsection*{Lemma 1.5.}
+Sei $\sim$ Äquivalenzrelation auf X und zu $x \in X$ sei $[x] := \{y \in X | x \sim y\} \subseteq X$ ("Klasse" von X).\newline
+Dann ist $\mathcal{C} := \{[x] | x \in X\}$ eine Zerlegung von X.\newline
+Ferner gilt $x \sim y \Leftrightarrow [x] =  [y]$. (*)\newline
+\subsubsection*{Beweis (*)}
+"$\Leftarrow$": $y \in [y] = [x] \Rightarrow x \sim y$.\newline
+"$\Rightarrow$": Gelte $x \sim y$. Zeige [x] = [y].
+\begin{enumerate}
+\item "$\subseteq$": $z \in [x] \Rightarrow x \sim z \Rightarrow y \sim z \Rightarrow z \in [y]$
+\item "$\supseteq$": $z \in [y] \Rightarrow y \sim z \Rightarrow x \sim z \Rightarrow z \in [x]$\newline
+\end{enumerate}
+Zeige $\mathcal{C}$ Zerlegung.\newline
+Angenommen $[x] \cap [y] \neq \emptyset \Rightarrow \exists z \in X: z \in [x] \cap [y] \Rightarrow \exists z \in X: x \sim z \sim y \Rightarrow x \sim y \Rightarrow [x] = [y].$\newline Also sind die Klassen paarweise disjunkt (und nicht-leer, da $\forall x \in X: x \in [x]$).\newline Wegen $\forall x \in X: x \in [x]$ gilt außerdem $\bigcup_{x \in X} [x] = X$.
+
+\subsection*{Beispiel}
+\begin{enumerate}[label=(\alph*)]
+\item $X = \mathbb{R}, x \sim y :\Leftrightarrow |x| = |y|$.
+Zerlegung von $\mathbb{R}$ ist $\{\{0\}\} \cup \{\{a, -a\} | a \in \mathbb{R}_{>0}\}$.
+\item $X = \mathbb{Z}, n \in \mathbb{N}_{>0}$, betrachte $x \sim y :\Leftrightarrow n | x - y \Leftrightarrow y = x + k \cdot n$ für ein $k \in \mathbb{Z}$.
+Zerlegung von $\mathbb{Z}$ ist $\{0 + n\mathbb{Z},\ldots, (n - 1) + n\mathbb{Z}\}$ (n Klassen).
+\end{enumerate}
+
+\subsection*{Definition 1.6.}
+Die Zerlegung von X bezüglich der Relation $\sim$ heißt Zerlegung in \textbf{Äquivalenzklassen}. Notation für $\mathcal{C}$ auch X/$\sim$, "X modulo $\sim$".
+\subsubsection*{Bemerkung}
+Umgekehrt definiert jede Zerlegung $\mathcal{C}$ von X Äquivalenzrelation $\sim_\mathcal{C} := \bigcup_{A \in \mathcal{C}} A \times A \subseteq X \times X$ (Übung) und die Konstruktionen sind zueinander invers.
+
+\subsection*{Beispiel}
+Es gibt fünf Zerlegungen von $X = \{a, b, c\}$. Die Kreuztabellen der zugehörigen Äquivalenzrelationen lauten:
+\begin{tabbing}
+\=
+\begin{tabular}[h]{cccc}
+ & a & b & c \\
+a & X & & \\
+b & & X & \\
+c & & & X \\
+\end{tabular}
+\=
+\begin{tabular}[h]{cccc}
+ & a & b & c \\
+a & X & X & \\
+b & X & X & \\
+c & & & X \\
+\end{tabular}
+\=
+\begin{tabular}[h]{cccc}
+ & a & b & c \\
+a & X & & X \\
+b & & X & \\
+c & X & & X \\
+\end{tabular}
+\=
+\begin{tabular}[h]{cccc}
+ & a & b & c \\
+a & X & & \\
+b & & X & X \\
+c & & X & X \\
+\end{tabular}
+\=
+\begin{tabular}[h]{cccc}
+ & a & b & c \\
+a & X & X & X \\
+b & X & X & X \\
+c & X & X & X \\
+\end{tabular}
+\\
+\>$\{\{a\}, \{b\}, \{c\}\}$
+\>$\{\{a, b\}, \{c\}\}$
+\>$\{\{a, c\}, \{b\}\}$
+\>$\{\{b, c\}, \{a\}\}$
+\>$\{\{a, b, c\}\}$\\
+\end{tabbing}
+Zusammenhang mit Abbildungen:
+\subsubsection*{Bemerkung}
+Jede Äquivalenzrelation $\sim$ auf X definiert eine (surjektive) Abbildung\\
+$\pi: X \longrightarrow X/\sim, x \longmapsto [x]$.\\
+Umgekehrt definiert jede Abbildung $f: X \longrightarrow Y$ eine Äquivalenzrelation auf X durch\\ $x \sim x' :\Leftrightarrow f(x) = f(x')$.
+%----------------------------------Vorlesung 3----------------------------------
+%Hier Vorlesung 3 rein!
 %------------------------------------Vorlesung 4------------------------------------
 \subsection*{Satz 2.6. (Lemma von Zorn)}
 Sei $(X, \leq)$ geordnete Menge sodass jede Kette in $Y \subseteq X$ eine obere Schranke hat. Dann hat $X$ ein maximales Element.\\
@@ -150,5 +237,5 @@ Betrachte $\sum_{i=1}^n\lambda_iv_i=0$ mit $v_i\in S'$ verschieden.
 $\Rightarrow \lambda = 0 \Rightarrow$ alle $\lambda_j=0$
 \end{itemize}
 Weil aber $S\subsetneq S'$ Widerspruch zur Maximalität von S.
-%----------------------------------Ende Vorlesung 4----------------------------------
+%----------------------------------Vorlesung 5----------------------------------
 \end{document}
