@@ -182,6 +182,26 @@ Zusammenhang mit Abbildungen:
 Jede Äquivalenzrelation $\sim$ auf X definiert eine (surjektive) Abbildung\\
 $\pi: X \longrightarrow X/\sim, x \longmapsto [x]$.\\
 Umgekehrt definiert jede Abbildung $f: X \longrightarrow Y$ eine Äquivalenzrelation auf X durch\\ $x \sim x' :\Leftrightarrow f(x) = f(x')$.
+
+\subsection*{Wichtige Begriffe zu Ordnung}
+Sei (X, $\leq$) geordnete Menge. Darstellung (im endlichen Fall) als Diagramm mit Verbindungen \begin{tabular}{c}
+b \cr $\mid$ \cr a
+\end{tabular} falls $a < b$ und es existiert kein $c$ mit $a < c < b$ "Nachbarschaftsrelation".
+
+\subsection*{Beispiel}
+siehe Vorlesung (15.04.21 / 56:20)
+
+\subsection*{Definition 1.7.}
+Sei (X, $\leq$) geordnete Menge. Elemente $a, b \in X$ heißen \textbf{vergleichbar} falls $a \leq b \lor b \leq a$.\\
+Teilmenge $Y \subseteq X$ heißt \textbf{Kette} falls alle $a, b \in Y$ vergleichbar (d.h. X ist Kette gdw. X total geordnet).
+\begin{tabbing}
+Ein Element $a \in X$ heißt \= \textbf{maximal} falls $\forall x \in X: x \geq a \Rightarrow x = a$,\\ \>\textbf{größtes Element} falls $\forall x \in X: x \leq a$.\\ \>\textbf{obere Schranke} von $Y \subseteq X$ falls $\forall y \in Y: y \leq a$.\\
+Dual dazu: minimal, kleinstes Element, untere Schranke\\
+\end{tabbing}
+
+\subsection*{Beispiel}
+$\mathfrak{P}(M)\backslash\{\emptyset\}$ hat als minimale Elemente $\{m\}$ wobei $m \in M$.\\
+z.B.: $M:=\{a, b\} \rightarrow \mathfrak{P}(M)\backslash\{\emptyset\} = \{\{a\}, \{b\}, \{a, b\}\}$ hat minimale Elemente $\{a\}$ und $\{b\}$.
 %----------------------------------Vorlesung 3----------------------------------
 \section{Unendliche Mengen und Lemma von Zorn}
 Notation: Zu $n\in\mathbb{N}$ sei $[n]:= \{1,2...,n\} $.
