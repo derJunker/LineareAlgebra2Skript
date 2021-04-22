@@ -94,7 +94,7 @@ Zwei Mengen A, B heißen \textbf{disjunkt} falls $A \cap B = \emptyset$.
 Kleiner Ausblick:
 \begin{enumerate}[label=(\alph*)]
 \item Zwei Matrizen $A,B \in \tn{Mat}_{n{\times}m}(K)$ heißen \textbf{ähnlich} falls $S \in \tn{GL}_n(K)$ existiert mit \\$B=S^{-1}{\cdot}A{\cdot}S$.
-\item Sei M Menge und $X:=\mathfrak P(M)$ Potenzmenge von M\\
+\item Sei M Menge und $X:=\mathcal P(M)$ Potenzmenge von M\\
  Zu $A,B \in X$ definiere $A\leq B :\iff A\subseteq B$ eine Ordnungsrelation.
 \end{enumerate}
 
@@ -204,8 +204,8 @@ Dual dazu: minimal, kleinstes Element, untere Schranke\\
 \end{tabbing}
 
 \subsection*{Beispiel}
-$\mathfrak{P}(M)\backslash\{\emptyset\}$ hat als minimale Elemente $\{m\}$ wobei $m \in M$.\\
-z.B.: $M:=\{a, b\} \rightarrow \mathfrak{P}(M)\backslash\{\emptyset\} = \{\{a\}, \{b\}, \{a, b\}\}$ hat minimale Elemente $\{a\}$ und $\{b\}$.
+$\mathcal{P}(M)\backslash\{\emptyset\}$ hat als minimale Elemente $\{m\}$ wobei $m \in M$.\\
+z.B.: $M:=\{a, b\} \rightarrow \mathcal{P}(M)\backslash\{\emptyset\} = \{\{a\}, \{b\}, \{a, b\}\}$ hat minimale Elemente $\{a\}$ und $\{b\}$.
 %----------------------------------Vorlesung 3----------------------------------
 \section{Unendliche Mengen und Lemma von Zorn}
 Notation: Zu $n\in\mathbb{N}$ sei $[n]:= \{1,2...,n\} $.
@@ -288,7 +288,7 @@ Sei $(X, \leq)$ geordnete Menge sodass jede Kette in $Y \subseteq X$ eine obere 
 \subsubsection*{Diskussion:}
 \begin{enumerate}[label=(\arabic*)]
 \item Nicht interessant (trivial) für $X$ endlich, oder für $(X,\leq )$ total geordnet: betrachte Kette $Y=X$.
-\item Anwendungsfall oft $X\subseteq \mathfrak P(M)$. Kette $Y\subseteq X$ hat obere Schranke z.B. 
+\item Anwendungsfall oft $X\subseteq \mathcal P(M)$. Kette $Y\subseteq X$ hat obere Schranke z.B. 
 falls $\bigcup_{A\in Y}A\in X$ gilt.
 \item Beweis ist technisch anspruchsvoller (Mengenlehre) und benutzt Auswahlaxiom; umgekehrt kann Auswahlaxium aus Zorn folgern (vgl. Halmos).
 \end{enumerate}
@@ -322,7 +322,7 @@ Basen z.B. für $K^I$?
 \subsection*{Satz 2.8.}
 Jeder Vektorraum besitzt eine Basis.
 \subsubsection*{Beweis (via Lemma von Zorn)}
-Sei V ein K-Vektorraum und sei $X \subseteq \mathfrak P(V)$ die Menge aller linear unabhängigen Teilmengen $S \subseteq Y$. \\
+Sei V ein K-Vektorraum und sei $X \subseteq \mathcal P(V)$ die Menge aller linear unabhängigen Teilmengen $S \subseteq Y$. \\
 Sei $Y\subseteq X$ Kette. Behauptung: $T:=\bigcup_{S\in Y} S$ ist linear unabhängig. \\
 Gelte $\sum_{i=1}^n \lambda_i v_i = 0$ mit $\lambda_i \in K$ und $v_i \in T$ verschieden. \\
 $$\Rightarrow \exists S_i \in Y\tn{ mit }v_i \in S_i\tn{, }\forall i=1,...n$$
