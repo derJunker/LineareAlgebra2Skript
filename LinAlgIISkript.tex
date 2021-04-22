@@ -183,7 +183,74 @@ Jede Äquivalenzrelation $\sim$ auf X definiert eine (surjektive) Abbildung\\
 $\pi: X \longrightarrow X/\sim, x \longmapsto [x]$.\\
 Umgekehrt definiert jede Abbildung $f: X \longrightarrow Y$ eine Äquivalenzrelation auf X durch\\ $x \sim x' :\Leftrightarrow f(x) = f(x')$.
 %----------------------------------Vorlesung 3----------------------------------
-%Hier Vorlesung 3 rein!
+\section{Unendliche Mengen und Lemma von Zorn}
+Notation: Zu $n\in\mathbb{N}$ sei $[n]:= \{1,2...,n\} $.
+\subsection{Definition 2.1}
+Eine Menge $X$ heißt endlich, falls $\exists n \in \mathbb{N}$ und Bijektion $\phi: X \rightarrow [n]$; in diesem Fall heißt $n$ die Kardinalität $|X|$ oder $\#X$ von $X$.
+Ansonsten heißt $X$ unendlich. 
+\subsection*{Bemerkung (Taubenschlagprinzip)}
+Ist $n>m$, so ist jede Abbildung $f: [n] \rightarrow [m]$ nicht injektiv, das heißt $\exists x\neq x'$ ("Tauben") mit $f(x) = f(x')$. \\
+Es folgt: Ist $\phi : [n] \rightarrow [m]$ bijektiv, so gilt $n=m$. Somit ist die Kardinalität eindeutig.
+\subsection*{Beispiel}
+Menge $X = \{a,b,c,d\}$ ist endlich mit Kardinalität 4, \\
+$\#X =  4$ mögliche Bijektion: 
+\begin{tabular}{cccc}
+$a \rightarrow 1$ & $c \rightarrow 3$ \\
+$b \rightarrow 2$ & $d \rightarrow 4$ \\
+\end{tabular}
+\\
+\\
+Der Umgamg mit unendlichen Mengen erfordert oft "Auswahlaxiom".
+\subsection*{Bemerkung}
+Abbildung $f: X \rightarrow Y$ ist injektiv $\Leftrightarrow \exists g: Y \rightarrow X : g \circ f = id_x$ ($X \neq \emptyset $).
+\subsection*{Beweis}
+$"\Leftarrow"$ \\
+$x,x' \in X :$
+$f(x) = f(x') \Rightarrow  x = g(f(x)) = g(f(x'))$ nach Voraussetzung.\\
+Also ist f injektiv. \\ 
+\\
+$"\Rightarrow"$\\
+Sei $Y_0 := im f$ und betrachte $f_0 : X \rightarrow Y_0$, $f_0(x) := f(x)$ ist bijektiv \\
+ $\Rightarrow \exists g_0 := f_0^{-1} Y_0 \rightarrow X$,\\
+setze fort zu $g: Y \rightarrow X$,\\
+das heißt $g(y) := g_0(y)$ für $y\in Y_0$, sonst beliebig.\\
+$\Rightarrow g(f(x)) = x \forall  x \in X (f(x) \in Y_0)$.\\
+\begin{flushright}
+$\square$\\
+\end{flushright}
+Gilt $f \circ g = id_y$, so ist $f$ surjektiv: zu $y\in Y \exists x:= g(y)$ mit $f(x) = y$.\\
+Umgekehrt gilt:
+\subsection{Axiom 2.2 (Auswahlaxiom)}
+Jede surjektive Abbildung $f: X \rightarrow Y$ besitzt eine Rechtsinverse, das heißt \\
+$g: Y \rightarrow X$ mit $f \circ g = id_y$.\\
+Äquivalente Formulierung:\\
+Sei $(A_i)_{i \in I}$ Familie von nicht-leeren Teilmengen von X.\\
+Dann existiert $(a_i)_{i \in I}$ mit $a_i \in A_i \forall i \in I$.\\
+(Kurz: $X_{i \in I} A_i \neq \emptyset $)
+\subsection*{"Beweis"}
+Jedes $y \in Y$ hat ein Urbild $x \in X$ mit $f(x) = y$.\\
+Definiere also $g: Y \rightarrow X$ durch $Y \rightarrow X$ mit $f(x) = y$.\\
+Dass eine solche Auswahl stets existiert, besagt das Axiom.
+\subsection{Definition 2.3}
+Zwei Mengen $X,Y$ heißen gleichmächtig, falls eine Bijektion $\phi X \rightarrow Y$ existiert; $X$ hat Mächtigkeit $Y$.(Dies erfüllt Eigenschaften einer Äquivalenzrelation)\\
+Eine Menge $X \neq \emptyset$ heißt abzählbar, falls Surjektion $\mathbb{N} \rightarrow X$ existiert. ($\emptyset$ sei abzählbar; $f: \mathbb{N} \rightarrow X$ surjektiv $\Rightarrow X = \{f(0), f(1), ...\}$), das heißt (Auswahlaxiom) falls  Injektion $X \rightarrow \mathbb{N}$ besteht.\\
+Andernfalls heißt $X$ überabzählbar.
+\subsection*{Bemerkung}
+\begin{enumerate}[label=(\arabic*)]
+\item abzählbar unendlich  $\Leftrightarrow$ Mächtigkeit $\mathbb{N}$
+\item existiert $f: X \rightarrow \mathbb{N}$ mit endlichen Urbildern $f^{-1}(\{n\}) \forall n\in \mathbb{N}$, so ist $X$ abzählbar.
+\end{enumerate}
+\subsection{Satz 2.4}
+$\mathbb{Q}$ ist abzählbar.
+\subsection*{Beweis (1. Cantorscher Diagonalbeweis)}
+Kennen wir alle schon, schreib ich jetzt nicht nochmal auf ihr fetten keks.
+\subsection{Satz 2.5}
+\begin{enumerate}[label=(\alph*)]
+\item $\mathbb{R}$ ist überabzählbar.
+\item Für jede Menge $X$ ist $P(X)$ nicht gleichmächtig zu $X$.
+\end{enumerate}
+\subsection*{Beweis (2. Cantorscher Diagonalbeweis)}
+Jau den haben wir auch schon 20 mal gehabt schreib ich hier sowas von nich hin, alla.
 %------------------------------------Vorlesung 4------------------------------------
 \subsection*{Satz 2.6. (Lemma von Zorn)}
 Sei $(X, \leq)$ geordnete Menge sodass jede Kette in $Y \subseteq X$ eine obere Schranke hat. Dann hat $X$ ein maximales Element.\\
