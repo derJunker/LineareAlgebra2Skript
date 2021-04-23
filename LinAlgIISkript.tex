@@ -51,7 +51,7 @@ Falls $X=Y$ sage auch Relation "auf X".
 
 \subsection*{Beispiel}
 $X$ Punktmenge, $Y$ Geradenmenge
-$$xRy :\iff \tn{Punkt x liegt auf Gerade y}$$
+$$xRy :\Leftrightarrow \tn{Punkt x liegt auf Gerade y}$$
 
 \subsection*{Bemerkung}
 Eine Abbildung (Funktion) $f:X{\to}Y$ weist zu jedem $x\in X$ genau ein $
@@ -73,8 +73,8 @@ Sei X eine Menge. Eine Relation $R \subseteq X{\times}X$ ist
 Sei $X = \mathbb R$.
 \begin{enumerate}[label=(\alph*)]
 \item $ R:=\{(x,x) | x\in X\}$ (d.h. $xRy \Rightarrow x=y$) erfüllt a), b), c), d).
-\item $ xRy :\iff |x|=|y|$ erfüllt a), b), d) (nicht c), da $|1|=|-1|$)
-\item $ xRy :\iff x\leq y$ erfüllt a), c), d) (nicht b), da $2\leq 3$ aber $2 \neq 3$
+\item $ xRy :\Leftrightarrow |x|=|y|$ erfüllt a), b), d) (nicht c), da $|1|=|-1|$)
+\item $ xRy :\Leftrightarrow x\leq y$ erfüllt a), c), d) (nicht b), da $2\leq 3$ aber $2 \neq 3$
 \end{enumerate}
 Nun definieren wir die wichtigsten Arten von Relationen.
 
@@ -95,7 +95,7 @@ Kleiner Ausblick:
 \begin{enumerate}[label=(\alph*)]
 \item Zwei Matrizen $A,B \in \tn{Mat}_{n{\times}m}(K)$ heißen \textbf{ähnlich} falls $S \in \tn{GL}_n(K)$ existiert mit \\$B=S^{-1}{\cdot}A{\cdot}S$.
 \item Sei M Menge und $X:=\mathcal P(M)$ Potenzmenge von M\\
- Zu $A,B \in X$ definiere $A\leq B :\iff A\subseteq B$ eine Ordnungsrelation.
+ Zu $A,B \in X$ definiere $A\leq B :\Leftrightarrow A\subseteq B$ eine Ordnungsrelation.
 \end{enumerate}
 
 %------------------------------------Vorlesung 2------------------------------------
@@ -187,7 +187,7 @@ Jede Äquivalenzrelation $\sim$ auf X definiert eine (surjektive) Abbildung\\
 $\pi: X \longrightarrow X/\sim, x \longmapsto [x]$.\\
 Umgekehrt definiert jede Abbildung $f: X \longrightarrow Y$ eine Äquivalenzrelation auf X durch\\ $x \sim x' :\Leftrightarrow f(x) = f(x')$.
 
-\subsection*{Wichtige Begriffe zu Ordnung}
+\subsection*{Wichtige BegrLeftrightarrowe zu Ordnung}
 Sei (X, $\leq$) geordnete Menge. Darstellung (im endlichen Fall) als Diagramm mit Verbindungen \begin{tabular}{c}
 b \cr $\mid$ \cr a
 \end{tabular} falls $a < b$ und es existiert kein $c$ mit $a < c < b$ "Nachbarschaftsrelation".
@@ -316,7 +316,7 @@ $\gamma: K^{(I)} \rightarrow V$, $f\mapsto \sum_{i\in I} f(i)e_i$ ein K-Isomorph
 $\square$\\
 \end{flushright}
 \subsection*{Bemerkung}
-$K^{(I)}=K^I \iff$ I endlich. \\
+$K^{(I)}=K^I \Leftrightarrow$ I endlich. \\
 Aber z.B. ist $\mathbb Q^{(\mathbb N)}$ abzählbar und $\mathbb Q^\mathbb N$ überabzählbar (Übung). \\
 Basen z.B. für $K^I$?
 \subsection*{Satz 2.8.}
