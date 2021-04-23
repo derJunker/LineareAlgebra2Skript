@@ -112,10 +112,10 @@ Ferner gilt $x \sim y \Leftrightarrow [x] =  [y]$. (*)\newline
 \subsubsection*{Beweis (*)}
 "$\Leftarrow$": $y \in [y] = [x] \Rightarrow x \sim y$.\newline
 "$\Rightarrow$": Gelte $x \sim y$. Zeige [x] = [y].
-\begin{enumerate}
-\item "$\subseteq$": $z \in [x] \Rightarrow x \sim z \Rightarrow y \sim z \Rightarrow z \in [y]$
-\item "$\supseteq$": $z \in [y] \Rightarrow y \sim z \Rightarrow x \sim z \Rightarrow z \in [x]$\newline
-\end{enumerate}
+\begin{itemize}
+\item[--] "$\subseteq$": $z \in [x] \Rightarrow x \sim z \Rightarrow y \sim z \Rightarrow z \in [y]$
+\item[--] "$\supseteq$": $z \in [y] \Rightarrow y \sim z \Rightarrow x \sim z \Rightarrow z \in [x]$\newline
+\end{itemize}
 Zeige $\mathcal{C}$ Zerlegung.\newline
 Angenommen $[x] \cap [y] \neq \emptyset \Rightarrow \exists z \in X: z \in [x] \cap [y] \Rightarrow \exists z \in X: x \sim z \sim y \Rightarrow x \sim y \Rightarrow [x] = [y].$\newline Also sind die Klassen paarweise disjunkt (und nicht-leer, da $\forall x \in X: x \in [x]$).\newline Wegen $\forall x \in X: x \in [x]$ gilt außerdem $\bigcup_{x \in X} [x] = X$.
 
@@ -210,7 +210,7 @@ z.B.: $M:=\{a, b\} \rightarrow \mathcal{P}(M)\backslash\{\emptyset\} = \{\{a\}, 
 \section{Unendliche Mengen und Lemma von Zorn}
 Notation: Zu $n\in\mathbb{N}$ sei $[n]:= \{1,2...,n\} $.
 
-\subsection{Definition 2.1}
+\subsection*{Definition 2.1}
 Eine Menge $X$ heißt endlich, falls $\exists n \in \mathbb{N}$ und Bijektion $\phi: X \rightarrow [n]$; in diesem Fall heißt $n$ die Kardinalität $|X|$ oder $\#X$ von $X$.
 Ansonsten heißt $X$ unendlich. 
 \subsubsection*{Bemerkung (Taubenschlagprinzip)}
@@ -226,7 +226,7 @@ $b \rightarrow 2$ & $d \rightarrow 4$ \\
 \end{tabular}
 \\
 \\
-Der Umgamg mit unendlichen Mengen erfordert oft "Auswahlaxiom".
+Der Umgang mit unendlichen Mengen erfordert oft "Auswahlaxiom".
 
 \subsection*{Bemerkung}
 Abbildung $f: X \rightarrow Y$ ist injektiv $\Leftrightarrow \exists g: Y \rightarrow X : g \circ f = id_x$ ($X \neq \emptyset $).
@@ -247,7 +247,7 @@ $\square$\\
 \end{flushright}
 Gilt $f \circ g = id_y$, so ist $f$ surjektiv: zu $y\in Y \exists x:= g(y)$ mit $f(x) = y$.\\
 Umgekehrt gilt:
-\subsection{Axiom 2.2 (Auswahlaxiom)}
+\subsection*{Axiom 2.2 (Auswahlaxiom)}
 Jede surjektive Abbildung $f: X \rightarrow Y$ besitzt eine Rechtsinverse, das heißt \\
 $g: Y \rightarrow X$ mit $f \circ g = id_y$.\\
 Äquivalente Formulierung:\\
@@ -259,7 +259,7 @@ Jedes $y \in Y$ hat ein Urbild $x \in X$ mit $f(x) = y$.\\
 Definiere also $g: Y \rightarrow X$ durch $Y \rightarrow X$ mit $f(x) = y$.\\
 Dass eine solche Auswahl stets existiert, besagt das Axiom.
 
-\subsection{Definition 2.3}
+\subsection*{Definition 2.3}
 Zwei Mengen $X,Y$ heißen gleichmächtig, falls eine Bijektion $\phi X \rightarrow Y$ existiert; $X$ hat Mächtigkeit $Y$.(Dies erfüllt Eigenschaften einer Äquivalenzrelation)\\
 Eine Menge $X \neq \emptyset$ heißt abzählbar, falls Surjektion $\mathbb{N} \rightarrow X$ existiert. ($\emptyset$ sei abzählbar; $f: \mathbb{N} \rightarrow X$ surjektiv $\Rightarrow X = \{f(0), f(1), ...\}$), das heißt (Auswahlaxiom) falls  Injektion $X \rightarrow \mathbb{N}$ besteht.\\
 Andernfalls heißt $X$ überabzählbar.
@@ -270,18 +270,18 @@ Andernfalls heißt $X$ überabzählbar.
 \item existiert $f: X \rightarrow \mathbb{N}$ mit endlichen Urbildern $f^{-1}(\{n\}) \forall n\in \mathbb{N}$, so ist $X$ abzählbar.
 \end{enumerate}
 
-\subsection{Satz 2.4}
+\subsection*{Satz 2.4}
 $\mathbb{Q}$ ist abzählbar.
 \subsubsection*{Beweis (1. Cantorscher Diagonalbeweis)}
-Kennen wir alle schon, schreib ich jetzt nicht nochmal auf ihr fetten keks.
+siehe Vorlesung.
 
-\subsection{Satz 2.5}
+\subsection*{Satz 2.5}
 \begin{enumerate}[label=(\alph*)]
 \item $\mathbb{R}$ ist überabzählbar.
 \item Für jede Menge $X$ ist $P(X)$ nicht gleichmächtig zu $X$.
 \end{enumerate}
 \subsubsection*{Beweis (2. Cantorscher Diagonalbeweis)}
-Jau den haben wir auch schon 20 mal gehabt schreib ich hier sowas von nich hin, alla.
+siehe Vorlesung.
 %------------------------------------Vorlesung 4------------------------------------
 \subsection*{Satz 2.6. (Lemma von Zorn)}
 Sei $(X, \leq)$ geordnete Menge sodass jede Kette in $Y \subseteq X$ eine obere Schranke hat. Dann hat $X$ ein maximales Element.\\
@@ -290,7 +290,7 @@ Sei $(X, \leq)$ geordnete Menge sodass jede Kette in $Y \subseteq X$ eine obere 
 \item Nicht interessant (trivial) für $X$ endlich, oder für $(X,\leq )$ total geordnet: betrachte Kette $Y=X$.
 \item Anwendungsfall oft $X\subseteq \mathcal P(M)$. Kette $Y\subseteq X$ hat obere Schranke z.B. 
 falls $\bigcup_{A\in Y}A\in X$ gilt.
-\item Beweis ist technisch anspruchsvoller (Mengenlehre) und benutzt Auswahlaxiom; umgekehrt kann Auswahlaxium aus Zorn folgern (vgl. Halmos).
+\item Beweis ist technisch anspruchsvoller (Mengenlehre) und benutzt Auswahlaxiom; umgekehrt kann Auswahlaxiom aus Zorn folgern (vgl. Halmos).
 \end{enumerate}
 Nun zu Basen für beliebige Vektorräume. \\
 In Lineare Algebra I haben wir gesehen, dass jeder endlich erzeugte K-Vektorraum V eine (endliche) Basis $S\subseteq V$ hat; \\
