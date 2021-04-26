@@ -345,32 +345,32 @@ $\square$\\
 %----------------------------------Vorlesung 5----------------------------------
 \section{Äquivalenz von Matrizen}
 \textbf{Wiederholung} (Lin. Alg. I).\\ Seien $V, W$ K-Vektorräume mit Basen $\mathcal{B} = (v_1, \dots, v_n)$ von $V$ und $\mathcal{C} = (w_1, \dots, w_m)$ von $W$. \\
-Zu $f: V \longrightarrow W$ linear ist $A = _\mathcal{B}M_\mathcal{C}(f) \in Mat_{m\times n}(K)$ gegeben durch:\\
+Zu $f: V \longrightarrow W$ linear ist $A = {_\mathcal B}M_\mathcal{C}(f) \in Mat_{m\times n}(K)$ gegeben durch:\\
 \begin{tabbing}
 	\hspace{15pt}\=\hspace{40pt}\=\hspace{40pt}\= \kill
 	\>$V \xrightarrow f$ \>$W$ $\xrightarrow g$ \>$X$\\
-	$\Phi_\mathcal{B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal{C}$ \>$\uparrow \Phi_\mathcal{D}$\\
+	$\Phi{_\mathcal B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal{C}$ \>$\uparrow \Phi_\mathcal{D}$\\
 	\>$K^n \xrightarrow{f_A}$ \>$K^m$ $\xrightarrow{f_B}$ \>$K^l$\\
 \end{tabbing}
-d.h. $f_A = \Phi_\mathcal{C}^{-1}\circ f \circ \Phi_\mathcal{B}$. Ist auch $X$ K-Vektorraum mit Basis $\mathcal{D} = (x_1, \dots, x_l)$ und $g: W \longrightarrow X$ linear, so gilt $_\mathcal{B}M_\mathcal{D}(g \circ f) = _\mathcal{C}M_\mathcal{D}(g) \cdot _\mathcal{B}M_\mathcal{C}(f) = B \cdot A$.\\ \\
+d.h. $f_A = \Phi_\mathcal{C}^{-1}\circ f \circ \Phi{_\mathcal B}$. Ist auch $X$ K-Vektorraum mit Basis $\mathcal{D} = (x_1, \dots, x_l)$ und $g: W \longrightarrow X$ linear, so gilt ${_\mathcal B}M_\mathcal{D}(g \circ f) = _\mathcal{C}M_\mathcal{D}(g) \cdot {_\mathcal B}M_\mathcal{C}(f) = B \cdot A$.\\ \\
 Wie verändert sich die darstellende Matrix bei einem Basiswechsel?\\
 Betrachte Diagramm zu zwei Basen $B$ und $B'$ von $V$\\
 \begin{tabbing}
 	\hspace{15pt}\=\hspace{40pt}\=\hspace{2cm}\= \kill
 	\>$V \xrightarrow{id_V}$ \>$V$\\
-	$\Phi_\mathcal{B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal{B'}$\\
-	\>$K^n \xrightarrow{f_\mathcal{T}}$ \>$K^n$ \>d.h. $f_\mathcal{T} = \Phi_\mathcal{B'}^{-1} \circ \Phi_\mathcal{B}$\\
+	$\Phi{_\mathcal B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal{B'}$\\
+	\>$K^n \xrightarrow{f_\mathcal{T}}$ \>$K^n$ \>d.h. $f_\mathcal{T} = \Phi_\mathcal{B'}^{-1} \circ \Phi{_\mathcal B}$\\
 \end{tabbing}
-Die Matrix $\mathcal{T} := _\mathcal{B}M_\mathcal{B'}(id_V) \in \mathcal{G}L_n(K)$ heißt \textbf{Transformationsmatrix}\\
-(d.h. $v_j = \sum_{i=1}^{n} t_{ij} v_i'$ mit $\mathcal{B} = (v_1, \dots, v_n), \mathcal{B'} = (v_1', \dots, v_n')$). $\mathcal{T}^{-1} = _\mathcal{B'}M_\mathcal{B}(id_V)$\\
+Die Matrix $\mathcal{T} := {_\mathcal B}M_\mathcal{B'}(id_V) \in \mathcal{G}L_n(K)$ heißt \textbf{Transformationsmatrix}\\
+(d.h. $v_j = \sum_{i=1}^{n} t_{ij} v_i'$ mit $\mathcal{B} = (v_1, \dots, v_n), \mathcal{B'} = (v_1', \dots, v_n')$). $\mathcal{T}^{-1} = _\mathcal{B'}M{_\mathcal B}(id_V)$\\
 
 \subsection*{Satz 3.1. (Transformationsformel)}
-Gegeben seien K-Vektorräume $V, W$ mit Basen $\mathcal{B}, \mathcal{B'}$ von $V$ und $\mathcal{C}, \mathcal{C'}$ von $W$, sowie $f: V \longrightarrow W$ linear.\\ Dann gilt: $_\mathcal{B'}M_\mathcal{C'}(f) = \mathcal{T} \cdot _\mathcal{B}M_\mathcal{C}(f) \cdot S^{-1}$\\ mit $S := _\mathcal{B}M_\mathcal{B'}(id_V) \in \mathcal{G}L_n(K), \mathcal{T} := _\mathcal{C}M_\mathcal{C'}(id_W) \in \mathcal{G}L_m(K)$ wobei $n = dim V, m = dim W$.\\
+Gegeben seien K-Vektorräume $V, W$ mit Basen $\mathcal{B}, \mathcal{B'}$ von $V$ und $\mathcal{C}, \mathcal{C'}$ von $W$, sowie $f: V \longrightarrow W$ linear.\\ Dann gilt: $_\mathcal{B'}M_\mathcal{C'}(f) = \mathcal{T} \cdot {_\mathcal B}M_\mathcal{C}(f) \cdot S^{-1}$\\ mit $S := {_\mathcal B}M_\mathcal{B'}(id_V) \in \mathcal{G}L_n(K), \mathcal{T} := _\mathcal{C}M_\mathcal{C'}(id_W) \in \mathcal{G}L_m(K)$ wobei $n = dim V, m = dim W$.\\
 \subsubsection*{Beweis ("Diagrammjagd")}
-$A := _\mathcal{B}M_\mathcal{C}(f), A' := _\mathcal{B'}M_\mathcal{C'}(f)$\\
+$A := {_\mathcal B}M_\mathcal{C}(f), A' := _\mathcal{B'}M_\mathcal{C'}(f)$\\
 \begin{tabular}[h]{ccccccccc}
 	 $K^n$ & & $\xrightarrow{f_A}$ & & $K^m$\\
-	 & $\searrow \Phi_\mathcal{B}$ & & $\Phi_\mathcal{C} \swarrow$ & \\
+	 & $\searrow \Phi{_\mathcal B}$ & & $\Phi_\mathcal{C} \swarrow$ & \\
 	 $f_S \downarrow$ & $V$ & $\xrightarrow{f}$ & $W$ & $\downarrow f_\mathcal{T}$ \\
 	 & $\nearrow \Phi_\mathcal{B'}$ & & $\Phi_\mathcal{C'} \nwarrow$ & \\
 	 $K^n$ & & $\xrightarrow{f_{A'}}$ & & $K^m$ & $\Rightarrow A' = \mathcal{T} \cdot A \cdot S^{-1}$. $\square$\\
@@ -385,7 +385,7 @@ $A \sim B \Leftrightarrow A$ und $B$ stellen bezüglich geeigneter Basen dieselb
 \subsubsection*{Beweis}
 \begin{itemize}
 	\item[--] "$\Leftarrow$": Transformationsformel Satz 3.1.
-	\item[--] "$\Rightarrow$": Gelte $B = \mathcal{T} \cdot A \cdot S^{-1}$. Sei $f := f_B: K^n \longrightarrow K^m$ und seien $\mathcal{B'}, \mathcal{C'}$ Standardbasen sowie $\mathcal{B} := $ Spalten von $S$, $\mathcal{C} := $ Spalten von $\mathcal{T}$.\\ Dann ist $_\mathcal{B}M_\mathcal{B'}(id) = S$, $_\mathcal{C}M_\mathcal{C'}(id) = \mathcal{T} \Rightarrow_{\tn{Satz 3.1.}} \mathcal{T} \cdot A \cdot S^{-1} = B = \mathcal{T} \cdot _\mathcal{B}M_\mathcal{C}(f) \cdot S^{-1}\\ \Rightarrow _\mathcal{B}M_\mathcal{C}(f) = A\tn{,} _\mathcal{B'}M_\mathcal{C'}(f) = B$.
+	\item[--] "$\Rightarrow$": Gelte $B = \mathcal{T} \cdot A \cdot S^{-1}$. Sei $f := f_B: K^n \longrightarrow K^m$ und seien $\mathcal{B'}, \mathcal{C'}$ Standardbasen sowie $\mathcal{B} := $ Spalten von $S$, $\mathcal{C} := $ Spalten von $\mathcal{T}$.\\ Dann ist ${_\mathcal B}M_\mathcal{B'}(id) = S$, $_\mathcal{C}M_\mathcal{C'}(id) = \mathcal{T} \Rightarrow_{\tn{Satz 3.1.}} \mathcal{T} \cdot A \cdot S^{-1} = B = \mathcal{T} \cdot {_\mathcal B}M_\mathcal{C}(f) \cdot S^{-1}\\ \Rightarrow {_\mathcal B}M_\mathcal{C}(f) = A\tn{,} _\mathcal{B'}M_\mathcal{C'}(f) = B$.
 \end{itemize}
 \subsubsection*{Bemerkung}
 Auf $X := Mat_{m\times n}(K)$ ist $\sim$ eine Äquivalenzrelation.
@@ -435,7 +435,7 @@ $\begin{BMAT}(r)[2pt,8cm,1cm]{r}{c}
 \end{matrix}\right) = r$.
 \item[--] "$\Leftarrow$": Sei $rang(A) = dim(im(f_A)) = r$.\\ Wähle Basis $w_1, \dots, w_r$ von $im(f_A)$ und $v_i \in K^n$ mit $A \cdot v_i = w_i$.\\ Dann ist $\{v_1, \dots, v_r\}$ linear unabhängig: $\sum \lambda_i v_i = 0 \Rightarrow 0 = A\sum \lambda_i v_i = \sum \lambda_i \underbrace{Av_i}_{w_i}$.\\ Dimensionsformel (I, §9. Satz 4) besagt $dim(ker(f_A)) = n - r$. Wähle Basis $v_{r+1}, \dots, v_n$ von $ker(f_A) \Rightarrow \mathcal{B} := (v_1, \dots, v_r, v_{r+1}, \dots, v_n)$ Basis von $K^n$:\\ gelte $\sum_{i=1}^{n} \lambda_i v_i = 0 \Rightarrow \sum_{i=1}^r \lambda_i Av_i = 0 \Rightarrow \lambda_1 = \dots = \lambda_r = 0 \Rightarrow \sum_{i=r+1}^n \lambda_i v_i = 0\\ \Rightarrow$ alle $\lambda_i = 0$.\\
 $\mathcal{C} := (w_1, \dots, w_r, w_{r+1}, \dots, w_m)$ Basis von $K^m$ (ergänze beliebig).\\
-Dann gilt $_\mathcal{B}M_\mathcal{C}(f_A) = \left(
+Dann gilt ${_\mathcal B}M_\mathcal{C}(f_A) = \left(
 \begin{BMAT}(e)[2pt,3cm,3cm]{ccc.ccc}{ccc.cc}
 	1 & & 0 & & & \\
 	& \ddots & & & 0 & \\
