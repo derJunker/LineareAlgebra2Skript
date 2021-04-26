@@ -6,6 +6,8 @@
 \usepackage{amsfonts}
 \usepackage{enumitem}
 \usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{easybmat}
 
 %-------------------------------commands definitionen-------------------------------
 %für methoden die eine fallunterscheidung haben aufrufen mit: 
@@ -29,7 +31,6 @@
 		\end{array}
 	\right.
 }
-
 %abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
 %-----------------------------ende commands definitionen-----------------------------
@@ -81,12 +82,12 @@ Nun definieren wir die wichtigsten Arten von Relationen.
 \subsection*{Definition 1.3.}
 Eine Relation R auf X heißt
 \begin{enumerate}[label=(\arabic*)]
-\item \textbf{Äquivalenzrelation} falls sie reflexiv, symmetrisch und transitiv ist (typische Notation "~"),
+\item \textbf{Äquivalenzrelation} falls sie reflexiv, symmetrisch und transitiv ist (typische Notation "$\sim$"),
 \item \textbf{Ordnungsrelation} falls sie reflexiv, anti-symmetrisch und transitiv ist (Notation "$\leq$").
 \end{enumerate}
 Im Fall 2. heißt R auch \textbf{(partielle) Ordnung}, und falls 
 $$ xRy \lor yRx \hspace*{2mm} \forall x,y \in X$$
-zusätzlich gilt \textbf{totatle/ lineare Ordnung}.\\
+zusätzlich gilt \textbf{totale/ lineare Ordnung}.\\
 \textbf{Äquivalenzrelationen} auf X entsprechen genau den Zerlegungen von X.
 Zwei Mengen A, B heißen \textbf{disjunkt} falls $A \cap B = \emptyset$.
 
@@ -187,7 +188,7 @@ Jede Äquivalenzrelation $\sim$ auf X definiert eine (surjektive) Abbildung\\
 $\pi: X \longrightarrow X/\sim, x \longmapsto [x]$.\\
 Umgekehrt definiert jede Abbildung $f: X \longrightarrow Y$ eine Äquivalenzrelation auf X durch\\ $x \sim x' :\Leftrightarrow f(x) = f(x')$.
 
-\subsection*{Wichtige BegrLeftrightarrowe zu Ordnung}
+\subsection*{Wichtige Begriffe zu Ordnung}
 Sei (X, $\leq$) geordnete Menge. Darstellung (im endlichen Fall) als Diagramm mit Verbindungen \begin{tabular}{c}
 b \cr $\mid$ \cr a
 \end{tabular} falls $a < b$ und es existiert kein $c$ mit $a < c < b$ "Nachbarschaftsrelation".
@@ -342,4 +343,121 @@ Weil aber $S\subsetneq S'$ Widerspruch zur Maximalität von S.
 $\square$\\
 \end{flushright}
 %----------------------------------Vorlesung 5----------------------------------
+\section{Äquivalenz von Matrizen}
+\textbf{Wiederholung} (Lin. Alg. I).\\ Seien $V, W$ K-Vektorräume mit Basen $\mathcal{B} = (v_1, \dots, v_n)$ von $V$ und $\mathcal{C} = (w_1, \dots, w_m)$ von $W$. \\
+Zu $f: V \longrightarrow W$ linear ist $A = _\mathcal{B}M_\mathcal{C}(f) \in Mat_{m\times n}(K)$ gegeben durch:\\
+\begin{tabbing}
+	\hspace{15pt}\=\hspace{40pt}\=\hspace{40pt}\= \kill
+	\>$V \xrightarrow f$ \>$W$ $\xrightarrow g$ \>$X$\\
+	$\Phi_\mathcal{B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal{C}$ \>$\uparrow \Phi_\mathcal{D}$\\
+	\>$K^n \xrightarrow{f_A}$ \>$K^m$ $\xrightarrow{f_B}$ \>$K^l$\\
+\end{tabbing}
+d.h. $f_A = \Phi_\mathcal{C}^{-1}\circ f \circ \Phi_\mathcal{B}$. Ist auch $X$ K-Vektorraum mit Basis $\mathcal{D} = (x_1, \dots, x_l)$ und $g: W \longrightarrow X$ linear, so gilt $_\mathcal{B}M_\mathcal{D}(g \circ f) = _\mathcal{C}M_\mathcal{D}(g) \cdot _\mathcal{B}M_\mathcal{C}(f) = B \cdot A$.\\ \\
+Wie verändert sich die darstellende Matrix bei einem Basiswechsel?\\
+Betrachte Diagramm zu zwei Basen $B$ und $B'$ von $V$\\
+\begin{tabbing}
+	\hspace{15pt}\=\hspace{40pt}\=\hspace{2cm}\= \kill
+	\>$V \xrightarrow{id_V}$ \>$V$\\
+	$\Phi_\mathcal{B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal{B'}$\\
+	\>$K^n \xrightarrow{f_\mathcal{T}}$ \>$K^n$ \>d.h. $f_\mathcal{T} = \Phi_\mathcal{B'}^{-1} \circ \Phi_\mathcal{B}$\\
+\end{tabbing}
+Die Matrix $\mathcal{T} := _\mathcal{B}M_\mathcal{B'}(id_V) \in \mathcal{G}L_n(K)$ heißt \textbf{Transformationsmatrix}\\
+(d.h. $v_j = \sum_{i=1}^{n} t_{ij} v_i'$ mit $\mathcal{B} = (v_1, \dots, v_n), \mathcal{B'} = (v_1', \dots, v_n')$). $\mathcal{T}^{-1} = _\mathcal{B'}M_\mathcal{B}(id_V)$\\
+
+\subsection*{Satz 3.1. (Transformationsformel)}
+Gegeben seien K-Vektorräume $V, W$ mit Basen $\mathcal{B}, \mathcal{B'}$ von $V$ und $\mathcal{C}, \mathcal{C'}$ von $W$, sowie $f: V \longrightarrow W$ linear.\\ Dann gilt: $_\mathcal{B'}M_\mathcal{C'}(f) = \mathcal{T} \cdot _\mathcal{B}M_\mathcal{C}(f) \cdot S^{-1}$\\ mit $S := _\mathcal{B}M_\mathcal{B'}(id_V) \in \mathcal{G}L_n(K), \mathcal{T} := _\mathcal{C}M_\mathcal{C'}(id_W) \in \mathcal{G}L_m(K)$ wobei $n = dim V, m = dim W$.\\
+\subsubsection*{Beweis ("Diagrammjagd")}
+$A := _\mathcal{B}M_\mathcal{C}(f), A' := _\mathcal{B'}M_\mathcal{C'}(f)$\\
+\begin{tabular}[h]{ccccccccc}
+	 $K^n$ & & $\xrightarrow{f_A}$ & & $K^m$\\
+	 & $\searrow \Phi_\mathcal{B}$ & & $\Phi_\mathcal{C} \swarrow$ & \\
+	 $f_S \downarrow$ & $V$ & $\xrightarrow{f}$ & $W$ & $\downarrow f_\mathcal{T}$ \\
+	 & $\nearrow \Phi_\mathcal{B'}$ & & $\Phi_\mathcal{C'} \nwarrow$ & \\
+	 $K^n$ & & $\xrightarrow{f_{A'}}$ & & $K^m$ & $\Rightarrow A' = \mathcal{T} \cdot A \cdot S^{-1}$. $\square$\\
+\end{tabular}
+
+\subsection*{Definition 3.2.}
+$A, B \ Mat_{m\times n}(K)$ heißen \textbf{äquivalent} ($A\sim B$) falls ex. $S \in \mathcal{G}L_n(K), \mathcal{T} \in \mathcal{G}L_m(K): B = \mathcal{T} \cdot A \cdot S^{-1}$.
+
+\subsection*{Proposition 3.3.}
+$A \sim B \Leftrightarrow A$ und $B$ stellen bezüglich geeigneter Basen dieselbe lineare Abbildung dar.
+
+\subsubsection*{Beweis}
+\begin{itemize}
+	\item[--] "$\Leftarrow$": Transformationsformel Satz 3.1.
+	\item[--] "$\Rightarrow$": Gelte $B = \mathcal{T} \cdot A \cdot S^{-1}$. Sei $f := f_B: K^n \longrightarrow K^m$ und seien $\mathcal{B'}, \mathcal{C'}$ Standardbasen sowie $\mathcal{B} := $ Spalten von $S$, $\mathcal{C} := $ Spalten von $\mathcal{T}$.\\ Dann ist $_\mathcal{B}M_\mathcal{B'}(id) = S$, $_\mathcal{C}M_\mathcal{C'}(id) = \mathcal{T} \Rightarrow_{\tn{Satz 3.1.}} \mathcal{T} \cdot A \cdot S^{-1} = B = \mathcal{T} \cdot _\mathcal{B}M_\mathcal{C}(f) \cdot S^{-1}\\ \Rightarrow _\mathcal{B}M_\mathcal{C}(f) = A\tn{,} _\mathcal{B'}M_\mathcal{C'}(f) = B$.
+\end{itemize}
+\subsubsection*{Bemerkung}
+Auf $X := Mat_{m\times n}(K)$ ist $\sim$ eine Äquivalenzrelation.
+\begin{itemize}
+	\item[--] "reflexiv": $A = E_m \cdot A \cdot E_m^{-1} \checkmark$
+	\item[--] "symmetrisch": gelte $B = \mathcal{T} \cdot A \cdot S^{-1} \Rightarrow \mathcal{T}^{-1} \cdot B \cdot S = A \checkmark$
+	\item[--] "transitiv": sei $B = \mathcal{T} \cdot A \cdot S^{-1}$, $C = \mathcal{U} \cdot B \cdot \mathcal{V}^{-1} \Rightarrow C = (\mathcal{U} \cdot \mathcal{T}) \cdot A \cdot (\mathcal{V} \cdot S)^{-1} \checkmark$
+\end{itemize}
+\subsection*{Lemma 3.4.}
+rang($\mathcal{T} \cdot A \cdot S^{-1}$) = rang($A$)
+\subsubsection*{Beweis}
+Zeige $rang(A) =_{i)} rang(A \cdot S) =_{ii)} rang(\mathcal{T} \cdot A)$ für invertierbare Matrizen $S, \mathcal{T}$.
+\begin{itemize}
+	\item[i)] $im(f_{A \cdot S}) = im(f_A \circ f_S) = im(f_A)$, da $im(f_S) = K^n$
+	\item[ii)] $im(f_{\mathcal{T} \cdot A}) = im(f_\mathcal{T} \circ f_A) \cong im(f_A)$, da $f_\mathcal{T}$ Isomorphismus
+\end{itemize}
+\subsection*{Satz 3.5. (Normalform für äquivalente Matrizen)}
+Zu $A \in Mat_{m\times n}(K)$ gilt $A \sim $
+\(
+\left(
+\begin{BMAT}(e)[2pt,3cm,3cm]{ccc.ccc}{ccc.cc}
+	 & & & & & \\
+	 & E_r & & & 0 & \\
+	 & & & & & \\
+	 & 0 & & & 0 & \\
+	 & & & & & 
+\end{BMAT}
+\right)
+\begin{BMAT}(r)[-2pt,0pt,3cm]{c}{b}
+	\left. \vphantom{\rule{1mm}{25pt}} \right \rbrace m - r
+\end{BMAT}
+\)
+$\Leftrightarrow rang(A) = r$
+\newline
+$\begin{BMAT}(r)[2pt,8cm,1cm]{r}{c}
+	\underbrace{}_{n - r}
+\end{BMAT}$
+
+\subsubsection*{Beweis}
+\begin{itemize}
+	\item[--] "$\Rightarrow$": Gelte $A = \mathcal{T} \cdot \left(\begin{matrix}
+		E_r & 0\\
+		0 & 0
+	\end{matrix}\right) \cdot S^{-1} \Rightarrow_{Lemma 3.4.} rang(A) = rang\left(\begin{matrix}
+	E_r & 0 \\
+	0 & 0
+\end{matrix}\right) = r$.
+\item[--] "$\Leftarrow$": Sei $rang(A) = dim(im(f_A)) = r$.\\ Wähle Basis $w_1, \dots, w_r$ von $im(f_A)$ und $v_i \in K^n$ mit $A \cdot v_i = w_i$.\\ Dann ist $\{v_1, \dots, v_r\}$ linear unabhängig: $\sum \lambda_i v_i = 0 \Rightarrow 0 = A\sum \lambda_i v_i = \sum \lambda_i \underbrace{Av_i}_{w_i}$.\\ Dimensionsformel (I, §9. Satz 4) besagt $dim(ker(f_A)) = n - r$. Wähle Basis $v_{r+1}, \dots, v_n$ von $ker(f_A) \Rightarrow \mathcal{B} := (v_1, \dots, v_r, v_{r+1}, \dots, v_n)$ Basis von $K^n$:\\ gelte $\sum_{i=1}^{n} \lambda_i v_i = 0 \Rightarrow \sum_{i=1}^r \lambda_i Av_i = 0 \Rightarrow \lambda_1 = \dots = \lambda_r = 0 \Rightarrow \sum_{i=r+1}^n \lambda_i v_i = 0\\ \Rightarrow$ alle $\lambda_i = 0$.\\
+$\mathcal{C} := (w_1, \dots, w_r, w_{r+1}, \dots, w_m)$ Basis von $K^m$ (ergänze beliebig).\\
+Dann gilt $_\mathcal{B}M_\mathcal{C}(f_A) = \left(
+\begin{BMAT}(e)[2pt,3cm,3cm]{ccc.ccc}{ccc.cc}
+	1 & & 0 & & & \\
+	& \ddots & & & 0 & \\
+	0 & & 1 & & & \\
+	& 0 & & & 0 & \\
+	& & & & & 
+\end{BMAT}
+\right)$, da $f_A(v_i) = \left \{\begin{array}{ll}
+	w_i \tn{ für } i \leq r\\
+	0 \tn{ sonst}
+\end{array}\right.\\ \Rightarrow_{Prop. 3.3.} A \sim \left( \begin{matrix}
+E_r & 0\\
+0&0
+\end{matrix}\right)$. $\square$
+\end{itemize}
+
+\subsection*{Korollar 3.6.}
+$A \sim B \Leftrightarrow rang(A) = rang(B)$.
+\subsubsection*{Beweis}
+\begin{itemize}
+	\item[--] "$\Rightarrow$": Lemma 3.4.
+	\item[--] "$\Leftarrow$": Satz 3.5. $\square$
+\end{itemize}
+%----------------------------------Vorlesung 6----------------------------------
 \end{document}
