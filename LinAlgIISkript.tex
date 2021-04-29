@@ -460,4 +460,308 @@ $A \sim B \Leftrightarrow rang(A) = rang(B)$.
 	\item[--] "$\Leftarrow$": Satz 3.5. $\square$
 \end{itemize}
 %----------------------------------Vorlesung 6----------------------------------
+\subsubsection*{Wiederholung}
+$A,B \in Mat_{m \times n}(K)$ äquivalent $(A\sim B)$ \\
+$ :\Leftrightarrow B = T \cdot A \cdot S^{-1}$ für $S, T$ invertierbar.\\
+$\Leftrightarrow rang(A) = rang(B) = r$. \\
+$\Leftrightarrow A \sim B \sim 
+\left( \begin{matrix} 
+E_r & 0 \\
+0 & 0 \\
+\end{matrix} \right) =: N$\\
+Nach Beweis Satz 3.5 konstruiere Basen $\mathcal{B},\mathcal{C}$ mit $_\mathcal{B}M_\mathcal{C}(f_A) = N$.\\
+Mit $\mathcal{B'}, \mathcal{C'}$ Einheitsbasis gilt:\\
+$A = T \cdot N \cdot S^{-1}, \begin{array}{ll}
+T \tn{ Spalten von } \mathcal{C}\\
+S \tn{ Spalten von } \mathcal{B}\\
+\end{array}
+$\\
+d.h. $N = T^{-1} \cdot A \cdot S,  \begin{array}{ll}
+T \tn{ Spalten von } \mathcal{C}\\
+S \tn{ Spalten von } \mathcal{B}\\
+\end{array}$\\
+
+\subsection*{Definition 3.7 (Elementarmatrizen).}
+Zu $1 \leq i,j \leq n$ und $\lambda \in K$ definiere Matrizen:\\
+$(Z1): P_{ij} := \left( \begin{matrix} 
+1 \\
+& \ddots \\
+& & 0 & ... & 1 \\
+& & \vdots & & \vdots \\
+& & 1 & ... & 0 \\
+& & & & & \ddots \\
+& & & & & & 1 \\
+\end{matrix} \right), 
+P_{kl} := \left \{\begin{array}{ll} 1 \tn{ falls } k = l \neq i,j \\
+1 \tn{ falls } (k,l) = (i,j) od. (j,i) \\
+0 \tn sonst\\
+\end{array} \right.$\\
+$(Z2): S_i(\lambda):= \left(\begin{matrix}
+1 \\
+& \ddots \\
+& & 1 \\
+& & & \lambda \\
+& & & & 1 \\
+& & & & & \ddots \\
+& & & & & & 1 \\
+\end{matrix} \right) ,
+S_kl := \left \{\begin{array}{ll}
+1 \tn{ falls } k = l \neq i \\
+\lambda \tn{ falls } k = l = i \\
+0 \tn{ sonst }
+\end{array}\right. , (\lambda \neq 0).
+$\\
+$(Z3): Q_{ij}(\lambda) := \left(\begin{matrix}
+1 \\
+& \ddots & . . . & \lambda \\
+& & \ddots & \vdots \\
+& & &  \ddots \\
+& & & &  1 \\
+\end{matrix} \right) , q_{kl} := \left \{ \begin{array}{ll}
+1 \tn{ falls } k=l \\
+\lambda \tn{ falls } (k,l) = (i,j)\\
+0 \tn{ sonst}
+\end{array} \right. , (i\neq j).
+$\\
+die sogenannten Elementarmatrizen in $Mat_{m \times n}(K)$.\\
+Dann gilt $A \leadsto A'$ via Zeilenoperationen $(Z1)$, $(Z2)$ oder $(Z3)$ genau dann, wenn\\ 
+$A' = P_{ij} \cdot A$, $A' = S_i(\lambda) \cdot A$ beziehungsweise $A' = Q_{ik}(\lambda \cdot A)$. (Addition des A-fachen der j-ten Zeile zur i-ten Zeile.)
+
+\subsection*{Beispiel}
+$\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+\end{matrix} \right) $\\
+d.h. $
+\left(\begin{matrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+\end{matrix} \right) = 
+\underbrace{\left(\begin{matrix}
+1 & 0  \\
+-4 & 1 \\
+\end{matrix} \right)}_{=Q_{21}(-4)}
+\left(\begin{matrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right)$\\
+Weiter gilt $A \leadsto A$ via Spaltenoperationen $(S1)$,$(S2)$,$(S3)$, genau dann ,wenn\\
+$A' = A \cdot P_{ij}$, $A' = A \cdot S_i(\lambda)$, $A' = A \cdot Q_{ij}(\lambda)$. (Vorsicht: hier Addition des $\lambda$-fachen der i-ten zur j-ten Spalte.) 
+
+\subsection*{Beispiel}
+$\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+3 & 2 & 1 \\
+6 & 5 & 4 \\
+\end{matrix} \right)$, d.h.
+$\left(\begin{matrix} 
+3 & 2 & 1 \\
+6 & 5 & 4 \\
+\end{matrix} \right) =
+\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \cdot\underbrace{\left(\begin{matrix} 
+ &  & 1 \\
+ & 1  \\
+ 1 \\
+\end{matrix} \right)}_{P_{13
+}}
+$\\
+$\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+3 & 2 & 3 \\
+12 & 5 & 6 \\
+\end{matrix} \right) $, d.h.
+$\left(\begin{matrix} 
+3 & 2 & 3 \\
+12 & 5 & 6 \\
+\end{matrix} \right) =
+\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \cdot
+\underbrace{\left(\begin{matrix} 
+3 \\
+& 1\\
+& & 1\\
+\end{matrix} \right)}_{S_1(3)}
+$\\
+$
+\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+1 & 0 & 3 \\
+4 & -3 & 6 \\
+\end{matrix} \right)
+$, d.h.$ 
+\left(\begin{matrix} 
+1 & 0 & 3 \\
+4 & -3 & 6 \\
+\end{matrix} \right) =
+\left(\begin{matrix} 
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix} \right) \cdot 
+\underbrace{\left(\begin{matrix} 
+1 & -2\\
+& 1\\
+& & 1\\
+\end{matrix} \right)
+}_{Q_{12}(-2)}
+$
+
+\subsection*{Lemma 3.8}
+Die Elementarmatrizen sind invertierbar, \\
+\begin{enumerate}[label=(\alph*)]
+\item $(P_{ij})^{-1} = P_{ij}$
+\item $(S_i(\lambda))^{-1} = S_i(\frac{1}{\lambda})$
+\item $(Q_{ij}(\lambda))^{-1} = Q_{ij}(-\lambda)$
+\end{enumerate}
+
+\subsubsection*{Beweis}
+Die entsprechenden Zeilenumformungen machen die Zeilenumformung rückgängig.
+$\square$
+
+\subsection*{Satz 3.9}
+Jede Matrix $A \in GL_n(K)$ ist Produkt von Elementarmatrizen.
+"Die Gruppe $GL_n(K)$ wird von den Elementarmatrizen erzeugt."
+
+\subsubsection*{Beweis}
+Gauß-Verfahren ergibt $A \leadsto E_n$ (reduzierte Zeilenstufenform)\\
+$\Rightarrow \exists$ Elementarmatrizen $B_i$ mit $B_S\cdot ... \cdot B_2 \cdot B_1 \cdot A = E$\\
+$\Rightarrow A = B_i^{-1} \cdot B_2^{-1} \cdot ... \cdot B_S^{-1}$ wieder Elementarmatrizen nach Lemma 3.8. $\square$
+
+\subsection*{Beispiel}
+$A=
+\left( \begin{matrix}
+1 & 2 \\
+0 & -1 \\
+\end{matrix} \right) \leadsto
+\left( \begin{matrix}
+1 & 0 \\
+0 & -1 \\
+\end{matrix} \right) \leadsto
+\left( \begin{matrix}
+1 & 0 \\
+0 & 1 \\
+\end{matrix} \right)
+$\\
+$
+\Rightarrow E = S_2(-1) \cdot Q_{12}(2) \cdot A \Rightarrow A = Q_{12}(-2) \cdot S_2(-1)$
+
+\subsection*{Proposition 3.10}
+$A,B \in Mat_{m\times n}(K)$ sind äquivalent genau dann, wenn \\
+$B$ geht aus $A$ durch elementare Zeilen- und Spaltenoperationen hervor.\\
+
+\subsubsection*{Beweis}
+\begin{itemize}
+\item[$"\Rightarrow"$]$ B = TAS^{-1} = T_1\cdot ... \cdot T_k \cdot A \cdot S_i{^-1} \cdot ... \cdot S_1^{-1}$ mit $S_i, T_j$ Elementarmatrizen nach Satz 3.9.\\
+Multiplikation mit Elementarmatrizen entspricht entweder Zeilenoperation oder Spaltenoperation.\\
+\item[$"\Leftarrow"$]
+$ A \leadsto B \Rightarrow_{\tn{Zeilenrang = Spaltenrang}} rang(A) = rang(B) \Rightarrow_{\tn{Corollar 3.6}} A \sim B$.\\
+\begin{flushright}
+$\square$
+\end{flushright}
+\end{itemize}
+
+Jede Matrix $A \in Mat_{m\times n}$ lässt sich also durch elementare Zeilen- und Spaltenoperationen in "Normalform" $N = 
+\left(\begin{matrix}
+E_r & 0\\
+0 & 0 \\
+\end{matrix} \right)$
+überführen.\\
+Verfahren: 
+\begin{enumerate}
+\item reduzierte Zeilenstufenform
+\item schiebe Pivotspalten nach links 
+$
+\left(\begin{matrix}
+1\\
+& \ddots & & * &\\
+& & 1 \\
+& 0 & & 0 \\
+\end{matrix} \right)
+$
+\item mache Einträge rechts davon 0.
+\end{enumerate}
+
+\subsection*{Beispiel}
+$
+A = 
+\left(\begin{matrix} 
+1 & 2 & 0 \\
+2 & 3 & 1 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+1 & 2 & 0 \\
+0 & -1 & 1 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+1 & 0 & 2 \\
+0 & -1 & 1 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+1 & 0 & 2 \\
+0 & 1 & -1 \\
+\end{matrix} \right) =: B
+$ (Zeilenumformungen)\\
+$
+B = \left(\begin{matrix} 
+1 & 0 & 2 \\
+0 & 1 & -1 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+1 & 0 & 0 \\
+0 & 1 & -1 \\
+\end{matrix} \right) \leadsto
+\left(\begin{matrix} 
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{matrix} \right) := N
+$(Spaltenumformungen)\\
+Dann gilt: $B = S_2(-1)\cdot Q_{12}(2)\cdot Q_{21}(-2)\cdot A$\\
+und $C = B \cdot Q_{13}(-2) \cdot Q_{23}(1)$\\
+$\Rightarrow N = T^{-1}\cdot A \cdot S$\\
+mit $T^{-1} =\left(\begin{matrix} 
+1 \\
+& -1 \\
+\end{matrix} \right)\left(\begin{matrix} 
+1 & 2 \\
+& 1 \\
+\end{matrix} \right)\left(\begin{matrix} 
+1 \\
+-2 & 1\\
+\end{matrix} \right) = \left(\begin{matrix} 
+-3 & 2\\
+2 & -1\\
+\end{matrix} \right)$ \\
+$S = \left(\begin{matrix} 
+1 & & -2 \\
+&1  \\
+& & 1 \\
+\end{matrix} \right)
+\left(\begin{matrix} 
+1\\
+& 1 & 1\\
+& & 1\\
+\end{matrix} \right) =
+\left(\begin{matrix} 
+1 & 0 & -2\\
+0 & 1 & 1 \\
+0 & 0 & 1 \\
+\end{matrix} \right)$
+%----------------------------------Vorlesung 7----------------------------------
 \end{document}
