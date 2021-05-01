@@ -10,8 +10,10 @@
 \usepackage{easybmat}
 
 %-------------------------------commands definitionen-------------------------------
-%für methoden die eine fallunterscheidung haben aufrufen mit: 
-%\twopartdef { x } {x \geq 0} {-x} {x < 0} (bsp. Betrag)
+% Für methoden die eine fallunterscheidung haben aufrufen mit: 
+% \twopartdef 	{x} {x \geq 0} 
+%				{-x} {x < 0} 
+%(bsp. Betrag)
 \newcommand{\twopartdef}[4] {
 	\left\{
 		\begin{array}{ll}
@@ -20,18 +22,54 @@
 		\end{array}
 	\right.
 }
-%für methoden mit 3 fällen zwischen denen entschieden werden muss
-\newcommand{\threepartdef}[6]
-{
+% Für methoden mit 3 fällen zwischen denen entschieden werden muss
+\newcommand{\threepartdef}[6] {
 	\left\{
 		\begin{array}{lll}
-			#1 & \mbox{if } #2 \\
-			#3 & \mbox{if } #4 \\
-			#5 & \mbox{if } #6
+			#1 &  #2 \\
+			#3 &  #4 \\
+			#5 &  #6
 		\end{array}
 	\right.
 }
-%abkürzung von \textnormal
+% Am besten immer die befehle Einrücken, damit man erkennt welche Matrix dargestellt wird.
+% Z.B.: \twoXtwo{1}{2}
+%				{3}{4}
+\newcommand{\twoXtwo}[4] {
+	\left( 
+	\begin{matrix}
+		#1 & #2 \\
+		#3 & #4
+	\end{matrix} 
+	\right)
+}
+\newcommand{\twoXthree}[6] {
+	\left( 
+	\begin{matrix}
+		#1 & #2 & #3\\
+		#4 & #5 & #6
+	\end{matrix} 
+	\right)
+}
+\newcommand{\threeXtwo}[6] {
+	\left( 
+	\begin{matrix}
+		#1 & #2 \\
+		#3 & #4 \\
+		#5 & #6
+	\end{matrix} 
+	\right)
+}
+\newcommand{\threeXthree}[9] {
+	\left( 
+	\begin{matrix}
+		#1 & #2 & #3\\
+		#4 & #5 & #6\\
+		#7 & #8 & #9\\
+	\end{matrix}
+	\right)
+}
+% Abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
 %-----------------------------ende commands definitionen-----------------------------
 
@@ -211,7 +249,7 @@ z.B.: $M:=\{a, b\} \rightarrow \mathcal{P}(M)\backslash\{\emptyset\} = \{\{a\}, 
 \section{Unendliche Mengen und Lemma von Zorn}
 Notation: Zu $n\in\mathbb{N}$ sei $[n]:= \{1,2...,n\} $.
 
-\subsection*{Definition 2.1}
+\subsection*{Definition 2.1.}
 Eine Menge $X$ heißt endlich, falls $\exists n \in \mathbb{N}$ und Bijektion $\phi: X \rightarrow [n]$; in diesem Fall heißt $n$ die Kardinalität $|X|$ oder $\#X$ von $X$.
 Ansonsten heißt $X$ unendlich. 
 \subsubsection*{Bemerkung (Taubenschlagprinzip)}
@@ -248,7 +286,7 @@ $\square$\\
 \end{flushright}
 Gilt $f \circ g = id_y$, so ist $f$ surjektiv: zu $y\in Y \exists x:= g(y)$ mit $f(x) = y$.\\
 Umgekehrt gilt:
-\subsection*{Axiom 2.2 (Auswahlaxiom)}
+\subsection*{Axiom 2.2. (Auswahlaxiom)}
 Jede surjektive Abbildung $f: X \rightarrow Y$ besitzt eine Rechtsinverse, das heißt \\
 $g: Y \rightarrow X$ mit $f \circ g = id_y$.\\
 Äquivalente Formulierung:\\
@@ -260,7 +298,7 @@ Jedes $y \in Y$ hat ein Urbild $x \in X$ mit $f(x) = y$.\\
 Definiere also $g: Y \rightarrow X$ durch $Y \rightarrow X$ mit $f(x) = y$.\\
 Dass eine solche Auswahl stets existiert, besagt das Axiom.
 
-\subsection*{Definition 2.3}
+\subsection*{Definition 2.3.}
 Zwei Mengen $X,Y$ heißen gleichmächtig, falls eine Bijektion $\phi X \rightarrow Y$ existiert; $X$ hat Mächtigkeit $Y$.(Dies erfüllt Eigenschaften einer Äquivalenzrelation)\\
 Eine Menge $X \neq \emptyset$ heißt abzählbar, falls Surjektion $\mathbb{N} \rightarrow X$ existiert. ($\emptyset$ sei abzählbar; $f: \mathbb{N} \rightarrow X$ surjektiv $\Rightarrow X = \{f(0), f(1), ...\}$), das heißt (Auswahlaxiom) falls  Injektion $X \rightarrow \mathbb{N}$ besteht.\\
 Andernfalls heißt $X$ überabzählbar.
@@ -271,12 +309,12 @@ Andernfalls heißt $X$ überabzählbar.
 \item existiert $f: X \rightarrow \mathbb{N}$ mit endlichen Urbildern $f^{-1}(\{n\}) \forall n\in \mathbb{N}$, so ist $X$ abzählbar.
 \end{enumerate}
 
-\subsection*{Satz 2.4}
+\subsection*{Satz 2.4.}
 $\mathbb{Q}$ ist abzählbar.
 \subsubsection*{Beweis (1. Cantorscher Diagonalbeweis)}
 siehe Vorlesung.
 
-\subsection*{Satz 2.5}
+\subsection*{Satz 2.5.}
 \begin{enumerate}[label=(\alph*)]
 \item $\mathbb{R}$ ist überabzählbar.
 \item Für jede Menge $X$ ist $P(X)$ nicht gleichmächtig zu $X$.
@@ -469,7 +507,7 @@ $\Leftrightarrow A \sim B \sim
 E_r & 0 \\
 0 & 0 \\
 \end{matrix} \right) =: N$\\
-Nach Beweis Satz 3.5 konstruiere Basen $\mathcal{B},\mathcal{C}$ mit $_\mathcal{B}M_\mathcal{C}(f_A) = N$.\\
+Nach Beweis Satz 3.5. konstruiere Basen $\mathcal{B},\mathcal{C}$ mit $_\mathcal{B}M_\mathcal{C}(f_A) = N$.\\
 Mit $\mathcal{B'}, \mathcal{C'}$ Einheitsbasis gilt:\\
 $A = T \cdot N \cdot S^{-1}, \begin{array}{ll}
 T \tn{ Spalten von } \mathcal{C}\\
@@ -481,7 +519,7 @@ T \tn{ Spalten von } \mathcal{C}\\
 S \tn{ Spalten von } \mathcal{B}\\
 \end{array}$\\
 
-\subsection*{Definition 3.7 (Elementarmatrizen).}
+\subsection*{Definition 3.7. (Elementarmatrizen)}
 Zu $1 \leq i,j \leq n$ und $\lambda \in K$ definiere Matrizen:\\
 $(Z1): P_{ij} := \left( \begin{matrix} 
 1 \\
@@ -505,7 +543,7 @@ $(Z2): S_i(\lambda):= \left(\begin{matrix}
 & & & & & \ddots \\
 & & & & & & 1 \\
 \end{matrix} \right) ,
-S_kl := \left \{\begin{array}{ll}
+S_{kl} := \left \{\begin{array}{ll}
 1 \tn{ falls } k = l \neq i \\
 \lambda \tn{ falls } k = l = i \\
 0 \tn{ sonst }
@@ -517,7 +555,7 @@ $(Z3): Q_{ij}(\lambda) := \left(\begin{matrix}
 & & \ddots & \vdots \\
 & & &  \ddots \\
 & & & &  1 \\
-\end{matrix} \right) , q_{kl} := \left \{ \begin{array}{ll}
+\end{matrix} \right) , Q_{kl} := \left \{ \begin{array}{ll}
 1 \tn{ falls } k=l \\
 \lambda \tn{ falls } (k,l) = (i,j)\\
 0 \tn{ sonst}
@@ -623,7 +661,7 @@ $, d.h.$
 }_{Q_{12}(-2)}
 $
 
-\subsection*{Lemma 3.8}
+\subsection*{Lemma 3.8.}
 Die Elementarmatrizen sind invertierbar, \\
 \begin{enumerate}[label=(\alph*)]
 \item $(P_{ij})^{-1} = P_{ij}$
@@ -635,7 +673,7 @@ Die Elementarmatrizen sind invertierbar, \\
 Die entsprechenden Zeilenumformungen machen die Zeilenumformung rückgängig.
 $\square$
 
-\subsection*{Satz 3.9}
+\subsection*{Satz 3.9.}
 Jede Matrix $A \in GL_n(K)$ ist Produkt von Elementarmatrizen.
 "Die Gruppe $GL_n(K)$ wird von den Elementarmatrizen erzeugt."
 
@@ -662,7 +700,7 @@ $\\
 $
 \Rightarrow E = S_2(-1) \cdot Q_{12}(2) \cdot A \Rightarrow A = Q_{12}(-2) \cdot S_2(-1)$
 
-\subsection*{Proposition 3.10}
+\subsection*{Proposition 3.10.}
 $A,B \in Mat_{m\times n}(K)$ sind äquivalent genau dann, wenn \\
 $B$ geht aus $A$ durch elementare Zeilen- und Spaltenoperationen hervor.\\
 
