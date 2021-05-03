@@ -1,6 +1,8 @@
-\documentclass {article}
+\documentclass[a4paper,twoside]{article}
 
 \usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\usepackage{tkz-euclide}
 
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -8,6 +10,7 @@
 \usepackage{stmaryrd}
 \usepackage{amsmath}
 \usepackage{easybmat}
+\usepackage{tikz}
 
 %-------------------------------commands definitionen-------------------------------
 % Für methoden die eine fallunterscheidung haben aufrufen mit: 
@@ -69,11 +72,21 @@
 	\end{matrix}
 	\right)
 }
+%Vektoren, sind quasi nx1 matrizen
+\newcommand{\vecTwo}[2] {
+	\left( 
+	\begin{matrix}
+		#1\\
+		#2
+	\end{matrix} 
+	\right)
+}
 % Abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
 %-----------------------------ende commands definitionen-----------------------------
 
 \begin{document}
+
 \title{Lineare Algebra II - Mitschrift}
 \author{Sebastian Pretzsch, Finn Ribbeck, Jonas Heitz}
 \maketitle
@@ -802,4 +815,87 @@ $S = \left(\begin{matrix}
 0 & 0 & 1 \\
 \end{matrix} \right)$
 %----------------------------------Vorlesung 7----------------------------------
-\end{document}
+\section{Eigenwerte}
+\underline{Bezeichnung:} Eine lineare Abbildung $f:V\to V$ wobei V ein K-Vekorraum heißt auch K-Endomorphismus.
+\subsection*{Satz 4.1.}
+Sei V ein endlich-dimensionaler K-Vektorram und seien $\mathcal B$, $\mathcal B$' Basen von V sowie $f:V\to V$ ein K-Endomorphismus. Für die darstellenden Matrizen $A:={_B}M_B(f)$, $A':={_{B'}}M_{B'}(f)$ gilt dann:
+$$
+A'= J\cdot A\cdot J^{-1} \tn{ mit } J:={_B}M_{B'}(id_V) \in GL_n(K)\tn{, } n=\tn{dim }V
+$$
+\subsubsection*{Beweis (vgl. Satz 3.1)}
+\begin{tabular}[h]{ccccccccc}
+	$K^n$ & & $\xrightarrow{f_A}$ & & $K^n$\\
+	& $\searrow \Phi{_\mathcal B}$ & & $\Phi_\mathcal{B} \swarrow$ & \\
+	$f_J \downarrow$ & $V$ & $\xrightarrow{f}$ & $V$ & $\downarrow f_J$ \\
+	& $\nearrow \Phi_\mathcal{B'}$ & & $\Phi_\mathcal{B'} \nwarrow$ & \\
+	$K^n$ & & $\xrightarrow{f_{A'}}$ & & $K^n$ & $\Rightarrow A' = J \cdot A \cdot J^{-1}$. $\square$\\
+\end{tabular}
+\subsection*{Bemerkung}
+\begin{enumerate}[label=(\alph*)]
+	\item Mit $S:= {_{\mathcal B'}}M_\mathcal B(id_V) = J^{-1}$ gilt $A'=S^{-1}\cdot A \cdot S$.
+	\item Zu Endomorphismus $f:V\to V$ kann man $det\tn{ } f$ unabhängig von Basiswahl definieren, 
+	denn $det\tn{ } A' =det\tn{ } J\cdot det\tn{ } A\cdot det\tn{ } J^{-1} = det\tn{ } A$
+\end{enumerate}
+\subsection*{Definition 4.2.}
+Ein K-Endomorphismus $f:V\to V$ heißt diagonalisierbar, falls Basis $\mathcal B$ von V existiert mit ${_\mathcal B}M_\mathcal B(f) = \threeXthree{\lambda_1}{ }{0}
+								{ }{\ddots}{ }
+								{0}{ }{\lambda_n}$. \\
+Eine Matrix $A \in Mat_{n\times n}(K)$ heißt diagonalisierbar, falls $\exists S \in GL_n(K)$: $S^{-1}\cdot A \cdot S$ Diagonalmatrix.
+\subsection*{Definition 4.3.}
+Sei $f:V\to V$ ein K-Endomorphismus. Ein Eigenvektor (EV) von f zum Eigenwert (EW) $\lambda \in K$ ist ein Vektor $0 \neq v \in V$ mit der Eigenschaft $f(v) = \lambda\cdot V$.
+\subsection*{Proposition 4.4}
+Sei $f:V \to V$ K-Endomorphismus, $\mathcal B$ Basis von V, $A:= {_\mathcal B}B_\mathcal B$. 
+Dann ist $A=\threeXthree	{\lambda_1}{ }{0}
+							{ }{\ddots}{ }
+							{0}{ }{\lambda_n}$ Diagonalmatrix. \\
+$\Leftrightarrow \mathcal B = (v_1,..., v_n)$ mit $v_i$ EV zum EW $\lambda_i$, $ \forall i$. \\
+Somit gilt: f diagonalisierbar $\Leftrightarrow$ V hat Basis aus EVen.
+\subsubsection*{Beweis}
+Die j-te Spalte $A\cdot e_j$ von A ist $\Phi_{\mathcal B}^{-1}(f(v_j))$. Also ist $A\cdot e_j = \lambda_j\cdot v_j \Leftrightarrow f(v_j) = \lambda_j\cdot v_j$ d.h. $v_j$ EV zum EW $\lambda_j$. $\square$
+\subsection*{Beispiele}
+Sei $f:\mathbb R^2 \to \mathbb R^2$. Zunächst geometrische Anschauung.
+\begin{enumerate}
+	\item  \tn{ }\\ 
+		\begin{tikzpicture}
+			\draw[->] (-2,0) -- (2,0);
+			\draw[->] (0,-2) -- (0,2);
+			\draw[dashed] (-1.4,-1.4) -- (1.4,1.4) node[anchor=south west] {Spiegelung};
+			\draw[thick,->] (0,0) -- (1,1) node[anchor=north west] {$v_1=f(v_1)$};
+			\draw[thick,->] (0,0) -- (-1,1) node[anchor=north east] {$v_2$};
+			\draw[thick,->] (0,0) -- (1,-1) node[anchor=north west] {$f(v_2)$};
+		\end{tikzpicture}
+	Basis $(v_1, v_2)$ aus EVen mit EWen 1, -1, ${_\mathcal B}M_\mathcal B(f) = \twoXtwo{1}{ 0}
+																						{0}{-1}$
+	\item Drehung um Winkel $0 < \varphi < \pi$.\\
+		\begin{tikzpicture}
+			\draw[->] (-2,0) -- (2,0);
+			\draw[->] (0,-2) -- (0,2);
+			\draw[dashed] (0,0) circle (1.5cm);
+			\draw[thick,->] (0,0) -- (1.05,1.05) node[anchor=south west] {v};
+			\draw[thick,->] (0,0) -- (-1.05,1.05) node[anchor=south east] {f(v)};
+			\draw (0.35,0.33) arc (45:135:0.5cm) node[anchor=south west] {$\varphi$}; 
+			%Es ist perfekt so wie es ist. Zahlen nicht hinterfragen!
+		\end{tikzpicture}
+	Keinerlei EVen
+	\item Scherung \\
+	$f(v) = \twoXtwo 	{1} {1}
+						{0} {1} v$\\
+		\begin{tikzpicture}
+			\draw[->] (-2,0) -- (2,0);
+			\draw[->] (0,-0.5) -- (0,2);
+			\draw[thick,->] (0,0) -- (0.5,1.5) node[anchor=north east] {$v_1$};
+			\draw[thick,->] (0,0) -- (1.25,1.5) node[anchor=north west] {$f(v_1)$};
+			\draw[dashed] (-2, 1.5) -- (2, 1.5);
+
+		\end{tikzpicture}		
+	EVen nur $\vecTwo	{x}
+						{0}$ (mit EW 1), die anderen "scheren aus".
+				
+\end{enumerate}
+\subsection*{Bemerkung}
+Ein Vektor $0 \neq v\in V$ ist EV von f zum EW $\lambda$ \\
+$\Leftrightarrow v\in ker(f-\lambda\cdot id_V)$. mit $f-\lambda\cdot id_V:V\to V;\tn{ } v \mapsto f(v)-\lambda\cdot v$\\
+Also $\lambda$ EW $\Leftrightarrow$ $f-\lambda\cdot id_V$ nicht injektiv.\\
+Beweis klar, denn $(f-\lambda\cdot id_V)(v)=0 \Leftrightarrow f(v)-\lambda\cdot v=0$.
+%----------------------------------Vorlesung 8----------------------------------
+\end{document} 
