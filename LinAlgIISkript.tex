@@ -1,6 +1,6 @@
-\documentclass[a4paper,twoside]{article}
+\documentclass[a4paper, 12pt]{extarticle}
 
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[a4paper, total={6.5in, 9in}]{geometry}
 
 \usepackage{tkz-euclide}
 
@@ -816,7 +816,7 @@ $S = \left(\begin{matrix}
 \end{matrix} \right)$
 %----------------------------------Vorlesung 7----------------------------------
 \section{Eigenwerte}
-\underline{Bezeichnung:} Eine lineare Abbildung $f:V\to V$ wobei V ein K-Vekorraum heißt auch K-Endomorphismus.
+\subsection*{Bezeichnung:} Eine lineare Abbildung $f:V\to V$ wobei V ein K-Vekorraum heißt auch K-Endomorphismus.
 \subsection*{Satz 4.1.}
 Sei V ein endlich-dimensionaler K-Vektorram und seien $\mathcal B$, $\mathcal B$' Basen von V sowie $f:V\to V$ ein K-Endomorphismus. Für die darstellenden Matrizen $A:={_B}M_B(f)$, $A':={_{B'}}M_{B'}(f)$ gilt dann:
 $$
@@ -844,7 +844,7 @@ Eine Matrix $A \in Mat_{n\times n}(K)$ heißt diagonalisierbar, falls $\exists S
 \subsection*{Definition 4.3.}
 Sei $f:V\to V$ ein K-Endomorphismus. Ein Eigenvektor (EV) von f zum Eigenwert (EW) $\lambda \in K$ ist ein Vektor $0 \neq v \in V$ mit der Eigenschaft $f(v) = \lambda\cdot V$.
 \subsection*{Proposition 4.4}
-Sei $f:V \to V$ K-Endomorphismus, $\mathcal B$ Basis von V, $A:= {_\mathcal B}B_\mathcal B$. 
+Sei $f:V \to V$ K-Endomorphismus, $\mathcal B$ Basis von V, $A:= {_\mathcal B}M_\mathcal B(f)$. 
 Dann ist $A=\threeXthree	{\lambda_1}{ }{0}
 							{ }{\ddots}{ }
 							{0}{ }{\lambda_n}$ Diagonalmatrix. \\
