@@ -896,6 +896,78 @@ Sei $f:\mathbb R^2 \to \mathbb R^2$. Zunächst geometrische Anschauung.
 Ein Vektor $0 \neq v\in V$ ist EV von f zum EW $\lambda$ \\
 $\Leftrightarrow v\in ker(f-\lambda\cdot id_V)$. mit $f-\lambda\cdot id_V:V\to V;\tn{ } v \mapsto f(v)-\lambda\cdot v$\\
 Also $\lambda$ EW $\Leftrightarrow$ $f-\lambda\cdot id_V$ nicht injektiv.\\
-Beweis klar, denn $(f-\lambda\cdot id_V)(v)=0 \Leftrightarrow f(v)-\lambda\cdot v=0$.
+Beweis klar, denn $(f-\lambda\cdot id_V)(v)=0 \Leftrightarrow f(v)-\lambda\cdot v=0$.\\\\
 %----------------------------------Vorlesung 8----------------------------------
+\textbf{Wdh.:} $f:V\longrightarrow V$ diagonalisierbar $\Leftrightarrow$ es ex. Basis aus EVen.
+Wie entscheidet man dies und findet ggf. eine solche Matrix?\\
+
+\subsection*{Definition 4.5.}
+Sei $f:V\longrightarrow V$ $K$-Endomorphismus und $\lambda \in K$ (EW von $f$).\\
+Dann heißt Eig($f, \lambda$) $:=$ ker($f-\lambda \cdot id_v$) der \textbf{Eigenraum} und dim Eig($f, \lambda$) die \textbf{geometrische Vielfachheit} des EWs $\lambda$.\\
+(Also $\lambda$ EW $\Leftrightarrow$ dim Eig($f, \lambda$) $> 0$.)\\
+Klar: Eig($f, \lambda$) $\cap$ Eig($f, \mu$) = \{0\} für $\lambda \neq \mu$. Es gilt sogar:
+\subsection*{Lemma 4.6.}
+Seien $v_1, \dots, v_r$ EVen zu verschiedenen EWen $\lambda_1, \dots, \lambda_r$, so ist \{$v_1, \dots, v_r$\} linear unabhängig.
+\subsubsection*{Beweis:}
+\begin{tabbing}
+Vollständige Induktion über $r$:\\
+$r = 1$: nach Definition ist ein EW $v_1 \neq 0$. $\checkmark$\\
+$r - 1 \rightsquigarrow r$: \=Seien $v_1, \dots, v_r$ EVen zu verschiedenen EWen $\lambda_1, \dots, \lambda_r$ und gelte\\ \>$\alpha_1 v_1 + \dots + \alpha_r v_r = 0$ mit $\alpha_i \in K$ ($\ast$).\\
+\>Dann gilt \=$0 = f(\sum_{i=1}^{r} \alpha_i v_i) = \sum_{i=1}^{r} \alpha_i \lambda_i v_i$ (wende $f$ an)
+und\\ \>\>$0 = \sum_{i=1}^{r} \alpha_i \lambda_r v_i$ (multipliziere ($\ast$) mit $\lambda_r$).\\
+\>Subtraktion liefert $0 = \alpha_1(\lambda_1 - \lambda_r) v_1 + \dots + \alpha_{r-1} (\lambda_{r-1} - \lambda_r) v_{r-1}$\\ \>$\Rightarrow_{IV} \forall i<r: \alpha_i (\lambda_i - \lambda_r) = 0$\\ \>$\Rightarrow_{\lambda_i \neq \lambda_r} \alpha_i = 0$\\ \>$\Rightarrow_{(\ast)} \alpha_r v_r = 0 \Rightarrow_{v_r \neq 0} \alpha_r = 0.$
+\end{tabbing}
+Also ist \{$v_1, \dots, v_r$\} linear unabhängig.\\
+\subsubsection*{Folgerungen:}
+Sei dim $V = n$.
+\begin{enumerate}[label=\alph*)]
+	\item Jeder $K$-Endomorphismus $f:V\longrightarrow V$ hat höchstens $n$ verschiedene EWe.
+	\item Wenn $f$ genau $n$ EWe hat, so ist $f$ diagonalisierbar.\\ (Bed. aber nicht notwendig: Allg. Kriterium folgt.)
+\end{enumerate}
+
+\subsection*{Satz 4.7.}
+Sei $f:V\longrightarrow V K$-Endomorphismus, $n :=$ dim $V$.\\
+Seien $\lambda_1, \dots, \lambda_r$ die verschiedenen EWe von $f$ und $n_i :=$ dim Eig($f, \lambda_i$) deren geometrische Vielfachheit, sowie $\mathcal{B}_i$ Basis von Eig($f, \lambda_i$).
+\begin{enumerate} [label = \alph*)]
+	\item Es ist $\bigcup_i \mathcal{B}_i$ linear unabhängig, also $\sum_{i} n_i \leq n$.
+	\item $f$ diagonalisierbar $\Leftrightarrow \sum_i n_i = n$.
+\end{enumerate}
+
+\subsubsection*{Beweis:}
+Sei $\mathcal{B}_i = \{v_1^{(i)}, \dots, v_{n_i}^{(i)}\}$.
+\begin{enumerate}[label=\alph*)]
+	\item Sei $0 = \alpha_1^{(1)} v_1^{(1)} + \dots + \alpha_{n_1}^{(1)} v_{n_1}^{(1)} + \dots + \alpha_1^{(r)} v_1^{(r)} + \dots + \alpha_{n_r}^{(r)} v_{n_r}^{(r)} =: u_1 + \dots + u_r$\\
+	mit $u_i \in $ Eig($f, \lambda_i$).\\
+	Nach Lemma 4.6. folgt $u_i = 0, \forall i$, da sonst die $u_i \neq 0$ eine Linearkombination von EVen zu verschiedenen EWen wären $\Rightarrow_{\mathcal{B}_i \tn{Basis}} \tn{alle } \alpha_j^{(i)} = 0$.
+	\item 
+	\begin{itemize}
+		\item [--] $"\Leftarrow":$ Dann $\bigcup_i \mathcal{B}_i$ Basis von $V$ aus EVen.
+		\item [--] $"\Rightarrow":$ Sei $\mathcal{B}$ Basis aus EVen und sei $m_i$ die Anzahl der EVen in $\mathcal{B}$ zum EW $\lambda_i$.\\
+		$\Rightarrow m_i \leq n_i$. Da $n = \sum_i m_i \leq \sum_i n_i \leq_{a)} n \Rightarrow \sum_i n_i = n$.
+	\end{itemize}
+\end{enumerate}
+
+\subsection*{Vorgehen zur Diagonalisierbarkeit}
+\begin{enumerate}[label=\arabic*)]
+	\item Finde alle EWe von $f$, d.h. alle $\lambda \in K: f - \lambda\cdot id_V$ nicht injektiv.
+	\item Für jeden EW $\lambda_i$ bestimme eine Basis $\mathcal{B}_i$ von Eig($f, \lambda_i$).\\
+	$f$ diagonalisierbar $\Leftrightarrow |\bigcup_i \mathcal{B}_i| = n \Leftrightarrow \bigcup_i \mathcal{B}_i$ Basis aus EVen.\\
+	Mit Matrizenrechnung: Wähle "Hilfsbasis" $\mathcal{C}$ von $V$ und sei $A := {_\mathcal{C}M_\mathcal{C}}(f)$.\\
+	(Oft $f=f_A$, dann $\mathcal{C} = $ Einheitsmatrix.)\\
+	Dann gilt:
+	\begin{enumerate}
+		\item $\lambda \in K \tn{ EW } \Leftrightarrow \tn{rang}(A - \lambda \cdot E) < n \Leftrightarrow \tn{det}(A - \lambda \cdot E) = 0$.
+		\item dim Eig($f, \lambda_i$) = dim Eig($A, \lambda_i$) = $n - \tn{rang}(A - \lambda \cdot E)$\\ wobei Eig($A, \lambda$) $:= \{x \in K^n | A \cdot x = \lambda x\}$
+	\end{enumerate}
+\end{enumerate}
+
+\subsection*{Zusammenhang zwischen Eig($f, \lambda$) und Eig($A, \lambda$)?}
+\begin{tabbing}
+	\hspace{15pt}\=\hspace{65pt}\=\hspace{2cm}\= \kill
+	\>$V \xrightarrow{f (- \lambda id_V)}$ \>$V$\\
+	$\Phi{_\mathcal C}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal C$\\
+	\>$K^n \xrightarrow{f_A (- \lambda E)}$ \>$K^n$
+\end{tabbing}
+Eig($f, \lambda$) = $\Phi_\mathcal C(\tn{ker} f_{A-\lambda E}) = \Phi_\mathcal C(\tn{Eig}(A, \lambda))$, denn \\$0 = (f-\lambda id_V)(v) = \Phi_\mathcal C(f_{A-\lambda E}(\Phi_{\mathcal C}^{-1}(v))) \Leftrightarrow f_{A-\lambda E}(\Phi_{\mathcal C}^{-1}(v)) = 0 \Leftrightarrow \Phi_{\mathcal C}^{-1}(v) \in \tn{ker}(f_{A-\lambda E}) \Leftrightarrow v \in \Phi_{\mathcal C}(\tn{ker}(f_{A-\lambda E}))$.
+%----------------------------------Vorlesung 9----------------------------------
 \end{document} 
