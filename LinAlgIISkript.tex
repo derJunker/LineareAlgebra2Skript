@@ -976,6 +976,7 @@ $\exists 0 \neq v \in V : f(v) = \lambda \cdot v$\\
 $\Leftrightarrow \exists 0 \neq x \in K^n: Ax = \lambda \cdot x$\\
 $\Leftrightarrow det(A-\lambda \cdot E) = 0$\\
 $P_A := det(X\cdot E - A)$ heißt "charakteristisches Polynom".
+
 \subsection*{Satz 5.1}
 $\exists c_0, ... , c_k \in K$ derart, dass \\
 $det(\lambda \cdot E - A) = \lambda^n + c_{n-1}\lambda^{n-1} + ... + c_1\lambda + c_0 \forall \lambda \in K.$\\
@@ -995,11 +996,13 @@ $det\left(\begin{matrix}
 $=  \lambda^2 - (a_{11} + a_{22}) \lambda + a_{11}a_{22} - a_{12}a_{21} = \lambda^2 - trA\cdot \lambda + det(A)$.\\
 mit $trA:= \sum_{i=1}^{n} a_{ii}$ die Spur (englisch "trace") von A.\\
 Allgemein gilt $c_{n-1} = -trA$ und $c_0 = (-1)^n detA$ (Übung).\\
+
 \subsection*{Der Polynomring K[X]}
 Was ist eigentlich ein Polynom? \\
 Idee: formaler Ausdruck $\sum_{i=0}^{n}a_iX^i$ mit $a_i \in K$ - hier $X$ formale Variable \\
 versus Polynomfunktion $x \rightarrow \sum_{i=0}^{n} a_i x^i , x\in K$ - hier $x$ Körperelement\\
 Wiederholung: zu Menge $I$ sei $K^{(I)} := \{ a: I \rightarrow K abb. | \{i \in I | a(i) \neq 0 \} endlich \}$ K-Vektorraum (mit Basis $\{ e_i | i\in I\}$).\\
+
 \subsection*{Definition 5.2}
 Sei K ein Körper. Auf $K[X] := K^{(N)}$ sei Ringstruktur definiert via
 \begin{itemize}
@@ -1011,4 +1014,50 @@ bezeichnet als Polynomring über K.
 \subsubsection*{Bemerkung}
 Es ist $K[X]$ kommutativer Ring und "$X$" entspricht $(0,1,0,0,0...)$.\\
 Bezeichne $f|g$ "teilt" $g = a\cdot f$ für ein $a \in K[X]$ gilt.
+
+\subsection*{Definition 5.3}
+Zu $f = \sum_{i=0}^{n} a\cdot X^i \in K[X]$ und $x \in K$ sei $f(x) := \sum_{i=0}^{n} a_i x^i \in K$ "setze Wert x ein".\\
+Es heißt $x \in K$ Nullstelle von $f$, falls $f(x)=0$.\\
+\subsubsection*{Bemerkung}
+$(f \cdot g)(x) = f(x) \cdot g(x)$.\\
+
+\subsection*{Lemma 5.4}
+Zu $p \in K[X]$ und $\lambda \in  K !\exists q\in K[x]$ und $x \in K$ mit $p = q(X-\lambda ) + c$, insbesondere ($\lambda$ einsetzen) ist $\lambda$ Nullstelle von $p \Leftrightarrow X - \lambda | p$.
+\subsubsection*{Beweis}
+Sei $p = \sum_{i=0}^{n} a_i \cdot x^i$ und $q = \sum_{j=0}^{n-1}b_j x^j$\\
+$\Rightarrow a_nX^n + ... + a_1X + a_0 =(b_{n-1}X^{n-1} + ... + b_1X + b_0)(X-\lambda) + c$\\
+$= b_{n-1}X^{n-1} + (b_{n-2} - \lambda b_{n-1})X^{n-2} + ... + (b_0 - \lambda b_1)X-\lambda b_0 + c$\\
+genau dann, wenn $b_{n-1} = a_n, b_{n-2} = a_{n-1} + \lambda b_{n-1}, b_0 = a_1 + \lambda b_1, c = a_0 + \lambda b_0$\\
+Es gilt $p(\lambda) = 0 \Leftrightarrow c = 0$. \\
+Es folgt, dass ein Polynom vom Grad $n$ höchstens $n$ Nullstellen besitzt. \\
+(vergleiche Lin.-Alg. I, Blatt 11-4)\\
+Wenn auch $q(\lambda) = 0$ ist, so gilt $(X - \lambda)^2 |p$, sage "mehrfache Nullstelle."\\
+
+\subsection*{Definition 5.5}
+Zu $A \in Mat_{n\times n}$ sei das Polynom $p_A := det(XE - A) \in K[X]$ das charakteristische Polynom von $A$. (Determinante einer Matrix mit Einträgen im kommutativen Ring $K[X]$). \\
+Zu $\lambda \in K$ heißt $m:= max\{i|(X-A)^i|p_A\}$ die algebraische Vielfachheit von $\lambda$. (also $\lambda$ ist EW $\Leftrightarrow m > 0$)
+
+\subsection*{Satz 5.6}
+Seien $\lambda_1, .. \lambda_r$ die verschiedenen Eigenwerte der Matrix $A$ und seien $m_i$ bzw. $n_i$ deren algebraische bzw. geometrische Vielfachheit. \\
+Dann gilt: $m_i \geq n_i \forall i$. \\
+Die Matrix $A$ ist diagonalisierbar,\\
+$\Leftrightarrow$
+\begin{itemize}
+	\item [i.)] $\sum_{i=0}^{r} m_i = n$, d.h. $p_A = \prod_{i=1}^{r} (X- \lambda_i)^{m_i}$. 
+	\item [ii.)] $m_i = n_i \forall i$.
+\end{itemize}
+\subsubsection*{Beweis}
+Wähle Basis $v_1, .. v_{n_i}$ zu $Eig(A, \lambda_i)$ und ergänze beliebig zu einer Basis des $K^n$, deren Spalten seien $S$.\\
+$\Rightarrow A' = S^{-1}AS = _BM_B(f_A) = \left(
+\begin{BMAT}(e)[2pt,3cm,3cm]{ccc.ccc}{ccc.cc}
+	\lambda_i & & 0 & & & \\
+	& \ddots & & & * & \\
+	0 & & \lambda_i & & & \\
+	& 0 & & & * & \\
+	& & & & & 
+\end{BMAT}
+\right)$.\\
+$\Rightarrow p_A = p_{A'} = (x- \lambda_i)^{n_i} \cdot q \Rightarrow m_i \geq n_i$.\\
+$A$ diagonalisierbar $\Leftrightarrow_{\text{Satz 4.7}} \sum_{i=0}^{r}n_i = n$\\
+$\Leftrightarrow{\forall n_i \geq m_i} \sum_{i=1}^{r} m_i = m \land \forall i : m_i = n_i$.\\
 \end{document}
