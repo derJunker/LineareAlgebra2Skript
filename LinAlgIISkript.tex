@@ -970,4 +970,45 @@ Sei $\mathcal{B}_i = \{v_1^{(i)}, \dots, v_{n_i}^{(i)}\}$.
 \end{tabbing}
 Eig($f, \lambda$) = $\Phi_\mathcal C(\tn{ker} f_{A-\lambda E}) = \Phi_\mathcal C(\tn{Eig}(A, \lambda))$, denn \\$0 = (f-\lambda id_V)(v) = \Phi_\mathcal C(f_{A-\lambda E}(\Phi_{\mathcal C}^{-1}(v))) \Leftrightarrow f_{A-\lambda E}(\Phi_{\mathcal C}^{-1}(v)) = 0 \Leftrightarrow \Phi_{\mathcal C}^{-1}(v) \in \tn{ker}(f_{A-\lambda E}) \Leftrightarrow v \in \Phi_{\mathcal C}(\tn{ker}(f_{A-\lambda E}))$.
 %----------------------------------Vorlesung 9----------------------------------
-\end{document} 
+\section{Charakteristisches Polynom}
+Wiederholung: Sei V K-Vektorraum mit Basis C, $dim(V) = n$ und $f : V \rightarrow V$ ein K-Endomorphismus, $A := _{C}M_C(f)$ Ein $\lambda \in K$ ist EW genau dann, wenn \\
+$\exists 0 \neq v \in V : f(v) = \lambda \cdot v$\\
+$\Leftrightarrow \exists 0 \neq x \in K^n: Ax = \lambda \cdot x$\\
+$\Leftrightarrow det(A-\lambda \cdot E) = 0$\\
+$P_A := det(X\cdot E - A)$ heißt "charakteristisches Polynom".
+\subsection*{Satz 5.1}
+$\exists c_0, ... , c_k \in K$ derart, dass \\
+$det(\lambda \cdot E - A) = \lambda^n + c_{n-1}\lambda^{n-1} + ... + c_1\lambda + c_0 \forall \lambda \in K.$\\
+\subsubsection*{Beweis}
+Sei $V:= \lambda \cdot E - A = \left( \begin{matrix}
+	\lambda - a_{11} & ... & -a_{1n} \\
+	\vdots & \ddots &\vdots \\
+	-a_{n1} & ... & \lambda - a_{nn}\\
+\end{matrix} \right) $ \\
+$\Rightarrow_{\text{Leibnizformel} } det(B) = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i=1}^{n} b_i \sigma(i) = \prod_{i=1}^{n} (\lambda - a_{ii}) + \sum{\sigma \neq id}sgn(\sigma) \cdot \prod_{i=1}^{n} b_i \sigma(i)$, $\forall \sigma \neq id \exists$ höchstens $n-2$ Indizes $i$ mit $\sigma(i) = i,$ Produkt enthält also höchstens $n-2$ mal $\lambda$. \\
+$\Rightarrow $ ausmultiplizieren.\\
+Spezialfall $n = 2$:
+$det\left(\begin{matrix}
+	\lambda - a_{11} & -a_{12} \\
+	-a_{21} & \lambda - a_{22} \\
+\end{matrix}\right) = (\lambda - a_{11})(\lambda - a_{22}) - a_{12}a_{21}$ \\
+$=  \lambda^2 - (a_{11} + a_{22}) \lambda + a_{11}a_22 - a_{12}a_{21} = \lambda^2 - trA\cdot \lambda + det(A)$.\\
+mit $trA:= \sum_{i=1}^{n} a_{ii}$ die Spur (englisch "trace") von A.\\
+Allgemein gilt $c_{n-1} = -trA$ und $c_0 = (-1)^n detA$ (Übung).\\
+\subsection*{Der Polynomring K[X]}
+Was ist eigentlich ein Polynom? \\
+Idee: formaler Ausdruck $\sum_{i=0}^{n}a_iX^i$ mit $a_i \in K$ - hier $X$ formale Variable \\
+versus Polynomfunktion $x \rightarrow \sum_{i=0}^{n} a_i x^i , x\in K$ - hier $x$ Körperelement\\
+Wiederholung: zu Menge $I$ sei $K^{(I)} := \{ a: I \rightarrow K abb. | \{i \in I | a(i) \neq 0 \} endlich \}$ K-Vektorraum (mit Basis $\{ e_i | i\in I\}$).\\
+\subsection*{Definition 5.2}
+Sei K ein Körper. Auf $K[X] := K^{(N)}$ sei Ringstruktur definiert via
+\begin{itemize}
+	\item identifiziere $a_0, a_1, a_2, ...$ mit $\sum_{i=0}^{n}a_i X^i$ (mit $n:= max\{  i | a(i) \neq 0\}$ der Grad $deg(a)$ von $a \neq 0$.)
+	\item $(\sum_{i=0}^{n} a_i X^i) + (\sum_{i=0}^{n} b_i X^i) := \sum_{i=0}^{n} (a_i + b_i)X^i , n := max\{deg(a), deg(b)\}$
+	\item $(\sum_{i=0}^{n}a_i X^i) \cdot  (\sum_{j=0}^{m} b_j X^j) := \sum_{i=0}^{n} \sum_{j=0}^{m} a_i \cdot b_j \cdot X^{i + j} = \sum_{k = 0}^{m + n}(\sum_{i= 0}^{k} a_i b_{k-i} X^k)$,
+\end{itemize}
+bezeichnet als Polynomring über K.
+\subsubsection*{Bemerkung}
+Es ist $K[X]$ kommutativer Ring und "$X$" entspricht $(0,1,0,0,0...)$.\\
+Bezeichne $f|g$ "teilt" $g = a\cdot f$ für ein $a \in K[X]$ gilt.
+\end{document}
