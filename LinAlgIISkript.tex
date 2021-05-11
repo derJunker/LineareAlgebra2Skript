@@ -985,14 +985,14 @@ Sei $V:= \lambda \cdot E - A = \left( \begin{matrix}
 	\vdots & \ddots &\vdots \\
 	-a_{n1} & ... & \lambda - a_{nn}\\
 \end{matrix} \right) $ \\
-$\Rightarrow_{\text{Leibnizformel} } det(B) = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i=1}^{n} b_i \sigma(i) = \prod_{i=1}^{n} (\lambda - a_{ii}) + \sum{\sigma \neq id}sgn(\sigma) \cdot \prod_{i=1}^{n} b_i \sigma(i)$, $\forall \sigma \neq id \exists$ höchstens $n-2$ Indizes $i$ mit $\sigma(i) = i,$ Produkt enthält also höchstens $n-2$ mal $\lambda$. \\
+$\Rightarrow_{\text{Leibnizformel} } det(B) = \sum_{\sigma \in S_n} sgn(\sigma) \prod_{i=1}^{n} b_{i \sigma(i)} = \prod_{i=1}^{n} (\lambda - a_{ii}) + \sum_{\sigma \neq id} sgn(\sigma) \cdot \prod_{i=1}^{n} b_{i \sigma(i)}$, $\forall \sigma \neq id \exists$ höchstens $n-2$ Indizes $i$ mit $\sigma(i) = i,$ Produkt enthält also höchstens $n-2$ mal $\lambda$. \\
 $\Rightarrow $ ausmultiplizieren.\\
 Spezialfall $n = 2$:
 $det\left(\begin{matrix}
 	\lambda - a_{11} & -a_{12} \\
 	-a_{21} & \lambda - a_{22} \\
 \end{matrix}\right) = (\lambda - a_{11})(\lambda - a_{22}) - a_{12}a_{21}$ \\
-$=  \lambda^2 - (a_{11} + a_{22}) \lambda + a_{11}a_22 - a_{12}a_{21} = \lambda^2 - trA\cdot \lambda + det(A)$.\\
+$=  \lambda^2 - (a_{11} + a_{22}) \lambda + a_{11}a_{22} - a_{12}a_{21} = \lambda^2 - trA\cdot \lambda + det(A)$.\\
 mit $trA:= \sum_{i=1}^{n} a_{ii}$ die Spur (englisch "trace") von A.\\
 Allgemein gilt $c_{n-1} = -trA$ und $c_0 = (-1)^n detA$ (Übung).\\
 \subsection*{Der Polynomring K[X]}
