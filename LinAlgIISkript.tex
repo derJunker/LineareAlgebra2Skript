@@ -68,7 +68,7 @@
 	\begin{matrix}
 		#1 & #2 & #3\\
 		#4 & #5 & #6\\
-		#7 & #8 & #9\\
+		#7 & #8 & #9
 	\end{matrix}
 	\right)
 }
@@ -78,6 +78,15 @@
 	\begin{matrix}
 		#1\\
 		#2
+	\end{matrix} 
+	\right)
+}
+\newcommand{\vecThree}[3] {
+	\left( 
+	\begin{matrix}
+		#1\\
+		#2\\
+		#3
 	\end{matrix} 
 	\right)
 }
@@ -971,7 +980,7 @@ Sei $\mathcal{B}_i = \{v_1^{(i)}, \dots, v_{n_i}^{(i)}\}$.
 Eig($f, \lambda$) = $\Phi_\mathcal C(\tn{ker} f_{A-\lambda E}) = \Phi_\mathcal C(\tn{Eig}(A, \lambda))$, denn \\$0 = (f-\lambda id_V)(v) = \Phi_\mathcal C(f_{A-\lambda E}(\Phi_{\mathcal C}^{-1}(v))) \Leftrightarrow f_{A-\lambda E}(\Phi_{\mathcal C}^{-1}(v)) = 0 \Leftrightarrow \Phi_{\mathcal C}^{-1}(v) \in \tn{ker}(f_{A-\lambda E}) \Leftrightarrow v \in \Phi_{\mathcal C}(\tn{ker}(f_{A-\lambda E}))$.
 %----------------------------------Vorlesung 9----------------------------------
 \section{Charakteristisches Polynom}
-Wiederholung: Sei V K-Vektorraum mit Basis C, $dim(V) = n$ und $f : V \rightarrow V$ ein K-Endomorphismus, $A := _{C}M_C(f)$ Ein $\lambda \in K$ ist EW genau dann, wenn \\
+Wiederholung: Sei V K-Vektorraum mit Basis C, $dim(V) = n$ und $f : V \rightarrow V$ ein K-Endomorphismus, $A := {}_{C}M_C(f)$ Ein $\lambda \in K$ ist EW genau dann, wenn \\
 $\exists 0 \neq v \in V : f(v) = \lambda \cdot v$\\
 $\Leftrightarrow \exists 0 \neq x \in K^n: Ax = \lambda \cdot x$\\
 $\Leftrightarrow det(A-\lambda \cdot E) = 0$\\
@@ -1060,4 +1069,97 @@ $\Rightarrow A' = S^{-1}AS = _BM_B(f_A) = \left(
 $\Rightarrow p_A = p_{A'} = (x- \lambda_i)^{n_i} \cdot q \Rightarrow m_i \geq n_i$.\\
 $A$ diagonalisierbar $\Leftrightarrow_{\text{Satz 4.7}} \sum_{i=0}^{r}n_i = n$\\
 $\Leftrightarrow{\forall n_i \geq m_i} \sum_{i=1}^{r} m_i = m \land \forall i : m_i = n_i$.\\
+%----------------------------------Vorlesung 10----------------------------------
+\section{Trigonalisierung}
+\subsection*{Definition 6.1. }
+Matrizen A,B $\in Mat_{nxn}(K)$ heißen \textbf{ähnlich} ($A \approx B$) falls $B=S^{-1}AS$ für ein S $\in GL_n(K)$. Somit ist A diagonalisierbar, falls A ähnlich zu Diagonalmatrix (vgl §4).
+\subsection*{Bemerkung}
+\begin{enumerate}[label=(\arabic*)]
+	\item Ähnlichkeit ist Äquivalenzrelation.
+	\item $A\approx A' \Leftrightarrow$ A und A' stellen bzgl. Basen B, B' von V denselben K-Endomorphismus $V \to V$ dar (Satz 4.1).
+\end{enumerate}
+Was kann man erreichen, wenn A nicht diagonalisierbar ist? \\
+\subsection*{Def 6.2.}
+Sei $f: V\to V$ ein K-Endomorphismus. Ein Untervektorraum $U \subseteq V$ heißt \textbf{f-invariant} falls $f(U) \subseteq U$. Dann ist $f|_U: U \to U$ wieder K-Endomorphismus. \\
+Zum Beispiel ist $U:= Eig(f, \lambda)$ f-invariant: $u\in U \Rightarrow f(u)=\lambda u \in U$. \\
+Bezeichne $p_f:= p_A$ mit $A:= {}_{B}M_B(f)$ das charakteristische Polynom von f. (wohldefiniert ist auch $A':= {}_{B'}M_{B'}(f) \Rightarrow A'=S^{-1}AS$ mit $S:={}_{B'}M_B(id_V) \Rightarrow p_{A'}= det(XE-S^{-1}AS) = det(XE - A) = p_A$.
+\subsection*{Lemma 6.3}
+Ist $U\subseteq V$ f-invariant, so gilt $p_{f|_k} | p_f$.
+\subsubsection*{Beweis (vgl. Beweis Satz 5.6.)}
+Sei A Basis von U und ergänze zu Basis B von V.
+$$\Rightarrow {}_BM_B(f) = 
+\left(
+\begin{BMAT}(e)[2pt,3cm,3cm]{c.c}{c.c}
+	{}_AM_A(f|_k) & * \\
+	0 & C  \\
+\end{BMAT}
+\right) =: \twoXtwo	{A}{B}
+					{0}{C}$$ \\
+$$\Rightarrow p_f = p_{f|_k} \cdot p_C\tn{, denn }det\twoXtwo	{A}{B}{0}{C} = det\twoXtwo{E}{0}{0}{C}\twoXtwo{A}{B}{0}{E} = detC \cdot detA$$\\
+$$\tn{bzw. } det \twoXtwo{XE-A}{-B}{0}{XE-C} = det(XE-A)\cdot det(XE-C)$$
+\subsection*{Beispiel}
+Die Linksdrehung $f:\mathbb R^2 \to \mathbb R^2$, $\vecTwo{x}{y} \mapsto \vecTwo{-y}{x} = \twoXtwo{0}{-1}{1}{0}\vecTwo{x}{y}$ hat charakteristisches Polynom $p_f = x^2+1 \leadsto$ keine Teiler $q|X^2+1$.\\
+$_{\tn{Lemma 6.3.}}\Rightarrow$ es existieren nur triviale invariante Unterräume.
+\subsection*{Definition 6.4.}
+\begin{enumerate}[label=(\alph*)]
+	\item Eine Fahne $(U_j)$ in V ist eine Kette ${0} = U_0 \subset U_1 \subset ... \subset U_n = V$ von Unterräumen $U_j$ mit $dim U_j = j$, $\forall j\in \{0,..., n\}$
+	\item Ein K-Endomorphismus $f:V\to V$ heißt \textbf{trigonalisierbar}, falls Basis B von V mit $A:= {}_BM_B(f)$ obere Dreiecksmatrix, d.h. $a_{ij}=0$ für $i>j$: $\threeXthree	{*}{ }{*}
+																	{ }{\ddots}{ }
+																	{0}{ }{*}$
+\end{enumerate}										
+Matrix heißt \textbf{trigonalisierbar}, falls ähnlich zu oberer Dreiecksmatrix.
+\subsection*{Lemma 6.5.}
+Ein K-Endomorphismus $f:V\to V$ ist trigonalisierbar gdw. es existiert f-invariante Fahne $(U_j)$ von V, d.h. $f(U_j)\subseteq U_j$, $\forall j$
+\subsubsection*{Beweis}
+$"\Rightarrow"$ \\
+Sei $A:={}_BM_B(f)$ obere Dreiecksmatrix, $B=(v_1,...,v_n)$. \\
+Setze $U_j:=span\{v_1,...,v_j\}$ für $j\in \{0,...,n\}$. Eindeutige Fahne. \\
+Außerdem: $f(v_j) = \sum_{i\leq j} a_{ij}v_i \in U_j \Rightarrow f(U_j) \subseteq U_j$. \\ \\
+$"\Leftarrow"$ \\
+Sei  ${0} = U_0 \subset U_1 \subset ... \subset U_n = V$ f-invariante Fahne, \\
+wähle $(v_1,...,v_n)$ in V mit span $\{v_1,...,v_j\} = U_j$ für $j\in\{0,...,n\}$ d.h. wähle $v_j \in U_j\backslash U_{j-1}$\\
+$\Rightarrow$ alle $\{v_1,...,v_n\}$ linear unabhängig $\Rightarrow B=(v_1,...,v_n)$ Basis von V und $f(v_j)\in U_j = span \{v_1,...,v_j\}$ d.h. $f(v_j) = \sum_{i\leq j} a_{ij}v_i \Rightarrow A=(a_{ij})={}_BM_B(f)$ obere Dreiecksmatrix. $\square$
+\subsection*{Satz 6.6.}
+Ein K-Endomorphismus $f:V\to V$ ist trigonalisierbar gdw. $p_f= \Pi_{i=1}^n(X-\lambda_i)$ zerfällt in Linearfaktoren.
+\subsubsection*{Beweis}
+$"\Rightarrow"$ \\
+Ist $A={}_BM_B(f)$ obere Dreiecksmatrix, so gilt $p_f = p_A = det(XE-A) = \Pi_{i=1}(X-a_{ii}).$\\ \\
+$"\Leftarrow"$ \\
+Induktion nach n. I.A. n=1: klar. \\
+I.S. n-1 $\leadsto$ n: Es existiert EW $\lambda_1$ von f, wähle dazu EV $v_1$ und ergänze zu Basis B=($v_1,w_2,...,w_n)$ und $W:= span\{w_2,..., w_n\}$. \\
+$$A:= {}_BM_B(f) = 
+\left(
+\begin{BMAT}(e)[2pt,3cm,3cm]{c.ccc}{c.ccc}
+	\lambda_1 & a_{12} & ... & a_{1n} \\
+	0 & & & \\
+	\vdots & & B &  \\
+	0 & & & 
+\end{BMAT}
+\right)
+\tn{, sei } 
+\begin{array}{l}
+	g:W\to W, \\
+	w_j \mapsto \sum_{i=2}^na_{ij}w_i \\
+	\tn{(NB: W nicht notwendigerweise f-invariant)}
+\end{array}
+$$
+$\Rightarrow p_f = (X-\lambda_1)\cdot p_g$ und $p_g$ zerfällt $\Rightarrow$ es existiert g-invariante Fahne 
+$\{0\} = W_0 \subset W_1 \subset ... \subset W_n = W$ \\
+Setze $V_1 := KV_1$ und $U_j := V_1 + W_j-1$ für $j\in\{0,...,n\}$ ($\Rightarrow dimU_j = 1+ dim W_{j-1}=j$)\\
+$\Rightarrow \{0\} = U_0 \subset U_1 \subset ... \subset U_n = V$ Fahne und f-invariant: \\
+$$
+f(dv_1+w)\lambda_1dv_1+cv_1+g(w)\in V_1 + W_{j-1} = U_j\tn{ (mit }c\in K).
+$$
+\subsection*{Beispiel}
+$A:= \threeXthree{1}{-1}{0}{-1}{1}{-2}{-2}{2}{-2}$, $p_A = (X-1)^2(X+2)+4+4(X-1)-(X+2)=X^3$. 
+Einziger EW 0, aber A nicht diagonalisierbar denn geometrische Vielfachheit = 1. \\
+Setze EV $v_1:= \vecThree{1}{1}{1}$, $B_1=(v_1, e_2, e_2)$, $J_1:= {}_{B_1}M_A(id) = \threeXthree{1}{1}{0}{1}{0}{0}{0}{0}{1}$, $J^{-1}_1AJ_1 = \threeXthree{0}{-1}{-2}{0}{2}{2}{0}{-2}{-2}$ \\
+$B:= \twoXtwo{2}{2}{-2}{-2}$ hat $p_B = X^2$, EV $\vecTwo{-1}{1}$, $B_2'=(\vecTwo{-1}{1}, e_1)$, \\ $S:=\twoXtwo{-1}{1}{1}{0}$, $J_2:=\left( 
+\begin{matrix}
+	1 & \begin{matrix} 0 & 0 \end{matrix} \\
+	\begin{matrix} 0 \\ 0 \end{matrix} & S\\
+\end{matrix}
+\right)$, $J:=J_1\cdot J_2 \Rightarrow J^{-1}AJ = \threeXthree{0}{-1}{-1}{0}{0}{-2}{0}{0}{0}$ obere Dreiecksgleichung.
+%----------------------------------Vorlesung 11----------------------------------
+
 \end{document}
