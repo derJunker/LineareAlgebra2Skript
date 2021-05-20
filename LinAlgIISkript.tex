@@ -1161,5 +1161,124 @@ $B:= \twoXtwo{2}{2}{-2}{-2}$ hat $p_B = X^2$, EV $\vecTwo{-1}{1}$, $B_2'=(\vecTw
 \end{matrix}
 \right)$, $J:=J_1\cdot J_2 \Rightarrow J^{-1}AJ = \threeXthree{0}{-1}{-1}{0}{0}{-2}{0}{0}{0}$ obere Dreiecksgleichung.
 %----------------------------------Vorlesung 11----------------------------------
-
+\section*{Einschub: Komplexe Zahlen}
+\subsection*{Definition 6.7.}
+\begin{tabbing}
+	Auf $\mathbb{C} := \mathbb{R}^2$ sei \=Addition $(a, b) + (a', b') := (a+a', b+b')$ und\\
+	\>Multiplikation $(a, b) \cdot (a', b') := (aa'-bb', ab'+a'b)$ definiert.\\ (wobei $a, b, a', b' \in \mathbb{R}$); diese Struktur heißt Körper der \textbf{komplexen Zahlen}.
+\end{tabbing}
+Körperaxiome leicht nachzuprüfen, $(a, b)^{-1} = (\frac{a}{a^2+b^2}, \frac{-b}{a^2+b^2})$.\\
+Identifiziere $\mathbb{R} \longrightarrow \mathbb{C}, a \longmapsto (a, 0)$\\ und setze $i := (0,1) \Rightarrow i^2 = -1$ und $(a, b) = a+bi$.\\
+Zu $z = a+bi \in \mathbb{C}$ sei $a\in\mathbb{R}$ \textbf{Realteil}, $b\in\mathbb{R}$ \textbf{Imaginärteil} und $\bar{z} := a - bi \in \mathbb{C}$ die \textbf{konjugiert} komplexe Zahl.\\
+\subsection*{Bemerkung}
+Für $z, w \in \mathbb{C}$ gilt $\overline{z+w} = \bar{z}+\bar{w}$ und $\overline{zw} = \bar{z} \cdot \bar{w}$.\\
+\subsection*{Geometrische Anschauung}
+Addition = Vektoraddition\\
+Multiplikation: multipliziere Beträge, addiere "Winkel" ($\leadsto$ Analysis)\\
+zu $z = a+bi\in\mathbb{C}$ sei $|z| := \sqrt{a^2+b^2} = \sqrt{z\cdot \bar{z}}$ der \textbf{Betrag}, $|zw| = |z| \cdot |w|$.\\
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\tkzInit[xmax=4,ymax=4]
+		\tkzDrawXY[noticks,>=latex,/tkzdrawX/label=Re,/tkzdrawY/label=Im]
+		\draw[thick,-latex] (0,0) -- (1,1) node[anchor=north west] {$1+i$};
+		\draw[thick,-latex] (0,0) -- (2,1) node[anchor=north  west] {$2+i$};
+		\draw[thick,-latex] (0,0) -- (1,3) node[anchor=north west] {$1+3i$};
+		\tkzText[left](-2,2){$(2+i)(1+i) = 1+3i$}
+	\end{tikzpicture}
+\end{figure}
+\subsection*{Satz 6.8. "Fundamentalsatz der Algebra"}
+Jedes Polynom $p\in\mathbb{C}[X]$ zerfällt in Linearfaktoren.\\
+Beweis z.B. Funktionentheorie
+\section*{Cayley-Hamilton}
+\subsection*{Definition 6.9.}
+Sei $f:V\longrightarrow V$ ein $K$-Endomorphismus und $p=\sum_{i=0}^{n}c_iX^i\in K[X]$ ein Polynom. Dann sei $p(f) := \sum_{i=0}^{n}c_if^i:V\longrightarrow V$ wieder $K$-Endomorphismus, wobei $p(f)(v) = \sum_{i=0}^{n}c_if^i(v)$ für $v\in V$, wobei $f^i(v) = \underbrace{f( \dots (f}_{i-mal}(v))\dots)$, $f^0:=id_V$.\\
+Für $f=f_A$ mit $A\in$ Mat$_{n\times n}(K)$ sei $p(A) := \sum_{i=0}^{n}c_iA^i$, also $f_{p(A)} = p(f_A)$.\\
+Erinnerung: Zu $f:V\longrightarrow V K$-Endomorphismus $p_f := p_A := det(X\cdot E - A)$, $A := {_B}M_B(f)$.\\
+\subsection*{Satz 6.10. (Cayley-Hamilton)}
+Es gilt $p_f(f)=0$, insbesondere $p_A(A)=0$.
+\subsubsection*{Beweis:}
+Elementarer Beweis via Begleitmatrizen:
+\subsection*{Definition 6.11.}
+Zu $p = X^n+c_{n-1}X^{n-1}+\dots+c_1X+c_0\in K[X]$ sei\\
+$A :=
+\left(\begin{matrix}
+	0 & & & -c_0\\
+	1 & \ddots & & \colon\\
+	 & \ddots & 0 & \colon\\
+	 & & 1 & -c_{n-1}
+\end{matrix}\right)$ die \textbf{Begleitmatrix} zu $p$.\\
+Es gilt $p_A = p$ (Übung).\\
+(Es ist leicht $p_A(A)e_1 = 0$ einzusehen.)\\
+$\Rightarrow$ $\sum c_iA^ie_1 = c_0e_1+c_1e_2+\dots+c_{n-1}e_n+(-c_0e_1-\dots-c_{n-1}e_n)$\\\\
+\textbf{Vorbemerkung.} Sei $f:V\longrightarrow V$ ein $K$-Endomorphismus, $0\neq v\in V$ sowie $1 \leq r \leq n$ maximal mit $\{v, f(v), \dots, f^{r-1}(v)\}$ linear unabhängig.\\
+Dann: \begin{enumerate}[label=\alph*)]
+	\item $f^r(v)\in U := \tn{span}\{v, \dots, f^{r-1}(v)\}$,
+	\item $U$ ist $f$-invariant,
+	\item mit $f^r(v) + \sum c_if^i(v) = 0$ ist $p_{f|_u} = X^r+\sum c_iX^i$,
+	\item $p_{f|_u}(f)(v) = 0$.
+\end{enumerate}
+\subsubsection*{Beweis:}
+\begin{enumerate}[label=\alph*)]
+	\item Wegen $\{v, f(v), \dots, f^r(v)\}$ linear unabhängig klar.
+	\item $f(f^i(v)) = f^{i+1}(v)\in U$ f.a. $i \in \{0, \dots, r-1\}$
+	\item $\mathcal{B} := (v, f(v), \dots, f^{r-1}(v))$ Basis und ${_\mathcal{B}}M_{\mathcal{B}}(f|_u) = \left(\begin{matrix}
+		0 & & & -c_0\\
+		1 & \ddots & & \colon\\
+		& \ddots & 0 & \colon\\
+		& & 1 & -c_{n-1}
+	\end{matrix}\right)$ Begleitmatrix.
+\item $p_{f|_u}(f)(v) = f^r(v)+\sum_{i=0}^{r-1}c_if^i(v) = 0.$
+\end{enumerate}
+\subsection*{Beweis (Satz):}
+Zeige $p_f(f)(v) = 0$ f.a. $0\neq v \in V$. Sei $U$ wie in Vorbemerkung\\
+$\Rightarrow_{Lemma 6.3.} p_f = p_c \cdot p_{f|_u}$ für ein Polynom $p_c \in K[X]$\\
+$\Rightarrow p_f(f) = p_c(f) \circ p_{f|_u}(f)$\\
+$\Rightarrow p_f(f)(v) = p_c(f)(\underbrace{p_{f|_u}(f)(v)}_{=0\tn{ nach Vorbem.}}) = 0$.
+\subsection*{Beispiel:}
+$A:= \left(\begin{matrix}
+	3 & 0 & -1\\
+	1 & 2 & -1\\
+	-1 & 1 & 1
+\end{matrix}\right), p_A = \tn{det}\left(\begin{matrix}
+X-3 & 0 & 1\\
+-1 & X-2 & 1\\
+1 & -1 & X-1
+\end{matrix}\right) = X^3-6X^2+11X-6$\\
+$A^2=\left(\begin{matrix}
+	10 & -1 & -4\\
+	6 & 3 & -4\\
+	-3 & 3 & 1
+\end{matrix}\right), A^3 = \left(\begin{matrix}
+33 & -6 & -13\\
+25 & 2 & -13\\
+-7 & 7 & 1
+\end{matrix}\right)$\\
+$A^3-6A^2+11A-6E = \left(\begin{matrix}
+	33 & -6 & -13\\
+	25 & 2 & -13\\
+	-7 & 7 & 1
+\end{matrix}\right) - \left(\begin{matrix}
+60 & -6 & -24\\
+36 & 18 & -24\\
+-18 & 18 & 6
+\end{matrix}\right) + \left(\begin{matrix}
+33 & 0 & -11\\
+11 & 22 & -11\\
+-11 & 11 & 11
+\end{matrix}\right) - \left(\begin{matrix}
+6 & 0 & 0\\
+0 & 6 & 0\\
+0 & 0 & 6
+\end{matrix}\right) = 0$\\
+\subsection*{Alternative Beweisskizze:}
+Es ex. Körper $K \subset L$ derart, dass $p_f$ über $L$ zerfällt (Bew. Algebra + Zahlentheorie).\\
+Über $L$ ist $f$ nach Satz 6.6. trigonalisierbar.\\
+Ist $A' = S^{-1}AS$, so gilt $p(A') = S^{-1}p(A)S$.\\
+Ohne Einschränkung $A = \left(\begin{matrix}
+	\lambda_1 &  & *\\
+	 & \ddots & \\
+	0 & & \lambda_n
+\end{matrix}\right)$ und $p_A = \prod_{i=1}^{n}(X-\lambda_i)$.\\
+Zeige direkt $p_A(A) = \prod_{i=1}^{n}(A-\lambda_iE) = 0$.
+%----------------------------------Vorlesung 12----------------------------------
 \end{document}
