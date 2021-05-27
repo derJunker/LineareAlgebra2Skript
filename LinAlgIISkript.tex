@@ -1281,4 +1281,135 @@ Ohne Einschränkung $A = \left(\begin{matrix}
 \end{matrix}\right)$ und $p_A = \prod_{i=1}^{n}(X-\lambda_i)$.\\
 Zeige direkt $p_A(A) = \prod_{i=1}^{n}(A-\lambda_iE) = 0$.
 %----------------------------------Vorlesung 12----------------------------------
+\section*{§7 Jordan-Normalform}
+\subsection*{Definition 7.1}
+Sei V ein n-dim. K-VR und $U_1, ..., U_r \subseteq V$ UVR.\\
+Schreibe $U_1 \oplus ... U_r \subseteq V$,
+falls $\sum_{i=1}^{r} u_i = 0$, wobei  $u_i \in U_i \Rightarrow$ alle $u_i = 0$\\
+($\Leftrightarrow u_j \cap \sum_{i \neq j}u_i = {0}  \forall j$).\\
+Falls zusätzlich $U_1 + ... + U_r = V$, schreibe $V = U_1 \oplus ... \oplus U_r$, sage direkte Summe.
+\subsubsection*{Beispiel}
+\begin{itemize}
+\item[-]
+$B = (v_1, ..., v_n)$ Basis $\Rightarrow V = Kv_1 \oplus ... \oplus Kv_n$.
+\item[-]
+Sei $f: V \rightarrow V$ ein K-Endomorphismus und $\lambda_1 , ... , \lambda_r \in K$ verschiedene Eigenwerte von $f \Rightarrow  \bigoplus_{i=1}^{r} \underbrace{Eig(f, \lambda_i)}_{:= ker(f-\lambda \cdot id_v)} \subseteq
+ V$ mit $"="$ gdw. f diagonalisierbar.(vgl. Satz 4.7)
+\end{itemize}
+\subsection*{Definition 7.2}
+Zu $ f: V \rightarrow V$ K-Endomorphismus sei $VEig(f, \lambda) := \{ v \in V | (f - \lambda \cdot id_v)^s(v) = 0 \text{für ein} s \in \mathbb{N} \}\supseteq Eig(f, \lambda)$ verallgemeinerter Eigenraum, auch "Hauptraum".
+\subsection*{Beispiel}
+$A = 
+\left( \begin{matrix}
+	3 & 5 \\
+	0 & 4 \\
+\end{matrix} \right),
+p_a = (X-3)^2$\\
+$Eig(A,3) = span{\left(\begin{matrix}
+		1 \\
+		0 \\
+	\end{matrix}\right)}, VEig(A,3) = K^2$, da $(A-3\cdot I)^2 = 0$.
+\subsection*{Bemerkung 7.3}
+Sei $g:= f - \lambda \cdot id_v \in EndV.$ betrachte Ketten\\ 
+${0} \subseteq kerg \subseteq kerg^2$ ...\\
+$V \supseteq img \supseteq img^2$...\\
+Es gilt $dim kerg^i + dim img^i = n \forall i (*).$\\
+Sei $s (\leq n)$ minimal mit $kerg^s = kerg^{s+1} \Rightarrow_{(*)} img^s = im^{s+1}$\\
+ und es gilt $kerg^s = kerg^{s+i}, img^s = img^{s+i} \forall i$.\\
+Denn $g^{-1}(kerg^k) = kerg^{k+1}, g(img^k) = img^{k+1}$.
+\subsection*{Lemma 7.4}
+Sei $g:= f - \lambda \cdot id_v \in EndV$ und sei $s$ minimal mit $kerg^s = kerg^{s+1}$\\
+, also $U:= VEig(f, \lambda) = kerg^s$.\\
+Dann ist $W:= img^s$ komplementär zu $U$, d.h. $V = U \oplus W$.\\
+Weiterhin sind $U$ und $W$ jeweils f-invariant.
+\subsubsection*{Beweis}
+$gW = g(img^s) = img^{s+1} = img^s = W \Rightarrow g^sW = W$\\
+$\Rightarrow g^s|_W \in EndW$ ist surjektiv, also injektiv.\\
+$\Rightarrow W \cap = W \cap kerg^s = \{ 0 \} \Rightarrow_{\text{Bemerkung (*)}} V = U\oplus W$.\\
+Da $W$ $g$-invariant ist es auch $f = g + \lambda \cdot id_v$-invariant.\\
+Ebenso ist $U$ $g$-invariant: \\
+Sei $u\in U$, $g^s(u) = 0$
+$\Rightarrow g^s(g(n)) = g^{s+1}(n) = 0 \Rightarrow g(u) \in U$.\\
+Mit Basis $B = (\underbrace{u_1, ..., u_k}_{\in U}, \underbrace{w_1, ..., w_l}_{\in W})$ ist ${}_{B}M_{B} = \left( \begin{matrix}
+	* & 0 \\
+	0 & *\\ 
+\end{matrix} \right)$.\\
+\subsection*{Lemma 7.5}
+Sei $\lambda \neq \mu \Rightarrow VEig(f, \lambda) \cap VEig(f, \mu) = \{0\}$.\\
+Der einzige EW von $f|U$ ist $\lambda$ , wobei $U := VEig(f, \lambda)$.
+\subsubsection*{Beweis}
+Zuerst "$VEig(f,\lambda) \cap Eig(f, \mu) = \{0\}$"($\Rightarrow$ 2. Aussage).\\
+Sei $v\in Eig(f, \mu)$\\
+$\Rightarrow (f-\lambda \cdot id)v = (\mu - \lambda)v$\\
+$\Rightarrow (f-\lambda \cdot id)^sv = (\mu - \lambda)^sv \forall s \in \mathbb{N}$.\\
+Also $v\in U \Rightarrow (\mu - \lambda)^sv = 0 \Rightarrow v = 0$.\\
+Jetzt sei $v \in VEig(f,\mu)$ und $v\in U$, sei s min. $(f-\mu \cdot id)^sv = 0,$ ang. $s > 0$\\
+$\Rightarrow (f-\mu \cdot id)^{s-1} \in Eig(f,\mu) \cap U = \{0\}$ (da $U f$-invariant).\\
+$\Rightarrow (f-\mu \cdot id)^{s-1}v = 0$ im Widerspruch zu $s$ minimal.
+\subsection*{Satz 7.6 (Hauptraumzerlegung)}
+Sei $f \in EndV$ und sei $p_f = \prod_{i=i}^{r}(X-\lambda_i)^{m_i}$ mit verschiedenen EW $\lambda_i$.\\
+Dann \begin{enumerate}[label=(\alph*)]
+	\item $dim VEig(f,\lambda_i) = m_i$(algebraische Vielfachheit)
+	\item $V = \bigoplus_{i=1}^{r} VEig(f, \lambda_i)$.
+\end{enumerate}
+\subsubsection*{Beweis}
+\begin{enumerate}[label=(\alph*)]
+	\item $\lambda = \lambda_i$, sei $U := VEig(f,\lambda)$ und $W$ wie in Lemma 7.4.\\
+	$\Rightarrow p_f = p_{f|U}\cdot p_{f|W}$ und beide zerfallen in Linearfaktoren.\\
+	$\Rightarrow_{\text{Lemma 7.5}} p_{f|U} = (X-\lambda)^{dim_u}, p_{f|W}(\lambda) \neq 0 \Rightarrow m_i = dimU$.\\
+	\item  Induktion über $dimV$, sei $\lambda = \lambda_1$.
+	IV auf $f|W$ ergibt $V = U \oplus \bigoplus_{j = 1}^{s} VEig(f|W, \mu_j)$.\\
+	Die $\mu_j sind die \lambda_i \neq \lambda_1$.\\
+	Zeige noch $VEig(f,\mu) \subseteq W$ für die $\mu = \mu_j$.\\
+	Sei $v \in V$ mit $(f-\mu \cdot id)^sv = 0$, schreibe $v = u + w \in U \oplus W$.\\
+	$\Rightarrow_{U, W f-invariant} (f- \mu \cdot  id)^su = 0 \Rightarrow_{\text{Lemma 7.5}} u = 0 \Rightarrow v = w \in W$.
+\end{enumerate}
+\subsection*{Beispiel}
+$A = \left( \begin{matrix}
+	1 & -3 & -2\\
+	-4 & 0 & 2\\
+	2 & -6 & -4\\
+\end{matrix} \right), 
+p_A = det\left( \begin{matrix}
+	X-1 & 3 & 2\\
+	4 & X & -2\\
+	-2 & 6 & X+4\\
+\end{matrix} \right) \\
+= X(X-1)(X+4) + 12 + 48 + X + 12(X-1) - 12(X+4) = X^2(X+3)$\\
+$Eig(A,-3) = span\{ \left( \begin{matrix}
+	1 \\
+	0 \\
+	2 \\
+\end{matrix}\right)\}$\\
+$Eig(A,0) = span\{ \left( \begin{matrix}
+	1 \\
+	-1 \\
+	2 \\
+\end{matrix}\right)\}$\\
+$A^2 =\left( \begin{matrix}
+	9 & 9 & 0 \\
+	0 & 0 & 0 \\
+	18 & 18 & 0 \\
+\end{matrix}\right) \leadsto VEig(A,0) = span\{ 
+\left( \begin{matrix}
+1 \\
+-1 \\
+2 \\
+\end{matrix} \right) ,
+\left( \begin{matrix}
+0 \\
+0 \\
+1 \\
+\end{matrix} \right) \}$\\
+Mit $S := 
+\left( \begin{matrix}
+	1 & 0 & 1 \\
+	-1 & 0  & 0 \\
+	2 & 1 & 2 \\
+\end{matrix} \right)$ folgt $S^-1AS = 
+\left( \begin{matrix}
+	0 & -2 & \\
+	& 0 \\
+	 & & -3 \\
+\end{matrix}\right)$ 
 \end{document}
