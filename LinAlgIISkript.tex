@@ -1084,18 +1084,18 @@ Sei $f: V\to V$ ein K-Endomorphismus. Ein Untervektorraum $U \subseteq V$ heißt
 Zum Beispiel ist $U:= Eig(f, \lambda)$ f-invariant: $u\in U \Rightarrow f(u)=\lambda u \in U$. \\
 Bezeichne $p_f:= p_A$ mit $A:= {}_{B}M_B(f)$ das charakteristische Polynom von f. (wohldefiniert ist auch $A':= {}_{B'}M_{B'}(f) \Rightarrow A'=S^{-1}AS$ mit $S:={}_{B'}M_B(id_V) \Rightarrow p_{A'}= det(XE-S^{-1}AS) = det(XE - A) = p_A$.
 \subsection*{Lemma 6.3}
-Ist $U\subseteq V$ f-invariant, so gilt $p_{f|_k} | p_f$.
+Ist $U\subseteq V$ f-invariant, so gilt $p_{f|_U} | p_f$.
 \subsubsection*{Beweis (vgl. Beweis Satz 5.6.)}
 Sei A Basis von U und ergänze zu Basis B von V.
 $$\Rightarrow {}_BM_B(f) = 
 \left(
 \begin{BMAT}(e)[2pt,3cm,3cm]{c.c}{c.c}
-	{}_AM_A(f|_k) & * \\
+	{}_AM_A(f|_U) & * \\
 	0 & C  \\
 \end{BMAT}
 \right) =: \twoXtwo	{A}{B}
 					{0}{C}$$ \\
-$$\Rightarrow p_f = p_{f|_k} \cdot p_C\tn{, denn }det\twoXtwo	{A}{B}{0}{C} = det\twoXtwo{E}{0}{0}{C}\twoXtwo{A}{B}{0}{E} = detC \cdot detA$$\\
+$$\Rightarrow p_f = p_{f|_U} \cdot p_C\tn{, denn }det\twoXtwo	{A}{B}{0}{C} = det\twoXtwo{E}{0}{0}{C}\twoXtwo{A}{B}{0}{E} = detC \cdot detA$$\\
 $$\tn{bzw. } det \twoXtwo{XE-A}{-B}{0}{XE-C} = det(XE-A)\cdot det(XE-C)$$
 \subsection*{Beispiel}
 Die Linksdrehung $f:\mathbb R^2 \to \mathbb R^2$, $\vecTwo{x}{y} \mapsto \vecTwo{-y}{x} = \twoXtwo{0}{-1}{1}{0}\vecTwo{x}{y}$ hat charakteristisches Polynom $p_f = x^2+1 \leadsto$ keine Teiler $q|X^2+1$.\\
