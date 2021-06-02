@@ -1470,5 +1470,64 @@ $\{0\} \subset U_1 span\{ \left( \begin{matrix}
 1 \\
 0 \\
 0 \\
-\end{matrix}\right) \} \subset U_2 = span{}$ 
+\end{matrix}\right) \} \subset U_2 = span\{ \left(\begin{matrix}
+1\\
+0\\
+0\\
+
+\end{matrix}\right) , \left( 
+\begin{matrix}
+0\\
+1\\
+0\\
+\end{matrix}\right) \} \subset K^3$\\
+$\Rightarrow V = U_2 \oplus span\{ \left(\begin{matrix}
+0\\
+0\\
+1\\
+\end{matrix}\right)\} = U_1 \oplus span\{ \left(\begin{matrix}
+3\\
+2\\
+0\\
+\end{matrix}\right)\} \oplus W_3 = (U_1 \oplus) span\{\left(\begin{matrix}
+2\\
+0\\
+0\\
+\end{matrix}\right)\} \oplus W_2 \oplus W_3$, mit $g(W_3) \subseteq W_2$ und $g(W_2) \subseteq W_1$(hier gleich)\\
+$\Rightarrow S := \left(\begin{matrix}
+	2 & 3 & 0\\
+	0 & 2 & 0\\
+	0 & 0 & 1\\
+\end{matrix}\right) ergibt S^{-1}BS = \left(\begin{matrix}
+0 & 1 \\
+& 0 & 1\\
+& & 0\\
+\end{matrix}\right), g^2(v) g(w) v = \left(\begin{matrix}
+0\\
+0\\
+1\\
+\end{matrix}\right)$\\
+Aus Satz 7.6 und Proposition 7.7 folgt:
+\subsection*{Satz 7.8(Jordan-Normalform)}
+Sei $f\in EndV$ mit $p_f = \prod_{i = 1}^{r}(x-\lambda_i)^{m_i}$ in Linearfaktoren. Dann existiert Basis $B$ mit ${}_BM_B(f) = \left(\begin{matrix}
+	A_1 \\
+	& \ddots \\
+	& & A_r\\
+\end{matrix}\right)$, wobei jedes $A_i = \lambda_i E_{m_i} + \left(\begin{matrix}
+J_{s_1^i} \\
+& \ddots \\
+& & J_{s_{l_i}^i}
+\end{matrix}\right).\\$
+Man nennt $\left(\begin{matrix}
+\lambda & 1 \\
+& \ddots & \ddots \\
+& & \ddots & 1\\
+& & &  \lambda \\
+\end{matrix}\right) = J_k + \lambda E_k$ auch Jordanblock zu $\lambda$.\\
+Die Jordanblöcke sind bis auf Reihenfolge eindeutig.\\
+Zum EW $\lambda_i$ ist \begin{itemize}
+	\item Anzahl Jordanblöcke $= dimEig(f,\lambda_i)$(geometrische Vielfachheit)
+	\item größter Jordanblock $\stackrel{\wedge}{=}$ Nilpotenzindex
+\end{itemize}
+FAZIT: Die Jordansche Normalform (JNF) löst das eindeutige Repräsentantenproblem für Ähnlichkeit von Matrizen in $\mathbb{C}$. (Zwei Matrizen sind ähnlich $\Leftrightarrow$ JNF ist gleich)
 \end{document}
