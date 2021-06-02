@@ -1411,5 +1411,64 @@ Mit $S :=
 	0 & -2 & \\
 	& 0 \\
 	 & & -3 \\
-\end{matrix}\right)$ 
+\end{matrix}\right)$ \\
+%----------------------------------Vorlesung 13----------------------------------
+\subsection*{}
+Sei $f:V \rightarrow V$ ein K-Endomorphismus mit $p_f = \prod_{i = 1}^{r}(X-\lambda_i)^{m_i}$.\\
+Nach Satz 7.6 (Hauptraumzerlegung) ist 
+$V = \bigoplus_{i=1}^{r}V_i$ mit $V_i := VEig(f, \lambda_i), dim V_i = m_i$.\\
+Mit Basis $B = (\underbrace{v_1^1, ... , v_{m_1}^1}_{\in V_1}, ... , \underbrace{v_1^r, ... , v_{m_r}^r}_\in V_r)$ ist ${}_BM_B(f) = \left( \begin{matrix}
+	* & 0 \\
+	0 & * \\
+\end{matrix}\right)$ (Blockgestalt) und für jedes $i$ ist $(f-\lambda \cdot id)|_{v_i}$ nilpotent.
+\subsection*{Bezeichnung}
+$J_k := \left( \begin{matrix}
+	0 & 1 \\
+	& \ddots & \ddots \\
+	& & \ddots& 1 \\
+	& & & 0 \\
+\end{matrix} \right) \in Mat_{k \times k}(K)$ Jordanmatrix. $J_k^k = 0.$\\
+Zu $g \in EndV$ nilpotent sei $s$ minimal mit $g^s = 0$ der Nilpotenzindex. Also $k$ im Fall $J_k$.
+\subsection*{Proposition 7.7}
+Sei $dim_kV = n$ und sei $g\in EndV$ mit Nilpotenzindex $s$. Dann existiert Basis $B$ von $V$ und $s = s_1 \leq ... \leq s_l$ mit $\sum_{j=1}^{l}s_j = n$ und $l = dim ker g$, sodass $\left( \begin{matrix}
+	J_{s_1} \\
+	& \ddots \\
+	& & J_{s_l}\\
+\end{matrix} \right)$.\\
+Die $s_1, ..., s_l$ sind eindeutig bestimmt.
+\subsubsection*{Beweis}
+Sei $U_i := kerg^i \Rightarrow \{0\} = U_0 \subset U_1 \subset ... \subset U_{s-1} \subset U_s = V$.\\
+Wegen $g(v) \in U_{i-1} \Leftrightarrow v\in U_i$ gilt: $U_i \subseteq U_{s-1}$.\\
+Wähle $W_s \subseteq V mit V =  U_{s-1} \oplus W_s \Rightarrow g(W_s) \subseteq U_{s-1}$.\\
+Zeige $"g(W_s) \cap U_{s-2} = \{0\}"$: \\
+Sei $w\in W_s$ und $v := g(w) \in U_{s-2} \Rightarrow g^{s-1}(w) = 0 \Rightarrow w\in U_{s-1} \Rightarrow w = 0 \Rightarrow v = 0.\checkmark$\\
+Wähle $W_{s-1} \subseteq U_{s-1}$ mit $U_{s-1} = U_{s-2} \oplus W_{s-1}$ und $g(W_s) \subseteq W_{s-1}$.\\
+Erhalte so $V = U_s = U_{s-1} \oplus W_s = U_{s-2} \oplus W_{s-1} \oplus W_s = ... = (U_0 \oplus)W_1 \oplus ... \oplus W_s$\\
+mit $W_i \cap U_{i-1} = \{0\} \forall i > 1$, insbesondere $W_i \cap kerg = \{0\}$.\\
+Somit ist $g|w_i : W_i \rightarrow W_{i-1}$ injektiv, erhalte $W_S \rightarrow_g W_{s-1} \rightarrow_g ... \rightarrow_g W_1$.\\
+Wähle Basis $w_1^s, ... , w_{k_s}^s$ von $W_s$\\
+$g(w_1^s), ..., g(w_{k_s}^s), w_1^{s-1}, ..., w_{k_{s-1}}^{s-1}$ von $W_{s-1}$\\
+$\vdots$\\
+$g^{s-1}(w_1^s), ... , g^{s-1}(w_{k_s}^s), g^{s-2}(w_1^{s-1}), ..., g^{s-2}(w_{k_{s-1}}^{s-1}), ..., w_1^1, ..., w_{k_1}^1$ von $W_1 = U_1$\\
+und ordne spaltenweise von unten nach oben.\\
+$\Rightarrow {}_BM_B(g) =$ Blockdiagonale $(\underbrace{J_s, ... J_s}_{k_s \text{mal}} , \underbrace{J_{s-1}, ... , J_{s-1}}_{k_{s-1} \text{mal}}, ..., \underbrace{J_1, ..., J_1}_{k_1 \text{mal}})$\\
+und Anzahl Blöcke ist $l = dimU_1 = dimkerg$.\\
+Dabei ist $dimW_i$ und die $k_s, ..., k_1$ durch $dimU_i$, also $g$ eindeutig bestimmt.\\
+\subsection*{Beispiel}
+$B := \left( \begin{matrix}
+0 & 1 & 3 \\
+0 & 0 & 2 \\
+0 & 0 & 0 \\
+\end{matrix} \right),
+B^2 = \left(\begin{matrix}
+0 & 0 & 2 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{matrix}\right),
+B^3 = 0 \Rightarrow s=3$ \\
+$\{0\} \subset U_1 span\{ \left( \begin{matrix}
+1 \\
+0 \\
+0 \\
+\end{matrix}\right) \} \subset U_2 = span{}$ 
 \end{document}
