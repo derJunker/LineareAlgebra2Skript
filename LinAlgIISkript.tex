@@ -90,6 +90,10 @@
 	\end{matrix} 
 	\right)
 }
+% Zur besseren Lesbarkeit der Norm-Schreibweise
+\newcommand{\norm}[1]{
+	\parallel #1 \parallel
+}
 % Abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
 %-----------------------------ende commands definitionen-----------------------------
@@ -1281,7 +1285,7 @@ Ohne Einschränkung $A = \left(\begin{matrix}
 \end{matrix}\right)$ und $p_A = \prod_{i=1}^{n}(X-\lambda_i)$.\\
 Zeige direkt $p_A(A) = \prod_{i=1}^{n}(A-\lambda_iE) = 0$.
 %----------------------------------Vorlesung 12----------------------------------
-\section*{§7 Jordan-Normalform}
+\section{Jordan-Normalform}
 \subsection*{Definition 7.1}
 Sei V ein n-dim. K-VR und $U_1, ..., U_r \subseteq V$ UVR.\\
 Schreibe $U_1 \oplus ... U_r \subseteq V$,
@@ -1530,4 +1534,97 @@ Zum EW $\lambda_i$ ist \begin{itemize}
 	\item größter Jordanblock $\stackrel{\wedge}{=}$ Nilpotenzindex
 \end{itemize}
 FAZIT: Die Jordansche Normalform (JNF) löst das eindeutige Repräsentantenproblem für Ähnlichkeit von Matrizen in $\mathbb{C}$. (Zwei Matrizen sind ähnlich $\Leftrightarrow$ JNF ist gleich)
+%----------------------------------Vorlesung 14----------------------------------
+\section{Euklidische Vektorräume}
+\subsection*{Erinnerung (Lin Alg I, Ausblick)}
+Zu $x, y \in \mathbb{R}^n$ sei ${<x, y>} := \sum_{i=1}^{n}x_iy_i$ "Standardskalarprodukt"\\
+$\parallel x\parallel := \sqrt{<x, y>}$ "Norm"\\
+$x \perp y \Leftrightarrow {<x, y>} = 0$
+
+\subsection*{Definition 8.1.}
+Sei $V$ ein reeller Vektorraum. Eine Abbildung $<\cdot, \cdot>: V \times V \longrightarrow \mathbb{R}$ heißt \textbf{Skalarprodukt} falls gilt:
+\begin{enumerate}
+	\item [--] (S1): ${<\lambda v + \mu v', w>} = \lambda {<v, w>} + \mu {<v', w>}\\
+	{<v, \lambda w + \mu w'>} = \lambda {<v, w>} + \mu {<v, w'>}$ (bilinear)
+	\item [--] (S2): ${<v, w>} = {<w, v>}$ (symmetrisch)
+	\item[--] (S3:) ${<v, v>} \geq 0$ und ${<v, v>} = 0 \Leftarrow v = 0$ (positiv definit)
+\end{enumerate}
+
+(f.a. $v, w, v', w' \in V, \lambda, \mu \in \mathbb{R}$).
+Ein $\mathbb{R}$-Vektorraum mit Skalarprodukt ($V$, ${<\cdot, \cdot>}$) heißt \textbf{euklidischer Vektorraum}.
+
+\subsection*{Bemerkung}
+\begin{enumerate} [label=\arabic*)]
+	\item \begin{itemize}
+		\item ${<0, w>} = {<0v, w>} = 0{<v, w>} = 0$ entsprechend ${<v, 0>} = 0$
+		\item (S2) und linear in 1. oder 2. Komponente $\Rightarrow$ (S1)
+		\item (S1) und ${<v, v>} > 0$ f.a. $v \neq 0 \Rightarrow$ (S3)
+	\end{itemize}
+	\item Im $V = \mathbb{R}^n$ ist ${<x, y>} := \sum_{i=1}^{n}x_iy_i$ ein Skalarprodukt.\\
+	\begin{itemize}
+		\item (S2) $\checkmark$
+		\item (S1) $({<\lambda x+\mu x', y>} =)\sum_{i=1}^{n}(\lambda x_i+\mu x'_i)y_i = \lambda\sum_{i=1}^{n}x_iy_i+\mu\sum_{i=1}^{n}x'_iy_i (= \lambda{<x, y>}+\mu{<x', y>})$
+		\item (S3) $\sum_{i=1}^{n}x_i^2 \geq 0 \checkmark$ und $\sum_{i=1}^{n}x_i^2 = 0 \Rightarrow$ alle $x_i^2 = 0 \Rightarrow \tn{ alle } x_i^2 = 0$
+	\end{itemize}
+\end{enumerate}
+
+\subsection*{Satz 8.2. (Cauchy-Schwarz'sche Ungleichung)}
+Sei $(V, <\cdot, \cdot>)$ euklidischer Vektorraum und seien $v, w \in V$\\
+$\Rightarrow {<v, w>}^2 \leq {<v, v>} \cdot {<w, w>}$.
+
+\subsubsection*{Beweis:}
+Ansatz $0 \leq {<v+\lambda w, v+\lambda w>} =_{\tn{(S1), (S2)}} {<v, v>}+2\lambda {<v, w>}+\lambda^2{<w, w>}$\\
+(o.E. $w \neq 0$) $\Rightarrow_{\tn{(S3)}} 0 \leq \frac{<v, v>}{<w, w>}+2\lambda \frac{<v, w>}{<w, w>}+\lambda^2 = (\lambda + \frac{<v, w>}{<w, w>})^2-\frac{<v, w>^2}{<w, w>^2}+\frac{<v, v>}{<w, w>}$\\
+Wähle $\lambda := -\frac{<v, w>}{<w, w>} \Rightarrow \frac{<v, w>^2}{<w, w>^2} \leq \frac{<v, v>}{<w, w>}$\\
+$\Rightarrow {<v, w>}^2 \leq {<v, v>} \cdot {<w, w>}$.
+\subsection*{Bezeichnung}
+$\parallel v \parallel := \sqrt{<v, v>}$ die \textbf{Norm} von $v \in V$, dann (CSU): $|<v, w>| \leq \parallel v\parallel \cdot \parallel w\parallel$.
+\subsection*{Corollar 8.3.}
+Die Abbildung $\parallel \cdot \parallel: V \longrightarrow \mathbb{R}$ erfüllt:
+\begin{enumerate}[label=\alph*)]
+	\item $\norm{v} \geq 0$ und $\norm{v} = 0 \Leftrightarrow v = 0$
+	\item $\norm{\lambda v} = |\lambda|\cdot \norm{v}$
+	\item $\norm{v+w} \leq \norm{v}+\norm{w}$ (Dreiecksungleichung)
+\end{enumerate}
+(f.a. $v, w \in V, \lambda \in \mathbb{R}$).
+\subsubsection*{Beweis:}
+\begin{enumerate}[label=\alph*)]
+	\item (S3) $\checkmark$
+	\item ${<\lambda v, \lambda v>} = \lambda^2{<v, v>}$ wg. (S1) $\checkmark$
+	\item $\norm{v+w}^2 = {<v+w, v+w>} = {<v, v>}+2{<v, w>}+{<w, w>}\\ \leq_{\tn{CSU}} \norm{v}^2 + 2\norm{v}\cdot\norm{w}+\norm{w}^2 = (\norm{v}+\norm{w})^2$.
+\end{enumerate}
+
+\subsection*{Definition 8.4.}
+Zu ($V, {<\cdot, \cdot>}$) euklidischer Vektorraum und $0 \neq v, w \in V$,\\ definiere $\alpha \in [0, \pi]$ mit $cos \alpha = \frac{<v, w>}{\norm{v}\cdot\norm{w}}$ ($\in_{\tn{CSU}} [-1, 1]$)
+\textbf{Winkel} $\sphericalangle(v, w)$ zwischen $v, w$.
+\newpage
+\subsubsection*{Begründung:}
+\begin{figure}[h]
+	\begin{tikzpicture}
+		\tkzInit[xmax=3,ymax=3]
+		\draw[thick,-latex] (0,0) -- (1,1) node[anchor=east] {$v$};
+		\draw[thick,-latex] (0,0) -- (2,0) node[anchor=west] {$w$};
+		\draw[dotted,-latex] (1,1) -- (1,0);
+		\draw[thick,-latex] (0,0) -- (1,0) node[anchor=south] {$v* = \lambda w$};
+		\tkzText[right](-2,2){o.E. $\norm{v} = \norm{w} = 1 \Rightarrow \lambda = cos\alpha\\{<v-v*, w>} = 0\\\Rightarrow {<v, w>} = {<v*, w>} = \lambda {<w, w>} = \lambda$}
+	\end{tikzpicture}
+\end{figure}
+
+Weiterer Beispiele für Skalarprodukte:
+\begin{enumerate}[label=\arabic*)]
+	\item $V = \mathbb{R}[X]^{< n} := \{\sum_{i=0}^{n-1}a_iX^i | a_i \in \mathbb{R}\}$\\
+	Wähle $x_1, \dots, x_n \in \mathbb{R}$ verschieden, ${<f, g>} := \sum_{i=1}^{n}f(x_i)g(x_i)$\\
+	(S1), (S2) $\checkmark$\\
+	(S3): ${<f, f>} = \sum_{i=1}^{n}f(x_i)^2 \geq 0$\\
+	und $\sum_{i=1}^{n}f(x_i)^2 = 0 \Rightarrow \tn{ alle } f(x_i) = 0 \Rightarrow_{\tn{deg}f<n} f = 0$\\
+	Entsprechende Beispiele aus der Analysis:\\
+	$V = C[0,1] := \{f:[0,1] \longrightarrow \mathbb{R} \tn{ stetig}\}\\
+	{<f, g>} := \int_{0}^{1}f(x)g(x)dx$
+	\item $V = \mathbb{R}^n$, sei $A \in \tn{Mat}_{n\times n}(\mathbb{R})$ und setze ${<v, w>} := v^TAw = \sum_{i, j=1}^{n}a_{ij}v_iw_j$.\\
+	(S1): $(\lambda v+\mu v')^TAw = \lambda v^TAw+\mu v'^TAw$\\
+	analog für $w$.\\
+	(S2)?: $w^TAv = v^TA^Tw = v^TAw$ f.a. $v, w \in V \Leftrightarrow A^T = A$ (da $e_i^TAe_j=a_{ij}$)\\
+	(S3)?: gdw. $v^TAw > 0$ f.a. $v \neq 0$ "positiv definite Matrix" $\rightsquigarrow$ später
+\end{enumerate}
+%----------------------------------Vorlesung 15----------------------------------
 \end{document}
