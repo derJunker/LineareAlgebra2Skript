@@ -1627,4 +1627,50 @@ Weiterer Beispiele für Skalarprodukte:
 	(S3)?: gdw. $v^TAw > 0$ f.a. $v \neq 0$ "positiv definite Matrix" $\rightsquigarrow$ später
 \end{enumerate}
 %----------------------------------Vorlesung 15----------------------------------
+\subsection*{Bemerkung}
+Ist $(V, <\cdot , \cdot>)$ euklidischer Vektorraum und $U \subseteq V$ ein Untervektorraum, so ist auch $<\cdot , \cdot>_U:UxU \to \mathbb R$ (Einschränkung) Skalarprodukt. \\
+Sei nun $(V, <\cdot , \cdot>)$ euklidischer VR und sei $U \subseteq V$ Untervektorraum.
+\subsection*{Definition 8.5.} Zu $v\in V$ heißt $v^*\in U$ Bestapproximation von V in U falls $||v-v^*||$ kleinstmöglich ist, d.h. $||v-v^*|| \leq ||v-u||$, $\forall u \in U$
+\subsection*{Proposition 8.6.}
+Es ist $v^* \in U$ Bestapproximation von v $\Leftrightarrow <v-v^* , u> = 0$, $\forall u \in U$. \\
+Falls eine Bestapproximation existiert, so ist sie eindeutig.
+\subsection*{Bemerkung}
+Sei $u \in U$. $||v-v^*+u)||^2 = || v-v^*||^2-2<v-v^*, u> + ||u||^2$. \\
+Falls $<v-v^*, u> = 0$ folgt $||v-(v^*+u)|| \geq ||v-v^*||^2$. Also $||v-v^*|| \leq ||v-u'||$, $.\forall u'\in U$. \\
+Umgekehrt sei $v^*$ Bestapproximation $\Rightarrow ||v-(v^*+\lambda u)||^2 = ||v-v^*||^2-2\lambda<v-v^*,u> + \lambda^2||u||^2 \geq ||v-v^*||^2 \Rightarrow 2\lambda<v-v^*, u> \leq \lambda^2||u||^2$, $\forall \lambda \in \mathbb R_{>0} \Rightarrow <v-v^*, u> = 0$. \\
+Außerdem $||v-(v^*+u)||^2 > ||v-v^*||^2$ falls $u \neq 0$ $\Rightarrow$ Eindeutigkeit der Bestapproximation
+\subsection*{Definition 8.7} 
+Sei $(V, <\cdot , \cdot>)$ euklidischer Vektorraum. Eine Basis $S \subseteq V$ heißt Orthonormalbasis falls $<e, f> = \twopartdef{1}{\tn{falls }e = f}{0}{\tn{sonst}}$ für $e,f \in S$. \\
+Im Fall $S= \{v_1,...,v_n\}$ also $<v_i, v_j> = \delta_{ij} = \twopartdef{1}{\tn{falls } i=j}{0}{\tn{sonst}}$.
+\subsection*{Bemerkung}
+Angenommen U (wie oben) hat ONB $\{u_1,...,u_k\}$, $k = dim U$. \\
+Dann setze $v^*:= \sum_{i=1}^k<v,u_i>u_i$. \\
+Dies ist Bestapproximation nach Proposition 8.6. \\
+Denn: Sei j beliebig $\Rightarrow <v^*, u_j> = \sum_{i=1}^k<v,u_i><u_i, u_j> = <v, u_j> \Rightarrow <v-v^*, u_j> = 0$.
+Somit $<v-v^*, u> = 0$, $\forall u \in U$. \\
+Diese Bemerkung ist die Grundlage für folgendes wichtiges Resultat.
+\subsection*{Satz 8.8}
+Sei $(V, <\cdot , \cdot >)$ euklidischer Vektorraum und $v_1,..., v_n \in V$ linear unabhängig. Dann existiert $u_1,...,u_n \in V$ mit $<u_i,u_j> = \delta_{ij}$ und $span \{u_1,...,u_j\} = span \{v_1,..., v_j\}$, $\forall j$. \\
+Insbesondere hat jeder endlich-dim. euklidischer VR eine Orthonormalbasis.
+\subsection*{Bemerkung}
+"Gram-Schmidt'sches Orthonormalisierungsverfahren" \\
+Induktion/n. $n=1$: $u_1 := \frac{v_1}{||v_1||}$ \\
+$n \leadsto n+1$: Sei $u_1,..., u_n$ ONB von $U:=span\{v_1,...,v_n\}$. \\
+Dann ist $v_{n+1} \notin U$. Betrachte $v^*_{n+1} := \sum_{i=1}^n <v_{n+1}, u_i>u_i$ Bestapproximation in U, sei $v_{n+1}' := v_{n+1} - v^*_{n+1}$, $u_{n+1} := \frac{v_{n+1}}{||v_{n+1}'}$. \\
+Dann gilt $<u_{n+1}, u_j> = 0$, $\forall j \leq n$, \\
+sowie $span \{u_1,...,u_{n+1}\} = span \{v_1,...,v_{n+1}\}$
+\subsection*{Definition 8.9}
+Zu  $(V, <\cdot , \cdot >)$ euklidischer Vektorraum und $U \subseteq V$ UVR sei $U^\perp := \{v\in V| <v,u>=0, \forall u\in U\}$ Orthogonalraum (ist auch UVR). Also $v^*\in U$ Bestapproximation $\Leftrightarrow v-v^* \in U^\perp$. \\
+Sei nun U endlich-dim. mit ONB $u_1,...,u_k$ und betrachte $p:V\to V$, $v \mapsto v^*:= \sum_{i=1}^k<v, u_i>u_i \Rightarrow p\in EndV$. Es gilt $p^2=p$, $imp = U$, $v-p(v)\in U^\perp$ "Orthogonalprojektion".
+\subsection*{Bemerkung}
+$ker p = U^\perp$. Da: $"\subseteq" v\in kerp \Rightarrow v=v-p(v)\in U^\perp$ \\
+$"\supseteq" v \in U^\perp \Rightarrow <v, u_i> = 0\forall i \Rightarrow p(v)=0$.
+\subsection*{Proposition 8.10.}
+Ist U endlich-dim. so $V=U\oplus U^\perp$.
+Ist auch V endlich-dim. so $U = (U^\perp)^\perp$.
+\subsubsection{Beweis}
+Sei $p\in EndV$ Orthogonalprojektion auf U, wie oben $\Rightarrow p^2=p \Rightarrow V=ker p \oplus im p$ (vgl. Blatt 4, Aufgabe 4) $\Rightarrow_{\tn{Bemerkung}} V = U^\perp \oplus U$. \\
+Sei $dimV = n \Rightarrow dim U^\perp = n - dim U$.
+Da stets U $\subseteq (U^\perp)^\perp$ gilt (trivial) folgt $U = (U^\perp)^\perp = n- dim U^\perp = n - (n- dimU) = dim U$ 
+%----------------------------------Vorlesung 16----------------------------------
 \end{document}
