@@ -94,6 +94,15 @@
 \newcommand{\norm}[1]{
 	\parallel #1 \parallel
 }
+% Befehl für das Skalarprodukt
+\newcommand{\skalar}[2] {
+	\langle #1, #2\rangle
+}
+
+% Wortersetzung für Skalarprodukt mit cdots drinnen
+\newcommand{\genskalar}{
+	\skalar{\cdot }{\cdot }
+}
 % Abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
 %-----------------------------ende commands definitionen-----------------------------
@@ -1537,65 +1546,65 @@ FAZIT: Die Jordansche Normalform (JNF) löst das eindeutige Repräsentantenprobl
 %----------------------------------Vorlesung 14----------------------------------
 \section{Euklidische Vektorräume}
 \subsection*{Erinnerung (Lin Alg I, Ausblick)}
-Zu $x, y \in \mathbb{R}^n$ sei ${<x, y>} := \sum_{i=1}^{n}x_iy_i$ "Standardskalarprodukt"\\
-$\parallel x\parallel := \sqrt{<x, y>}$ "Norm"\\
-$x \perp y \Leftrightarrow {<x, y>} = 0$
+Zu $x, y \in \mathbb{R}^n$ sei ${\skalar{x}{y}} := \sum_{i=1}^{n}x_iy_i$ "Standardskalarprodukt"\\
+$\parallel x\parallel := \sqrt{\skalar{x}{y}}$ "Norm"\\
+$x \perp y \Leftrightarrow {\skalar{x}{y}} = 0$
 
 \subsection*{Definition 8.1.}
-Sei $V$ ein reeller Vektorraum. Eine Abbildung $<\cdot, \cdot>: V \times V \longrightarrow \mathbb{R}$ heißt \textbf{Skalarprodukt} falls gilt:
+Sei $V$ ein reeller Vektorraum. Eine Abbildung $\genskalar: V \times V \longrightarrow \mathbb{R}$ heißt \textbf{Skalarprodukt} falls gilt:
 \begin{enumerate}
-	\item [--] (S1): ${<\lambda v + \mu v', w>} = \lambda {<v, w>} + \mu {<v', w>}\\
-	{<v, \lambda w + \mu w'>} = \lambda {<v, w>} + \mu {<v, w'>}$ (bilinear)
-	\item [--] (S2): ${<v, w>} = {<w, v>}$ (symmetrisch)
-	\item[--] (S3:) ${<v, v>} \geq 0$ und ${<v, v>} = 0 \Leftarrow v = 0$ (positiv definit)
+	\item [--] (S1): ${\skalar{\lambda v + \mu v'}{w}} = \lambda {\skalar{v}{w}} + \mu {\skalar{v'}{w}}\\
+	{\skalar{v}{\lambda w + \mu w'}} = \lambda {\skalar{v}{w}} + \mu {\skalar{v}{w'}}$ (bilinear)
+	\item [--] (S2): ${\skalar{v}{w}} = {\skalar{w}{v}}$ (symmetrisch)
+	\item[--] (S3:) ${\skalar{v}{v}} \geq 0$ und ${\skalar{v}{v}} = 0 \Leftarrow v = 0$ (positiv definit)
 \end{enumerate}
 
 (f.a. $v, w, v', w' \in V, \lambda, \mu \in \mathbb{R}$).
-Ein $\mathbb{R}$-Vektorraum mit Skalarprodukt ($V$, ${<\cdot, \cdot>}$) heißt \textbf{euklidischer Vektorraum}.
+Ein $\mathbb{R}$-Vektorraum mit Skalarprodukt ($V$, $\genskalar$) heißt \textbf{euklidischer Vektorraum}.
 
 \subsection*{Bemerkung}
 \begin{enumerate} [label=\arabic*)]
 	\item \begin{itemize}
-		\item ${<0, w>} = {<0v, w>} = 0{<v, w>} = 0$ entsprechend ${<v, 0>} = 0$
+		\item ${\skalar{0}{w}} = {\skalar{0v}{w}} = 0{\skalar{v}{w}} = 0$ entsprechend ${\skalar{v}{0}} = 0$
 		\item (S2) und linear in 1. oder 2. Komponente $\Rightarrow$ (S1)
-		\item (S1) und ${<v, v>} > 0$ f.a. $v \neq 0 \Rightarrow$ (S3)
+		\item (S1) und ${\skalar{v}{v}} > 0$ f.a. $v \neq 0 \Rightarrow$ (S3)
 	\end{itemize}
-	\item Im $V = \mathbb{R}^n$ ist ${<x, y>} := \sum_{i=1}^{n}x_iy_i$ ein Skalarprodukt.\\
+	\item Im $V = \mathbb{R}^n$ ist ${\skalar{x}{y}} := \sum_{i=1}^{n}x_iy_i$ ein Skalarprodukt.\\
 	\begin{itemize}
 		\item (S2) $\checkmark$
-		\item (S1) $({<\lambda x+\mu x', y>} =)\sum_{i=1}^{n}(\lambda x_i+\mu x'_i)y_i = \lambda\sum_{i=1}^{n}x_iy_i+\mu\sum_{i=1}^{n}x'_iy_i (= \lambda{<x, y>}+\mu{<x', y>})$
+		\item (S1) $({\skalar{\lambda x+\mu x'}{y}} =)\sum_{i=1}^{n}(\lambda x_i+\mu x'_i)y_i = \lambda\sum_{i=1}^{n}x_iy_i+\mu\sum_{i=1}^{n}x'_iy_i (= \lambda{\skalar{x}{y}}+\mu{\skalar{x'}{y}})$
 		\item (S3) $\sum_{i=1}^{n}x_i^2 \geq 0 \checkmark$ und $\sum_{i=1}^{n}x_i^2 = 0 \Rightarrow$ alle $x_i^2 = 0 \Rightarrow \tn{ alle } x_i^2 = 0$
 	\end{itemize}
 \end{enumerate}
 
 \subsection*{Satz 8.2. (Cauchy-Schwarz'sche Ungleichung)}
-Sei $(V, <\cdot, \cdot>)$ euklidischer Vektorraum und seien $v, w \in V$\\
-$\Rightarrow {<v, w>}^2 \leq {<v, v>} \cdot {<w, w>}$.
+Sei $(V, \genskalar)$ euklidischer Vektorraum und seien $v, w \in V$\\
+$\Rightarrow {\skalar{v}{w}}^2 \leq {\skalar{v}{v}} \cdot {\skalar{w}{w}}$.
 
 \subsubsection*{Beweis:}
-Ansatz $0 \leq {<v+\lambda w, v+\lambda w>} =_{\tn{(S1), (S2)}} {<v, v>}+2\lambda {<v, w>}+\lambda^2{<w, w>}$\\
-(o.E. $w \neq 0$) $\Rightarrow_{\tn{(S3)}} 0 \leq \frac{<v, v>}{<w, w>}+2\lambda \frac{<v, w>}{<w, w>}+\lambda^2 = (\lambda + \frac{<v, w>}{<w, w>})^2-\frac{<v, w>^2}{<w, w>^2}+\frac{<v, v>}{<w, w>}$\\
-Wähle $\lambda := -\frac{<v, w>}{<w, w>} \Rightarrow \frac{<v, w>^2}{<w, w>^2} \leq \frac{<v, v>}{<w, w>}$\\
-$\Rightarrow {<v, w>}^2 \leq {<v, v>} \cdot {<w, w>}$.
+Ansatz $0 \leq {\skalar{v+\lambda w}{v+\lambda w}} =_{\tn{(S1), (S2)}} {\skalar{v}{v}}+2\lambda {\skalar{v}{w}}+\lambda^2{\skalar{w}{w}}$\\
+(o.E. $w \neq 0$) $\Rightarrow_{\tn{(S3)}} 0 \leq \frac{\skalar{v}{v}}{\skalar{w}{w}}+2\lambda \frac{\skalar{v}{w}}{\skalar{w}{w}}+\lambda^2 = (\lambda + \frac{\skalar{v}{w}}{\skalar{w}{w}})^2-\frac{\skalar{v}{w}^2}{\skalar{w}{w}^2}+\frac{\skalar{v}{w}}{\skalar{w}{w}}$\\
+Wähle $\lambda := -\frac{\skalar{v}{w}}{\skalar{w}{w}} \Rightarrow \frac{\skalar{v}{w}^2}{\skalar{w}{w}^2} \leq \frac{\skalar{v}{v}}{\skalar{w}{w}}$\\
+$\Rightarrow {\skalar{v}{w}}^2 \leq {\skalar{v}{v}} \cdot {\skalar{w}{w}}$.
 \subsection*{Bezeichnung}
-$\parallel v \parallel := \sqrt{<v, v>}$ die \textbf{Norm} von $v \in V$, dann (CSU): $|<v, w>| \leq \parallel v\parallel \cdot \parallel w\parallel$.
+$\parallel v \parallel := \sqrt{\skalar{v}{v}}$ die \textbf{Norm} von $v \in V$, dann (CSU): $|\skalar{v}{w}| \leq \parallel v\parallel \cdot \parallel w\parallel$.
 \subsection*{Corollar 8.3.}
 Die Abbildung $\parallel \cdot \parallel: V \longrightarrow \mathbb{R}$ erfüllt:
 \begin{enumerate}[label=\alph*)]
-	\item $\norm{v} \geq 0$ und $\norm{v} = 0 \Leftrightarrow v = 0$
-	\item $\norm{\lambda v} = |\lambda|\cdot \norm{v}$
-	\item $\norm{v+w} \leq \norm{v}+\norm{w}$ (Dreiecksungleichung)
+	\item $\genskalar{v} \geq 0$ und $\genskalar{v} = 0 \Leftrightarrow v = 0$
+	\item $\genskalar{\lambda v} = |\lambda|\cdot \genskalar{v}$
+	\item $\genskalar{v+w} \leq \genskalar{v}+\genskalar{w}$ (Dreiecksungleichung)
 \end{enumerate}
 (f.a. $v, w \in V, \lambda \in \mathbb{R}$).
 \subsubsection*{Beweis:}
 \begin{enumerate}[label=\alph*)]
 	\item (S3) $\checkmark$
-	\item ${<\lambda v, \lambda v>} = \lambda^2{<v, v>}$ wg. (S1) $\checkmark$
-	\item $\norm{v+w}^2 = {<v+w, v+w>} = {<v, v>}+2{<v, w>}+{<w, w>}\\ \leq_{\tn{CSU}} \norm{v}^2 + 2\norm{v}\cdot\norm{w}+\norm{w}^2 = (\norm{v}+\norm{w})^2$.
+	\item ${\skalar{\lambda v}{\lambda v}} = \lambda^2{\skalar{v}{v}}$ wg. (S1) $\checkmark$
+	\item $\genskalar{v+w}^2 = {\skalar{v+w}{v+w}} = {\skalar{v}{v}}+2{\skalar{v}{w}}+{\skalar{w}{w}}\\ \leq_{\tn{CSU}} \genskalar{v}^2 + 2\genskalar{v}\cdot\genskalar{w}+\genskalar{w}^2 = (\genskalar{v}+\genskalar{w})^2$.
 \end{enumerate}
 
 \subsection*{Definition 8.4.}
-Zu ($V, {<\cdot, \cdot>}$) euklidischer Vektorraum und $0 \neq v, w \in V$,\\ definiere $\alpha \in [0, \pi]$ mit $cos \alpha = \frac{<v, w>}{\norm{v}\cdot\norm{w}}$ ($\in_{\tn{CSU}} [-1, 1]$)
+Zu ($V, \genskalar$) euklidischer Vektorraum und $0 \neq v, w \in V$,\\ definiere $\alpha \in [0, \pi]$ mit $cos \alpha = \frac{\skalar{v}{w}}{\genskalar{v}\cdot\genskalar{w}}$ ($\in_{\tn{CSU}} [-1, 1]$)
 \textbf{Winkel} $\sphericalangle(v, w)$ zwischen $v, w$.
 \newpage
 \subsubsection*{Begründung:}
@@ -1606,21 +1615,21 @@ Zu ($V, {<\cdot, \cdot>}$) euklidischer Vektorraum und $0 \neq v, w \in V$,\\ de
 		\draw[thick,-latex] (0,0) -- (2,0) node[anchor=west] {$w$};
 		\draw[dotted,-latex] (1,1) -- (1,0);
 		\draw[thick,-latex] (0,0) -- (1,0) node[anchor=south] {$v* = \lambda w$};
-		\tkzText[right](-2,2){o.E. $\norm{v} = \norm{w} = 1 \Rightarrow \lambda = cos\alpha\\{<v-v*, w>} = 0\\\Rightarrow {<v, w>} = {<v*, w>} = \lambda {<w, w>} = \lambda$}
+		\tkzText[right](-2,2){o.E. $\genskalar{v} = \genskalar{w} = 1 \Rightarrow \lambda = cos\alpha\\{\skalar{v-v^*}{w}} = 0\\\Rightarrow {\skalar{v}{w}} = {\skalar{v^*}{w}} = \lambda {\skalar{w}{w}} = \lambda$}
 	\end{tikzpicture}
 \end{figure}
 
 Weiterer Beispiele für Skalarprodukte:
 \begin{enumerate}[label=\arabic*)]
 	\item $V = \mathbb{R}[X]^{< n} := \{\sum_{i=0}^{n-1}a_iX^i | a_i \in \mathbb{R}\}$\\
-	Wähle $x_1, \dots, x_n \in \mathbb{R}$ verschieden, ${<f, g>} := \sum_{i=1}^{n}f(x_i)g(x_i)$\\
+	Wähle $x_1, \dots, x_n \in \mathbb{R}$ verschieden, ${\skalar{f}{g}} := \sum_{i=1}^{n}f(x_i)g(x_i)$\\
 	(S1), (S2) $\checkmark$\\
-	(S3): ${<f, f>} = \sum_{i=1}^{n}f(x_i)^2 \geq 0$\\
+	(S3): ${\skalar{f}{f}} = \sum_{i=1}^{n}f(x_i)^2 \geq 0$\\
 	und $\sum_{i=1}^{n}f(x_i)^2 = 0 \Rightarrow \tn{ alle } f(x_i) = 0 \Rightarrow_{\tn{deg}f<n} f = 0$\\
 	Entsprechende Beispiele aus der Analysis:\\
 	$V = C[0,1] := \{f:[0,1] \longrightarrow \mathbb{R} \tn{ stetig}\}\\
-	{<f, g>} := \int_{0}^{1}f(x)g(x)dx$
-	\item $V = \mathbb{R}^n$, sei $A \in \tn{Mat}_{n\times n}(\mathbb{R})$ und setze ${<v, w>} := v^TAw = \sum_{i, j=1}^{n}a_{ij}v_iw_j$.\\
+	{\skalar{f}{g}} := \int_{0}^{1}f(x)g(x)dx$
+	\item $V = \mathbb{R}^n$, sei $A \in \tn{Mat}_{n\times n}(\mathbb{R})$ und setze ${\skalar{v}{w}} := v^TAw = \sum_{i, j=1}^{n}a_{ij}v_iw_j$.\\
 	(S1): $(\lambda v+\mu v')^TAw = \lambda v^TAw+\mu v'^TAw$\\
 	analog für $w$.\\
 	(S2)?: $w^TAv = v^TA^Tw = v^TAw$ f.a. $v, w \in V \Leftrightarrow A^T = A$ (da $e_i^TAe_j=a_{ij}$)\\
@@ -1628,43 +1637,43 @@ Weiterer Beispiele für Skalarprodukte:
 \end{enumerate}
 %----------------------------------Vorlesung 15----------------------------------
 \subsection*{Bemerkung}
-Ist $(V, <\cdot , \cdot>)$ euklidischer Vektorraum und $U \subseteq V$ ein Untervektorraum, so ist auch $<\cdot , \cdot>_U:UxU \to \mathbb R$ (Einschränkung) Skalarprodukt. \\
-Sei nun $(V, <\cdot , \cdot>)$ euklidischer VR und sei $U \subseteq V$ Untervektorraum.
+Ist $(V, \genskalar)$ euklidischer Vektorraum und $U \subseteq V$ ein Untervektorraum, so ist auch $\genskalar_U:UxU \to \mathbb R$ (Einschränkung) Skalarprodukt. \\
+Sei nun $(V, \genskalar)$ euklidischer VR und sei $U \subseteq V$ Untervektorraum.
 \subsection*{Definition 8.5.} Zu $v\in V$ heißt $v^*\in U$ Bestapproximation von V in U falls $||v-v^*||$ kleinstmöglich ist, d.h. $||v-v^*|| \leq ||v-u||$, $\forall u \in U$
 \subsection*{Proposition 8.6.}
-Es ist $v^* \in U$ Bestapproximation von v $\Leftrightarrow <v-v^* , u> = 0$, $\forall u \in U$. \\
+Es ist $v^* \in U$ Bestapproximation von v $\Leftrightarrow \skalar{v-v^*}{u} = 0$, $\forall u \in U$. \\
 Falls eine Bestapproximation existiert, so ist sie eindeutig.
 \subsection*{Bemerkung}
-Sei $u \in U$. $||v-v^*+u)||^2 = || v-v^*||^2-2<v-v^*, u> + ||u||^2$. \\
-Falls $<v-v^*, u> = 0$ folgt $||v-(v^*+u)|| \geq ||v-v^*||^2$. Also $||v-v^*|| \leq ||v-u'||$, $.\forall u'\in U$. \\
-Umgekehrt sei $v^*$ Bestapproximation $\Rightarrow ||v-(v^*+\lambda u)||^2 = ||v-v^*||^2-2\lambda<v-v^*,u> + \lambda^2||u||^2 \geq ||v-v^*||^2 \Rightarrow 2\lambda<v-v^*, u> \leq \lambda^2||u||^2$, $\forall \lambda \in \mathbb R_{>0} \Rightarrow <v-v^*, u> = 0$. \\
+Sei $u \in U$. $||v-v^*+u)||^2 = || v-v^*||^2-2\skalar{v-v^*}{u} + ||u||^2$. \\
+Falls $\skalar{v-v^*}{u} = 0$ folgt $||v-(v^*+u)|| \geq ||v-v^*||^2$. Also $||v-v^*|| \leq ||v-u'||$, $.\forall u'\in U$. \\
+Umgekehrt sei $v^*$ Bestapproximation $\Rightarrow ||v-(v^*+\lambda u)||^2 = ||v-v^*||^2-2\lambda\skalar{v-v^*}{u} + \lambda^2||u||^2 \geq ||v-v^*||^2 \Rightarrow 2\lambda\skalar{v-v^*}{u} \leq \lambda^2||u||^2$, $\forall \lambda \in \mathbb R_{>0} \Rightarrow \skalar{v-v^*}{u} = 0$. \\
 Außerdem $||v-(v^*+u)||^2 > ||v-v^*||^2$ falls $u \neq 0$ $\Rightarrow$ Eindeutigkeit der Bestapproximation
 \subsection*{Definition 8.7} 
-Sei $(V, <\cdot , \cdot>)$ euklidischer Vektorraum. Eine Basis $S \subseteq V$ heißt Orthonormalbasis falls $<e, f> = \twopartdef{1}{\tn{falls }e = f}{0}{\tn{sonst}}$ für $e,f \in S$. \\
-Im Fall $S= \{v_1,...,v_n\}$ also $<v_i, v_j> = \delta_{ij} = \twopartdef{1}{\tn{falls } i=j}{0}{\tn{sonst}}$.
+Sei $(V, \genskalar)$ euklidischer Vektorraum. Eine Basis $S \subseteq V$ heißt Orthonormalbasis falls $\skalar{e}{f} = \twopartdef{1}{\tn{falls }e = f}{0}{\tn{sonst}}$ für $e,f \in S$. \\
+Im Fall $S= \{v_1,...,v_n\}$ also $\skalar{v_i}{v_j} = \delta_{ij} = \twopartdef{1}{\tn{falls } i=j}{0}{\tn{sonst}}$.
 \subsection*{Bemerkung}
 Angenommen U (wie oben) hat ONB $\{u_1,...,u_k\}$, $k = dim U$. \\
-Dann setze $v^*:= \sum_{i=1}^k<v,u_i>u_i$. \\
+Dann setze $v^*:= \sum_{i=1}^k\skalar{v}{u_i}u_i$. \\
 Dies ist Bestapproximation nach Proposition 8.6. \\
-Denn: Sei j beliebig $\Rightarrow <v^*, u_j> = \sum_{i=1}^k<v,u_i><u_i, u_j> = <v, u_j> \Rightarrow <v-v^*, u_j> = 0$.
-Somit $<v-v^*, u> = 0$, $\forall u \in U$. \\
+Denn: Sei j beliebig $\Rightarrow \skalar{v^*}{u_j} = \sum_{i=1}^k\skalar{v}{u_i}\skalar{u_i}{u_j} = \skalar{v}{u_j} \Rightarrow \skalar{v-v^*}{u_j} = 0$.
+Somit $\skalar{v-v^*}{u} = 0$, $\forall u \in U$. \\
 Diese Bemerkung ist die Grundlage für folgendes wichtiges Resultat.
 \subsection*{Satz 8.8}
-Sei $(V, <\cdot , \cdot >)$ euklidischer Vektorraum und $v_1,..., v_n \in V$ linear unabhängig. Dann existiert $u_1,...,u_n \in V$ mit $<u_i,u_j> = \delta_{ij}$ und $span \{u_1,...,u_j\} = span \{v_1,..., v_j\}$, $\forall j$. \\
+Sei $(V, \genskalar)$ euklidischer Vektorraum und $v_1,..., v_n \in V$ linear unabhängig. Dann existiert $u_1,...,u_n \in V$ mit $\skalar{u_i}{u_j} = \delta_{ij}$ und $span \{u_1,...,u_j\} = span \{v_1,..., v_j\}$, $\forall j$. \\
 Insbesondere hat jeder endlich-dim. euklidischer VR eine Orthonormalbasis.
 \subsection*{Bemerkung}
 "Gram-Schmidt'sches Orthonormalisierungsverfahren" \\
 Induktion/n. $n=1$: $u_1 := \frac{v_1}{||v_1||}$ \\
 $n \leadsto n+1$: Sei $u_1,..., u_n$ ONB von $U:=span\{v_1,...,v_n\}$. \\
-Dann ist $v_{n+1} \notin U$. Betrachte $v^*_{n+1} := \sum_{i=1}^n <v_{n+1}, u_i>u_i$ Bestapproximation in U, sei $v_{n+1}' := v_{n+1} - v^*_{n+1}$, $u_{n+1} := \frac{v_{n+1}}{||v_{n+1}'}$. \\
-Dann gilt $<u_{n+1}, u_j> = 0$, $\forall j \leq n$, \\
+Dann ist $v_{n+1} \notin U$. Betrachte $v^*_{n+1} := \sum_{i=1}^n \skalar{v_{n+1}}{u_i}u_i$ Bestapproximation in U, sei $v_{n+1}' := v_{n+1} - v^*_{n+1}$, $u_{n+1} := \frac{v_{n+1}}{||v_{n+1}'||}$. \\
+Dann gilt $\skalar{u_{n+1}}{u_j} = 0$, $\forall j \leq n$, \\
 sowie $span \{u_1,...,u_{n+1}\} = span \{v_1,...,v_{n+1}\}$
 \subsection*{Definition 8.9}
-Zu  $(V, <\cdot , \cdot >)$ euklidischer Vektorraum und $U \subseteq V$ UVR sei $U^\perp := \{v\in V| <v,u>=0, \forall u\in U\}$ Orthogonalraum (ist auch UVR). Also $v^*\in U$ Bestapproximation $\Leftrightarrow v-v^* \in U^\perp$. \\
-Sei nun U endlich-dim. mit ONB $u_1,...,u_k$ und betrachte $p:V\to V$, $v \mapsto v^*:= \sum_{i=1}^k<v, u_i>u_i \Rightarrow p\in EndV$. Es gilt $p^2=p$, $imp = U$, $v-p(v)\in U^\perp$ "Orthogonalprojektion".
+Zu  $(V, \genskalar)$ euklidischer Vektorraum und $U \subseteq V$ UVR sei $U^\perp := \{v\in V| \skalar{v}{u}=0, \forall u\in U\}$ Orthogonalraum (ist auch UVR). Also $v^*\in U$ Bestapproximation $\Leftrightarrow v-v^* \in U^\perp$. \\
+Sei nun U endlich-dim. mit ONB $u_1,...,u_k$ und betrachte $p:V\to V$, $v \mapsto v^*:= \sum_{i=1}^k\skalar{v}{u_i}u_i \Rightarrow p\in EndV$. Es gilt $p^2=p$, $imp = U$, $v-p(v)\in U^\perp$ "Orthogonalprojektion".
 \subsection*{Bemerkung}
 $ker p = U^\perp$. Da: $"\subseteq" v\in kerp \Rightarrow v=v-p(v)\in U^\perp$ \\
-$"\supseteq" v \in U^\perp \Rightarrow <v, u_i> = 0\forall i \Rightarrow p(v)=0$.
+$"\supseteq" v \in U^\perp \Rightarrow \skalar{v}{u_i} = 0\forall i \Rightarrow p(v)=0$.
 \subsection*{Proposition 8.10.}
 Ist U endlich-dim. so $V=U\oplus U^\perp$.
 Ist auch V endlich-dim. so $U = (U^\perp)^\perp$.
