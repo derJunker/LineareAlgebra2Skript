@@ -103,6 +103,14 @@
 \newcommand{\genskalar}{
 	\skalar{\cdot }{\cdot }
 }
+% Befehl für skalarprodukt mit 2 mal dem Gleichen Komponenten
+\newcommand{\eskalar}[1]{
+	\skalar{#1}{#1}
+}
+
+% $\Leftrightarrow$ wird zu \gdw
+\newcommand{\gdw}{\Leftrightarrow}
+
 % Abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
 %-----------------------------ende commands definitionen-----------------------------
@@ -1682,4 +1690,51 @@ Sei $p\in EndV$ Orthogonalprojektion auf U, wie oben $\Rightarrow p^2=p \Rightar
 Sei $dimV = n \Rightarrow dim U^\perp = n - dim U$.
 Da stets U $\subseteq (U^\perp)^\perp$ gilt (trivial) folgt $U = (U^\perp)^\perp = n- dim U^\perp = n - (n- dimU) = dim U$ 
 %----------------------------------Vorlesung 16----------------------------------
+\section{Selbstadjungierte Endomorphismen}
+Für die Theorie der Endomorphismen von euklidischen VRen benötigen wir auch Skalarprodukte über $\mathbb C$. \\
+Für $x,y\in \mathbb C$ definiere $\skalar{x}{y}:= \sum_{i=0}^{n}x_i\bar{y_i}$ Standardskalarprodukt. \\
+Dann $\skalar{x}{x} = \sum_{i=0}^{n}|x_i|^2$ und $\norm{x} := \sqrt{\skalar{x}{x}}$ wie vorher.
+\subsection*{Definition 9.1.}
+Sein V ein komplexer VR. Eine Abbildung $\genskalar:VxV\to \mathbb C$ heißt Skalarprodukt falls gilt: \\
+\begin{enumerate}[start=1,label={(\bfseries S\arabic*)':}]
+	\item $\skalar{\lambda v+\mu v'}{w} = \lambda\skalar{v}{w} + \mu \skalar{v'}{w}$ \\
+ 	$\skalar{v}{\lambda w+\mu w'} = \bar\lambda\skalar{v}{w} + \bar\mu\skalar{v}{w'}$ (sesquilinear)
+	\item $\skalar{w}{v}=\overline{\skalar{v}{w}}$ (konjugiert symmetrisch)
+	\item $\skalar{v}{v} \geq 0$ und $\skalar{v}{v} = 0 \gdw v = 0$ (positiv definit)
+\end{enumerate}
+Man nennt $(V,\genskalar)$ einen unitären VR.
+\subsection*{Bemerkung}
+\begin{enumerate}
+	\item Linearität in 1. Komponente + (S2)' $\Rightarrow$ (S1)'
+	\item $\skalar{v+\lambda w}{v+\lambda w} = \skalar{v}{v} + \lambda\skalar{w}{v} \bar\lambda\skalar{v}{w} + \skalar{w}{w} = \skalar{v}{v} + 2Re(\bar\lambda\skalar{v}{w})+|\lambda|^2\skalar{w}{w}$
+	Es folgt wie vorher die Cauchy-Schwarz'sche Ungleichung:
+		$$0 \leq |\lambda|^2 + 2Re\bar\lambda\frac{\skalar{v}{w}}{\skalar{w}{w}} + \frac{\skalar{v}{v}}{\skalar{w}{w}} = \left( \lambda + \frac{\skalar{v}{w}}{\skalar{w}{w}}\right)\left( \bar\lambda + \frac{\overline{\skalar{v}{w}}}{\skalar{w}{w}}\right) - \left| \frac{\skalar{v}{w}}{\skalar{w}{w}}\right|^2 + \frac{\skalar{v}{v}}{\skalar{w}{w}}\tn{, } \forall  \lambda\in\mathbb C\tn{.}$$
+		$$\Rightarrow \left| \frac{\skalar{v}{w}}{\skalar{w}{w}}\right|^2 \leq \frac{\skalar{v}{v}}{\skalar{w}{w}}
+		\Rightarrow |\skalar{v}{w}|^2 \leq \eskalar{v} \eskalar{w} \tn .$$
+	\item Charakterisierung der Bestapproximation $v^*$ von v in U wie vorher via $v-v^*\perp u$, $\forall u\in U$. \\
+	(Ist $v^*$ Bestapproximation $\Rightarrow 2Re \bar\lambda\skalar{v-v^*}{u} \leq |\lambda|^2 \norm{u}^2$, $\forall \lambda\in\mathbb C$ wähle $\lambda := \frac{\skalar{v-v^*}{u}}{|\skalar{v-v^*}{u}|}\cdot\mu$ mit $\mu > 0$.... $\Rightarrow |\skalar{v-v^*}{u}|= 0$.)
+	\item Ist $u_1,...,u_k\in U$ ONB, so ist $v^*=\sum_{i=1}^{k}\skalar{v_i}{u_i}u_i$ Bestapprox. \\
+	Es folgt Gram-Schmidt-Orthonormalisierung wie vorher.
+\end{enumerate}	
+\subsection*{Lemma 9.2.}
+Sei V ein endl.-dim. K-VR mit Skalarprodukt $(K=\mathbb R)$ oder $K=\mathbb C$. Zu $\varphi:V\to K$ linear existiert genau ein $y_\varphi\in V$ mit $\varphi \skalar{\cdot}{y-z}$, d.h. $\varphi = \skalar{x}{y_\varphi}$, $\forall x\in V$.
+\subsection*{Bemerkung}
+\subsubsection*{"Eindeutigkeit"}
+Gelte $\skalar{\cdot}{y} = \skalar{\cdot}{z} \Rightarrow \skalar{\cdot}{y-z}=0$, insbesondere $\eskalar{y-z}=0 \Rightarrow_{(S3)} y=z$.
+\subsubsection*{"Existenz"}
+Sei $(v_1,...v_n)$ eine ONB von V. Dann finde $y_\varphi=\sum_{i=1}^{n}\lambda_iv_i$ mit $\varphi(v_i)=\skalar{v_i}{y_\varphi} = \skalar{v_i}{\sum_{j=1}^{v_j}} = \sum_{j=1}^{n} \lambda_j \skalar{v_i}{v_j} = \overline\lambda_i$, also setze $\lambda_i := \overline{\varphi(v_i)} \Rightarrow \varphi(\sum_{j=1}^{n}\lambda_iv_i) = \skalar{\sum_{i=1}^{n}\lambda_iv_i}{y_\varphi}$.
+\subsection*{Definition 9.3.}
+Sei $f:V\to W$ ein Homomorphismus zwischen VRen mit Skalarprodukt. Dann heißt $f^*:W\to V$ Homomorphismus zu f adjungiert, falls 
+$$\skalar{f(v)}{w} \skalar{v}{f^*(w)}\tn{, } \forall v\in V,w\in W\tn .$$
+D.h. $f^*(w)$ ist so, dass $V\to K,v\mapsto \skalar{f(v)}{w}$ von der Form $\skalar{\cdot}{f^*(w)}$ ist. \\
+Ist V endl.-dim. so existiert stets $f^*$.
+\subsection*{Definition 9.4.}
+Ein Endomorphismus $f:V\to V$ heißt selbstadjungiert falls $\skalar{f(v)}{w} = \skalar{v}{f(w)}$, $\forall v,w\in V$. \\
+Das heißt $f=f^*$. Speziell sei $f_A:K^n\to K^n,x\mapsto A\cdot x$ (Standardskalarprodukt), dann $\skalar{Ax}{y} = \skalar{x}{Ay} \gdw x^TA^T\overline y = (Ax)^T\overline y = x^T(\overline{Ay}) = x^T\overline A\overline y \gdw A^T = \overline A$ "Hermit'sche Matrix", symmetrische Matrix falls $K=\mathbb R$
+\subsection*{Satz 9.5.}
+Jeder EW eines selbstadjungierten Endomorphismus ist reel.
+\subsubsection*{Beweis}
+Sei $0\neq v\in V$ ein EV zum EW $\lambda$ von $f:V\to V$.
+$$\Rightarrow \lambda \eskalar{v} = \skalar{\lambda v}{v} = \skalar{f(v)}{v} = \skalar{v}{f(v)} = \skalar{v}{\lambda v} = \overline\lambda\eskalar{v} \Rightarrow_{\eskalar{v}\neq 0} \lambda = \overline\lambda$$
+%----------------------------------Vorlesung 17----------------------------------
 \end{document}
