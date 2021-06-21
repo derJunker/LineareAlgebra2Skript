@@ -113,6 +113,9 @@
 
 % Abkürzung von \textnormal
 \newcommand{\tn}[1]{\textnormal {#1}}
+
+% Command, um Text leicht transparent zu machen (für Notizen o.Ä.)
+\newcommand{\transp}[2][50]{\color{black!#1}#2}
 %-----------------------------ende commands definitionen-----------------------------
 
 \begin{document}
@@ -1730,11 +1733,75 @@ D.h. $f^*(w)$ ist so, dass $V\to K,v\mapsto \skalar{f(v)}{w}$ von der Form $\ska
 Ist V endl.-dim. so existiert stets $f^*$.
 \subsection*{Definition 9.4.}
 Ein Endomorphismus $f:V\to V$ heißt selbstadjungiert falls $\skalar{f(v)}{w} = \skalar{v}{f(w)}$, $\forall v,w\in V$. \\
-Das heißt $f=f^*$. Speziell sei $f_A:K^n\to K^n,x\mapsto A\cdot x$ (Standardskalarprodukt), dann $\skalar{Ax}{y} = \skalar{x}{Ay} \gdw x^TA^T\overline y = (Ax)^T\overline y = x^T(\overline{Ay}) = x^T\overline A\overline y \gdw A^T = \overline A$ "Hermit'sche Matrix", symmetrische Matrix falls $K=\mathbb R$
+Das heißt $f=f^*$. Speziell sei $f_A:K^n\to K^n,x\mapsto A\cdot x$ (Standardskalarprodukt), dann $\skalar{Ax}{y} = \skalar{x}{Ay} \gdw x^TA^T\overline y = (Ax)^T\overline y = x^T(\overline{Ay}) = x^T\overline A\overline y \gdw A^T = \overline A$ "Hermite'sche Matrix", symmetrische Matrix falls $K=\mathbb R$
 \subsection*{Satz 9.5.}
-Jeder EW eines selbstadjungierten Endomorphismus ist reel.
+Jeder EW eines selbstadjungierten Endomorphismus ist reell.
 \subsubsection*{Beweis}
 Sei $0\neq v\in V$ ein EV zum EW $\lambda$ von $f:V\to V$.
 $$\Rightarrow \lambda \eskalar{v} = \skalar{\lambda v}{v} = \skalar{f(v)}{v} = \skalar{v}{f(v)} = \skalar{v}{\lambda v} = \overline\lambda\eskalar{v} \Rightarrow_{\eskalar{v}\neq 0} \lambda = \overline\lambda$$
 %----------------------------------Vorlesung 17----------------------------------
+Ziel: Jeder selbstadjungierte Endomorphismus ist diagonalisierbar ( via ONB).\\
+Bezeichnung: $\left. \begin{array}{l}
+	$Euklidischer VR über $\mathbb{R}\\
+	$Unitärer VR über $\mathbb{C}\\
+\end{array}\right\}$ "VR mit Skalarprodukt" über $K=\mathbb{R}\tn{ oder } \mathbb{C}$.\\
+
+\subsection*{Lemma 9.6.}
+Sei $V$ VR mit Skalarprodukt und $f \in \tn{End}(V)$ selbstadjungiert. Dann sind EVen zu verschiedenen EWen orthogonal.
+\subsubsection*{Beweis:}
+Sei $f(v)=\lambda v, f(w) = \mu w$ mit $v, w\neq 0, \lambda \neq \mu$\\
+$\Rightarrow_{\tn{Satz 9.5.}} \lambda, \mu\in\mathbb{R}.$
+$\transp{\lambda\skalar{v}{w} = \skalar{\lambda v}{w} = }$ $\skalar{f(v)}{w} = \skalar{v}{f(w)} \transp{= \skalar{v}{\mu w} = \mu \skalar{v}{w}}$\\
+$\Rightarrow_{\lambda \neq \mu} \skalar{v}{w} = 0$. $\Box$\\\\
+Wie sieht die Matrix von $f:V\longrightarrow W$ bezüglich ONBen aus?\\
+Seien $\mathcal{B}=(v_1, \dots, v_n) \tn{ und } \mathcal{C} = (w_1, \dots, w_n)$ ONBen von $V, W$.\\
+$\Rightarrow$ Koordinaten-Isomorphismus $\Phi^{-1}:W\longrightarrow K^m$ ist $w\longmapsto\underbrace{(\skalar{w}{w_i})_i}_{\transp{\skalar{\sum_{j=1}^{n}\lambda_jw_j}{w_i} = \lambda_i}}$\\
+$\Rightarrow A = (a_{ij}) = {_{\mathcal{B}}}M_{\mathcal{C}}(f)$ mit $a_{ij}=\skalar{f(v_j)}{w_i}$.\\
+Ist $f\in\tn{End}(V)$ selbstadjungiert, so ist $a_{ij} = \skalar{f(v_j)}{v_i} = \skalar{v_j}{f(v_i)} = \overline{a_{ji}}$,\\
+d.h. $A = (a_{ij}) = {_\mathcal{B}}M_{\mathcal{B}}(f)$ ist Hermite'sch.
+\subsection*{Proposition 9.7.}
+Ist dim$V$ endlich, so besitzt jeder selbstadjungierte Endomorphismus $f\in\tn{End}(V)$ einen reellen EW.
+\subsubsection*{Beweis:}
+Sei $\mathcal{B}$ ONB von $V$ und $A:={_{\mathcal{B}}}M_{\mathcal{B}}(f)\in \tn{Mat}_{n \times n}(K)\\
+\Rightarrow A \tn{ Hermite'sch und } p_A\in \mathbb{C}[X] \tn{ hat eine Nullstelle } \lambda \in \mathbb{C}$\\
+(d.h. $f_A:\mathbb{C}^n\longrightarrow\mathbb{C}^n \tn{ selbstadjungiert, hat EV in } \mathbb{C}^n$).\\
+$\Rightarrow_{\tn{Satz 9.5.}} \lambda \in \mathbb{R}$\\
+$\Rightarrow p_A\in K[X] \tn{ hat Nullstelle in } \mathbb{R}$
+$$\tn{d.h. } f_A:\mathbb{R}^n\longrightarrow\mathbb{R}^n \tn{ hat EV in } \mathbb{R}^n, \tn{ falls } K=\mathbb{R}. \Box$$
+\subsection*{Satz 9.8.}
+Sei $V$ ein endlich-dimensionaler VR mit Skalarprodukt und sei $f\in \tn{End}(V)$ selbstadjungiert. Dann existiert ONB $\mathcal{B}$ von $V$ mit ${_{\mathcal{B}}}M_{\mathcal{B}}(f)$ reelle Diagonalmatrix.
+\subsubsection*{Beweis:}
+Induktion/dim$V$. Nach Prop. 9.7. existiert EW $\lambda \in \mathbb{R}$ von $f$.\\
+Sei $0\neq U:=\tn{Eig}(f, \lambda)$ und wähle ONB $(u_1, \dots, u_k)$ von $U$\\
+$\Rightarrow f(U) \subseteq U.$ Zeige $f(U^{\perp}) \subseteq U^\perp.$ Sei $w \in U^\perp, u\in U$\\
+$\Rightarrow \skalar{u}{f(w)} =_{\transp{f \tn{ selbstadj.}}} \skalar{\underbrace{f(u)}_{\in U}}{w} = 0.$\\
+Betrachte $g:=f|_{U^\perp} \in \tn{End}(U^\perp)$, auch selbstadjungiert.\\
+$\Rightarrow_{\tn{IV.}} \tn{ existiert ONB} (u_{k+1}, \dots, u_n) \tn{ von } U^\perp$ s. d. g reell diagonalisiert.\\
+$\Rightarrow \mathcal{B}:=(u_1, \dots, u_m) \tn{ ONB von } U \oplus U^\perp = V \tn{ und } {_{\mathcal{B}}}M_{\mathcal{B}}(f) = \left(\begin{matrix}
+	\lambda & & & & & \\
+	 & \ddots & & & & \\
+	 & & \lambda & & & \\
+	 & & & \lambda_{k+1} & & \\
+	 & & & & \ddots & \\
+	 & & & & & \lambda_n\\
+\end{matrix}\right). \Box$
+\subsection*{Definition 9.9.}
+Eine Matrix $\begin{matrix}O\\U\end{matrix} \in \tn{Mat}_{n \times n}\vecTwo{\mathbb{R}}{\mathbb{C}}$ heißt $\begin{matrix}\tn{\textbf{orthogonal}}\\\tn{\textbf{unitär}}\end{matrix}$ falls $O^TO=E$ bzw. $U^*U=E$, wobei $U^*:= \overline{U}^T$.
+\subsection*{Corollar 9.10.}
+Jede $\begin{matrix}\tn{symmetrische}\\\tn{Hermite'sche}\end{matrix}$ Matrix $A \in \tn{Mat}_{n \times n}(K)$ hat eine $\begin{matrix}\tn{orthogonale}\\\tn{unitäre}\end{matrix}$ Matrix $\begin{matrix}O\\U\end{matrix}$ s.d. $\begin{matrix}O^TAO\\U^*AU\end{matrix}$ reelle Diagonalmatrix ist.
+\subsubsection*{Beweis:}
+\begin{tabbing}
+	\hspace{15pt}\=\hspace{45pt}\=\hspace{2cm}\= \kill
+	\>$K^n \xrightarrow{f_A}$ \>$K^n$\\
+	$\transp{f_O}$ $\tn{ }\Phi{_\mathcal B}$ \>$\uparrow$ \>$\uparrow \Phi_\mathcal B \transp{\downarrow f_O^{-1}}$\\
+	\>$K^n \xrightarrow{f_D}$ \>$K^n$
+\end{tabbing} wähle Spalten von $\begin{matrix}O\\U\end{matrix}$ als ONB $\mathcal{B}$ wie in Satz 9.8.\\
+$\Rightarrow O^{-1}AO = D, U^{-1}AU = D$\\[10pt]
+$\begin{matrix}e_i^TO^TOe_j = (Oe_i)^T(Oe_j) = S_{ij}\\e_i^TU^*Ue_j = (Ue_i)^*(Ue_j) = S_{ij}\end{matrix} \Rightarrow \begin{matrix}O^TO\\U^*U\end{matrix} = E. \Box$\newpage
+\textbf{Verfahren:}
+\begin{enumerate}[label=\arabic*)]
+	\item Die Eigenräume berechnen.
+	\item Jeweils ONB finden (falls dim Eig $> 1$).
+\end{enumerate}
+%----------------------------------Vorlesung 18----------------------------------
 \end{document}
