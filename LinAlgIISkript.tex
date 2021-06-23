@@ -1804,4 +1804,74 @@ $\begin{matrix}e_i^TO^TOe_j = (Oe_i)^T(Oe_j) = S_{ij}\\e_i^TU^*Ue_j = (Ue_i)^*(U
 	\item Jeweils ONB finden (falls dim Eig $> 1$).
 \end{enumerate}
 %----------------------------------Vorlesung 18----------------------------------
+\section*{§10 Isometrien und normale Endomorphismen}
+Erinnerung: Ein Skalarprodukt definiert geometrische Größen
+$\norm{v} = \skalar{v}{v}^{\frac{1}{2}}$(länge), $cos\angle(v,w) := \frac{\skalar{v}{w}}{\norm{v}\cdot \norm{w}}$(Winkel)$K = \mathbb{R}$.
+\subsection*{Definition 10.1}
+Eine lineare Abbildung $f: V \longrightarrow W$ zwischen VR mit Skalarprodukt heißt Isometrie, falls $\skalar{f(v)}{f(w)} = \skalar{v}{w} \forall v,w \in V$.\\
+\subsection*{Bemerkung}
+\begin{enumerate}[label = \alph*)]
+	\item Isometrien sind stets injektiv.
+	\item Isometrien erhalten Längen, Winkel, Orthogonalität
+	\item $V = W = \mathbb{R}^2: A = \left( \begin{matrix}
+		cos(\alpha) & -sin(\alpha) \\
+		sin(\alpha) & cos(\alpha) \\
+	\end{matrix}\right)$ Drehung um $\alpha$.\\
+	oder $A = \left( \begin{matrix}
+		cos(\alpha) & sin(\alpha) \\
+		sin(\alpha) & -cos(\alpha) \\
+	\end{matrix}\right)$ Achsenspiegelung.
+\end{enumerate}
+Ein System $S\subseteq V$ heißt Orthonormalsystem (ONS), falls $\skalar{v}{w} = \twopartdef{0}{\text{falls} v \neq w}{1}{\text{falls} v = w} (v,w\in S).$ D.h. ONB ist erzeugendes ONS.
+\subsection*{Lemma 10.2}
+Sei B ONB von $V$ und $f: V \longrightarrow W$ linear.\\
+Dann $f$ Isometrie $\Leftrightarrow f(B)$ ist ONS und $f$ injektiv.
+\subsubsection*{Beweis}
+$"\Rightarrow"$\\
+$\skalar{f(v)}{f(w)} =_{\text{f Iso.}} \skalar{v}{w} =_{\text{ONB}}  \twopartdef{0}{\text{falls} f(v) \neq f(w)}{0}{\text{falls} f(v) = f(w)}$(da $f$ injektiv).\\
+$"\Leftarrow"$\\
+Seien $v = \sum_{i}\lambda_i u_i, w= \sum_{j} \mu_j u_j$ mit $u_i, u_j \in B$\\
+$\Rightarrow \skalar{f(v)}{f(w)} = \sum_{i, j} \lambda_i\bar\mu_j \skalar{f(u_i)}{f(u_j)} =_{f(B)\text{ONS}, B \text{ONS}} \sum_{i,j}\lambda_i\bar\mu_j \skalar{u_i}{u_j}$
+\subsection*{Lemma 10.3}
+Sei $f: V \longrightarrow W$ mit adj. Abb. $f^* : W \longrightarrow V$. Dann $f$ Isometrie $\Leftrightarrow f^* \circ f = id_v$.
+\subsubsection*{Beweis}
+$\skalar{f^*(f(v))}{w} = \skalar{f(v)}{f(w)} \forall v,w \in V.$\\
+Seien $B, C$ ONB von $V, W$ (endlich-dim.) und $A:= {}_BM_C(f), A^* := {}_CM_B(f^*).$
+Dann $f$ Isometrie $\Leftrightarrow A^*A = E$.
+\subsection*{Bemerkung}
+Eine surjektive Isometrie $f: V \longrightarrow W$ ist ein VR-Isomorphismus.\\
+In dem Fall $B$ ONB $\Rightarrow f(B)$ONB.\\
+Falls $dimV = dimW < \infty$ ist jede Isometrie surjektiv.\\
+Für $f: V\longrightarrow V$ und ONB $B$ von $V$ ist dann $A := {}_BM_B(f) \begin{matrix}
+	\text{"orthogonal"} (K = \mathbb{R})\\
+	\text{"unitär"} (K = \mathbb{C})\\
+\end{matrix}$ denn $A^*A = E$.
+\subsection*{Definition 10.4}
+Sei V VR mit Skalarprodukt.\\
+$Iso(V) := \{f:V\longrightarrow V | f \text{surj. Isometrie}\}$ ist die Isometriegruppe von $(V, \skalar{\cdot}{\cdot})$.\\
+\subsection*{Bemerkung}
+Sind $f,g \in Iso(V)$, so auch $f\circ g, f^{-1} \in Iso(V)$.\\
+Speziell $(V = K^n)$ heißt\\
+$O(n) := \{O \in Mat_{n\times n}(\mathbb{R} | O^TO = E)\}$ orthogonale, \\
+$U(n) := \{U \in Mat_{n\times n}(\mathbb{C} | U^*U = E)\}$ unitäre Gruppe. ("Untergruppen" von $GL_n(K)$.)
+\subsection*{Bemerkung}
+\begin{enumerate}[label = \alph*)]
+	\item Ist $\lambda$ EW von $f \in Iso(V)$, so gilt $|\lambda| = 1$.
+	\item $detO = \pm 1 , |detU| = 1$ 
+\end{enumerate}
+(Eine Abbildung $f_O$ mit $detO = 1$ heißt "orientierungstreu").
+\subsection*{Beispiel}
+Was sind die Isometrien des $\mathbb{R}^3$?\\
+Sei $f\in Iso(\mathbb{R}^3) \Rightarrow p_f$(Grad 3) hat eine Nullstelle $\lambda_1$.\\
+Sei $u_1$ EV (mit $\norm{u_1} = 1$) zu $\lambda_1 \in  \{1, -1\}$ und ergänze zu ONB $B = (u_1, u_2, u_3)$\\
+$\Rightarrow U:= span\{u_2,u_3\}$ erfüllt $f(U) = U$, denn $U = span\{u_1\}^{\perp}$ und $f$ erhält Orthogonalräume von f-inv. Unterräumen.\\
+$\Rightarrow {}_BM_B(f) = \left(\begin{BMAT}(e)[2pt,3cm,3cm]{c.ccc}{c.ccc}
+	\lambda_1 & 0 & & 0 \\
+	0 & & & \\
+	& & A^{'} & \\
+	0 & & & 
+\end{BMAT}\right) =: A$ und $f|_U \in Iso(U), det(A) = \lambda_i det(A^{'})$\\
+Falls $det(A^{'}) = -1 \leadsto f|_U$ Achsenspiegelung $\Rightarrow$ zwei EW $1, -1,$kann $u_2, u_3$ als EV wählen.
+Falls $det(A^{'}) = 1 \leadsto f|_U$ Drehung.\\
+Die orientierungstreuen Isometrien sind Drehungen um eine Achse.
 \end{document}
