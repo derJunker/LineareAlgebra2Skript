@@ -63,6 +63,13 @@
 	\end{matrix} 
 	\right)
 }
+\newcommand{\threeXthreeNoBracket}[9]{
+	\begin{matrix}
+		#1 & #2 & #3\\
+		#4 & #5 & #6\\
+		#7 & #8 & #9
+	\end{matrix}
+}
 \newcommand{\threeXthree}[9] {
 	\left( 
 	\begin{matrix}
@@ -1874,4 +1881,61 @@ $\Rightarrow {}_BM_B(f) = \left(\begin{BMAT}(e)[2pt,3cm,3cm]{c.ccc}{c.ccc}
 Falls $det(A^{'}) = -1 \leadsto f|_U$ Achsenspiegelung $\Rightarrow$ zwei EW $1, -1,$kann $u_2, u_3$ als EV wählen.
 Falls $det(A^{'}) = 1 \leadsto f|_U$ Drehung.\\
 Die orientierungstreuen Isometrien sind Drehungen um eine Achse.
+%----------------------------------Vorlesung 19----------------------------------
+\subsection*{Definition 10.5.}
+Ein Endomorphismus $f:V\to V$ heißt normal falls $f^*f = ff^*$ gilt, d.h. $\skalar{f^*(f(v))}{w} = \skalar{f(f^*(v))}{w}$, $\forall v,w\in V$. \\
+Sei B ONB von V und $A:={}_BM_B(f)$, $A^*={}_BM_B(f^*)$, so bedeutet dies $A^*A=AA^*$ "normale" Matrix.
+\subsection*{Bemerkung}
+\begin{enumerate}[label=\alph*)]
+	\item Jeder selbsadjungierter oder orthogonale unitäre Endomorphismus normal
+	\item Ist f normal, so gilt $kerf^*=ker f$.
+\end{enumerate}
+\subsection*{Lemma 10.6.}
+Sei $f\in End(V)$ normal.
+\begin{enumerate}[label=\alph*)]
+	\item Für $\lambda\in K$ gilt $Eig(f,\lambda) Eig(f^*,\overline\lambda)$
+	\item Sind $\lambda\neq\mu$ EWe mit EVen v,w, so gilt $\skalar{v}{w}=0$.
+\end{enumerate}
+\subsubsection*{Beweis}
+\begin{enumerate}[label=\alph*)]
+	\item Es gilt $(f-\lambda id)^*=f^*-\overline\lambda\cdot id$ und auch $f-\lambda\cdot id$ ist normal $\Rightarrow ker(f-\lambda\cdot id) = ker(f^*-\overline\lambda\cdot id)$.
+	\item $\skalar{f(v)}{w} = \skalar{\lambda v}{w} = \lambda\skalar{v}{w}$ \\
+	$\skalar{f(v)}{w} = \skalar{v}{f^*(w)} = \skalar{v}{\overline\mu w} = \mu\skalar{v}{w} \Rightarrow_{\lambda + \mu} \skalar{v}{w} = 0$
+\end{enumerate}
+\subsection*{Satz 10.7. (Spektralsatz)}
+$K=\mathbb C$. \\
+$f\in End(V)$ normal $\gdw$ es existiert ONB aus EVen Matrixfrom: $A \in Mat_{nxn}(\mathbb C)$ normal $\gdw U^*AU = D$ diagonal für U unitär (sage: A ist "unitär diagonalisierbar").
+\subsubsection*{Beweis}
+$"\Leftarrow"$ \\
+Sei $(v_1,...,v_n)$ ONB mit $f(v_i) = \lambda v_i$ $\Rightarrow f^*(v_i) = \overline\lambda_iv_i \Rightarrow f^*(f(v_i)) = f^*(\lambda_iv_i) = \overline\lambda_i\lambda_iv_i = \lambda_i\overline{\lambda_i}v_i = f(\overline\lambda_iv_i) = f(f^*(v_i)) \Rightarrow f^*f = ff^*$. \\
+$"\Rightarrow"$ \\
+Vollständige Induktion $n:=dimV$. n=1 klar. \\
+$n-1 \leadsto n$: Sei $\lambda$ ein EW von f (existiert da K=$\mathbb C$) und sei w EV zu $\lambda$ mit $\norm w = 1$. \\
+Sei $U:=span\{w\}^\perp = \{u\in V|\skalar{u}{w}=0\}$. \\
+Zeige $f(U)\subseteq U$: Sei $u\in U \Rightarrow \skalar{f(u)}{w} = \skalar{u}{f^{*}(w)} = \skalar{u}{\overline\lambda w} = 0$. \\
+Zeige $f^*(U) \subseteq U$: $\skalar{f^*(u)}{w} = \skalar{u}{f(w)} = \skalar{u}{\lambda w} = \overline\lambda\skalar{u}{w} = 0$ \\
+Sei $g:= f|_U \in End(U)$ und $g^*=f^*|_U \Rightarrow g$ normal, $dim U = n-1 \Rightarrow$ es existiert ONB $w_2,..,w_n$ aus EVen, setze $B:=(w,w_2,...,w_n)$ \\ \\
+Wie sehen die Isometrien ("orthogonale Abb.") von euklidischen VR (also K= $\mathbb R$) aus?
+\subsection*{Lemma 10.8.}
+Sei V ein endl.-dim. $\mathbb R$-VR (kein Skalarprodukt) und $f\in End(V)$. Dann existiert $U\subseteq V$ mit $1\leq dim U \leq 2$ und $f(U)\subseteq U$.
+\subsubsection*{Beweis}
+Wähle Basis B und betrachte $A:= {}_BM_B(f) \in Mat_{nxn}(\mathbb C)$ $\Rightarrow \exists$ EW $\lambda = \alpha+i\beta \in mathbb C$ und EV v $v= x+ iy \in \mathbb C^n$ mit $\alpha, \beta \in \mathbb R$ und $x,y \in \mathbb R^n$. \\
+Also $A\cdot v = \lambda v$ und $A\cdot\overline v = \overline{A\cdot v} = \overline \lambda \cdot \overline v$. \\
+Behauptung $Ax,Ay\in span\{x,y\} (\Rightarrow U:= \Phi_B(span\{x,y\}\checkmark)$ \\
+$$Ax = \frac{1}{2}(Av+A\overline v) = \frac{1}{2}(\lambda v + \overline\lambda \overline v) = Re(\lambda v) = \alpha x - \beta y$$ \\
+$$Ay = \frac{1}{2i}(Av+A\overline v) = \frac{1}{2i}(\lambda v + \overline\lambda \overline v) = Im(\lambda v) = \alpha y - \beta x$$.
+\subsection*{Satz 10.9.}
+Sei V endl.-dim. euklidischer VR und $f:V\to V$ Isometrie.
+Dann existiert ONB B von V mit $${}_BM_B(f)= \threeXthree{\threeXthreeNoBracket{1}{ }{ }{ }{\ddots}{ }{ }{ }{1}}{ }{ }{ }{\threeXthreeNoBracket{-1}{ }{ }{ }{\ddots}{ }{ }{ }{-1}}{ }{ }{ }{\threeXthreeNoBracket{A_1}{ }{ }{ }{\ddots}{ }{ }{ }{A_t}}$$ wobei $A_i$ 2x2 Drehmatrizen.
+\subsubsection*{Beweis} 
+Per Induktion über $dimV$. $n=0,1\checkmark$\\
+$n-2,n-1\leadsto n$. Nach lemma 10.8 existiert $U\subseteq V$, $1\leq dimU\leq 2$ mit $f(U) = U$ (f-injektiv) \\
+Behauptung $f(U^\perp) \subseteq U^\perp$. Sei $w\in U\perp, u\in U \Rightarrow u=f(v)$, $v\in U \Rightarrow \skalar{f(w)}{u} = \skalar{f(w)}{f(v)} = \skalar{w}{v} = 0$.\\
+Wende IV an auf $g:=f|_{U^\perp}:U^\perp \to U^\perp$ Isometrie. \\
+Bleibt $f|_U:U\to U$ Isometrie zu beobachten.
+\begin{itemize}
+	\item $dimU =1$: Matrix ist (1) oder (-1)
+	\item $dimU =2$: Spiegelung $\twoXtwo{1}{ }{ }{-1}$ oder Drehung $\twoXtwo{cos\alpha}{-sin\alpha}{sin\alpha}{cos\alpha}$
+\end{itemize}
+%----------------------------------Vorlesung 20----------------------------------
 \end{document}
