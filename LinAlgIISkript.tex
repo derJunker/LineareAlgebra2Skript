@@ -1811,9 +1811,9 @@ $\begin{matrix}e_i^TO^TOe_j = (Oe_i)^T(Oe_j) = S_{ij}\\e_i^TU^*Ue_j = (Ue_i)^*(U
 	\item Jeweils ONB finden (falls dim Eig $> 1$).
 \end{enumerate}
 %----------------------------------Vorlesung 18----------------------------------
-\section*{§10 Isometrien und normale Endomorphismen}
+\section{Isometrien und normale Endomorphismen}
 Erinnerung: Ein Skalarprodukt definiert geometrische Größen
-$\norm{v} = \skalar{v}{v}^{\frac{1}{2}}$(länge), $cos\angle(v,w) := \frac{\skalar{v}{w}}{\norm{v}\cdot \norm{w}}$(Winkel)$K = \mathbb{R}$.
+$\norm{v} = \skalar{v}{v}^{\frac{1}{2}}$(Länge), $cos\angle(v,w) := \frac{\skalar{v}{w}}{\norm{v}\cdot \norm{w}}$(Winkel)$K = \mathbb{R}$.
 \subsection*{Definition 10.1}
 Eine lineare Abbildung $f: V \longrightarrow W$ zwischen VR mit Skalarprodukt heißt Isometrie, falls $\skalar{f(v)}{f(w)} = \skalar{v}{w} \forall v,w \in V$.\\
 \subsection*{Bemerkung}
@@ -1887,7 +1887,7 @@ Ein Endomorphismus $f:V\to V$ heißt normal falls $f^*f = ff^*$ gilt, d.h. $\ska
 Sei B ONB von V und $A:={}_BM_B(f)$, $A^*={}_BM_B(f^*)$, so bedeutet dies $A^*A=AA^*$ "normale" Matrix.
 \subsection*{Bemerkung}
 \begin{enumerate}[label=\alph*)]
-	\item Jeder selbsadjungierter oder orthogonale unitäre Endomorphismus normal
+	\item Jeder selbstadjungierter oder orthogonale unitäre Endomorphismus normal
 	\item Ist f normal, so gilt $kerf^*=ker f$.
 \end{enumerate}
 \subsection*{Lemma 10.6.}
@@ -1929,7 +1929,7 @@ Sei V endl.-dim. euklidischer VR und $f:V\to V$ Isometrie.
 Dann existiert ONB B von V mit $${}_BM_B(f)= \threeXthree{\threeXthreeNoBracket{1}{ }{ }{ }{\ddots}{ }{ }{ }{1}}{ }{ }{ }{\threeXthreeNoBracket{-1}{ }{ }{ }{\ddots}{ }{ }{ }{-1}}{ }{ }{ }{\threeXthreeNoBracket{A_1}{ }{ }{ }{\ddots}{ }{ }{ }{A_t}}$$ wobei $A_i$ 2x2 Drehmatrizen.
 \subsubsection*{Beweis} 
 Per Induktion über $dimV$. $n=0,1\checkmark$\\
-$n-2,n-1\leadsto n$. Nach lemma 10.8 existiert $U\subseteq V$, $1\leq dimU\leq 2$ mit $f(U) = U$ (f-injektiv) \\
+$n-2,n-1\leadsto n$. Nach Lemma 10.8 existiert $U\subseteq V$, $1\leq dimU\leq 2$ mit $f(U) = U$ (f-injektiv) \\
 Behauptung $f(U^\perp) \subseteq U^\perp$. Sei $w\in U\perp, u\in U \Rightarrow u=f(v)$, $v\in U \Rightarrow \skalar{f(w)}{u} = \skalar{f(w)}{f(v)} = \skalar{w}{v} = 0$.\\
 Wende IV an auf $g:=f|_{U^\perp}:U^\perp \to U^\perp$ Isometrie. \\
 Bleibt $f|_U:U\to U$ Isometrie zu beobachten.
@@ -1938,4 +1938,79 @@ Bleibt $f|_U:U\to U$ Isometrie zu beobachten.
 	\item $dimU =2$: Spiegelung $\twoXtwo{1}{ }{ }{-1}$ oder Drehung $\twoXtwo{cos\alpha}{-sin\alpha}{sin\alpha}{cos\alpha}$
 \end{itemize}
 %----------------------------------Vorlesung 20----------------------------------
+\section{Hauptachsentransformation}
+Sei $V$ ein $K$-Vektorraum.
+\subsection*{Definition 11.1.}
+Eine Abbildung $\varphi :V\times V \longrightarrow K$ heißt \textbf{Bilinearform} falls
+\begin{itemize}
+	\item $\varphi(\lambda v + \mu v', w) = \lambda \varphi(v, w) + \mu \varphi(v', w)$
+	\item $\varphi(v, \lambda w + \mu w') = \lambda \varphi(v, w) + \mu \varphi(v, w')$
+\end{itemize}
+$\forall v, v', w, w' \in V \tn{ und } \lambda, \mu \in K$.\\
+Sie ist $\begin{matrix}\tn{\textbf{symmetrisch} falls} \varphi(v, w) = \varphi(w, v)\\
+	\tn{\textbf{alternierend} falls} \varphi(v, v) = 0 (\Rightarrow \varphi(v, w) = -\varphi(w, v))
+\end{matrix} \forall v, w \in V$.\newpage
+Beispiele:
+\begin{itemize}
+	\item $V \tn{ euklidischer VR, } \varphi := \genskalar$ (symmetrisch)
+	\item $V = K^2, \varphi := det, \tn{ d.h. } \varphi (v, w) := det \twoXtwo{v_1}{w_1}{v_2}{w_2}$ (alternierend)
+\end{itemize}
+\subsection*{Definition 11.2.}
+Sei $V$ endlich-dimensionaler VR und $\mathcal{B} = (v_1, \dots, v_n)$ Basis. Zu $\varphi$ Bilinearform sei $G := (\varphi(v_i, v_j)) \in \tn{ Mat}_{n \times n}(K) \tn{\textbf{ Gram'sche Matrix}}$ zu $\varphi$.\\
+Für $v = \sum_{i=1}^{n}x_iv_i, w = \sum_{j=1}^{n}y_iv_i \in V$ ist dann $\varphi(v, w) = \sum_{i, j = 1}^{n}x_iy_j\varphi(v_i, v_j) =\\ (x_1 \cdots x_n) \cdot G \cdot \vecThree{y_1}{\vdots}{y_n}$, also $\varphi(\sum x_iv_i, \sum y_jv_j) = x^TGy. (\ast)$
+\subsection*{Proposition 11.3. (Basiswechsel)}
+Sei $\varphi : V\times V \longrightarrow K$ Bilinearform und seien $\mathcal{B}, \mathcal{C}$ Basen von $V$ mit Gram-Matrizen $G, H$ von $\varphi$.\\
+Dann gilt:
+$$H = S^TGS$$ mit $S := {_\mathcal{C}}M_{\mathcal{B}}(id) \in GL_n(K).$
+\subsubsection*{Beweis:}
+$\begin{matrix}
+	 & \Phi_{\mathcal{C}} & K^n\\
+	 & \swarrow\\
+	V & & \downarrow f_S\\
+	 & \nwarrow\\
+	 & \Phi_{\mathcal{B}} & K^n\\ 
+\end{matrix}$\\
+Sei $S = (s_{ij}), \mathcal{B} = (v_1, \dots, v_n), \mathcal{C} = (w_1, \dots, w_n)\\
+\Rightarrow_{\tn{Merksatz}} w_j = \sum_{i=1}^{n}s_{ij}v_i.$\\
+Damit gilt: $\varphi(w_i, w_j) = \varphi(\sum_{k=1}^{n}s_{ki}v_k, \sum_{l=1}^{n}s_{lj}v_l)\\
+= \sum_{k, l =1}^{n}s_{ki}\varphi(v_k, v_l)s_{lj} = (s_{1i}, \dots, s_{ni}) \cdot G \cdot \vecThree{s_{1j}}{\vdots}{s_{nj}}.$\\
+Das heißt $H = S^TGS.$\\
+Frage: Finde zu $\varphi$ möglichst einfache Matrix $G$.\\
+\begin{itemize}
+	\item $V$ euklidischer VR, $\mathcal{B} \tn{ ONB} \Rightarrow G = (\skalar{u_i}{u_j}) = E$
+	\item $V = K^2$, $\varphi =$ det, $\mathcal{B} = (e_1, e_2) \Rightarrow G = \twoXtwo{0}{1}{-1}{0}$
+\end{itemize}
+Bemerkung: $\varphi$ symmetrisch $\Leftrightarrow G$ symmetrisch.\\
+Ist nun $\varphi$ reell symmetrisch, so können wir Satz 9.8. benutzen.
+\subsection*{Satz 11.4. (Trägheitssatz von Sylvester)}
+Sei $n = \tn{ dim}V < \infty$ und sei $\varphi:V\times V \longrightarrow \mathbb{R}$ symmetrische Bilinearform.\\
+Dann existiert Basis $\mathcal{C} = (w_1, \dots, w_n)$ von $V$ s.d. $$H = (\varphi(w_i, w_j)) = \left(\begin{matrix}
+	1 & & & & & & \\
+	 & \ddots & & & & & \\
+	 & & 1 & & & & \\
+	 & & & -1 & & & \\
+	 & & & & \ddots & & \\
+	 & & & & & -1 & \\
+	 & & & & & & 0
+\end{matrix} \right)$$ mit s-vielen 1, t-vielen -1\\
+also $\varphi(\sum x_iw_i, \sum y_jw_j) = \sum_{i=1}^{s}x_iy_i - \sum_{i=s+1}^{s+t}x_iy_i.$\\
+Dabei sind $s, t$ eindeutig, $s+t$ "Rang", $s-t$ "Signatur".
+\subsubsection*{Beweis:}
+"Existenz": Zu $\mathcal{B} = (v_1, \dots, v_n)$ Basis von $V$ sei $G := (\varphi(v_i, v_j))$ reell symmetrisch $\Rightarrow_{\tn{Satz 9.8.}} \tn{ ex. } O \tn{ orthogonal mit } O^TGO \tn{ diagonal mit reellen EWen, o.E. } \lambda_1, \dots, \lambda_s > 0, \lambda_{s+1}, \dots, \lambda_{s+t} < 0.$\\
+Setze $S := O \cdot \tn{ diag}(|\lambda_1|^{-\frac{1}{2}}, \dots, |\lambda_{s+t}|^{-\frac{1}{2}}, 1, \dots, 1)$\\
+$\Rightarrow H := S^TGS$ ist wie gewünscht. $(w_j := \sum s_{ij}v_i)$\\
+"Eindeutigkeit": Sei $A_0 := {v\in V | \varphi(v, w) = 0 \forall w \in V}$ \textbf{Ausartungsraum} von $\varphi$.\\
+Zeige $V_0 := span\{w_{s+t+1}, \dots, w_{n}\} = A_0.$\\
+Seien $v, w \in V, v = \sum x_iw_i,  w = \sum y_jv_j.$\\
+\begin{itemize}
+	\item[$"\subseteq":$] $v\in V_0 \Rightarrow \varphi(v, w) =_{(\ast)} \underbrace{x^TH}_{=0}y = 0$
+	\item[$"\supseteq":$] $v \in A_0 \Rightarrow x_j = 0 \tn{ für } j \leq s+t, \tn{ da } 0 = \varphi(v, w_j) =_{\ast} x^THe_j = \pm x_j$\\
+	Also ist Rang $s+t = n - \tn{ dim}A_0$ eindeutig.
+\end{itemize}
+Sei $\mathcal{C'}$ weitere Sylvester-Basis mit $s', t'$ (zeige $s' = s$).\\
+Sei $V_+ := span\{w_1, \dots, w_s\}, V_- := span\{w_{s+1}, \dots, w_{s+t}\}$, entsprechen $V_+', V_-'$.\\
+Behauptung: $V_+\cap (V_-'\oplus A_0) = 0$. Sei $v = v_-'+v_0 \in V_+, \tn{ angenommen } v \neq 0$.\\
+$\Rightarrow 0 \neq \sum_{i=1}^{s}x_iw_i = \sum_{i=s+t}^{n}x_i'w_i' \Rightarrow \varphi(v, v) =_{\ast} \twopartdef{x^THx}{> 0}{x'^TH'x'}{\leq 0} \lightning$.\\
+Es flogt $\transp{s = }$ dim $V_+ \leq n - \tn{ dim}(V_-'\oplus A_0) \transp{ = t' + n - (t'+s')} = s'$.\\
+Analog folgt $s' \leq s$. 
 \end{document}
