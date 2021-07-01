@@ -2012,5 +2012,69 @@ Sei $V_+ := span\{w_1, \dots, w_s\}, V_- := span\{w_{s+1}, \dots, w_{s+t}\}$, en
 Behauptung: $V_+\cap (V_-'\oplus A_0) = 0$. Sei $v = v_-'+v_0 \in V_+, \tn{ angenommen } v \neq 0$.\\
 $\Rightarrow 0 \neq \sum_{i=1}^{s}x_iw_i = \sum_{i=s+t}^{n}x_i'w_i' \Rightarrow \varphi(v, v) =_{\ast} \twopartdef{x^THx}{> 0}{x'^TH'x'}{\leq 0} \lightning$.\\
 Es flogt $\transp{s = }$ dim $V_+ \leq n - \tn{ dim}(V_-'\oplus A_0) \transp{ = t' + n - (t'+s')} = s'$.\\
-Analog folgt $s' \leq s$. 
+Analog folgt $s' \leq s$.\newpage
+%----------------------------------Vorlesung 21----------------------------------
+\subsection*{Wiederholung + Bemerkung}
+Sei $V$ ein endlich dimensionaler K-Vektorraum.
+\begin{enumerate}[label=\alph*)]
+	\item Eine Bilinearform $\phi: V \times V \longrightarrow K $ wird bezüglich $B = (v_1, ... , v_n)$ durch Gram'sche Matrix $G = (\phi (v_i,v_j))$ beschrieben:\\
+	$\phi(\sum x_i v_i, \sum y_j v_j) = x^TGy$.\\
+	Zwei Gram'sche Matrizen $G, H$ von $\phi$ stehen im Zusammenhang\\
+	$H = S^TGS$ mit $S \in GL_n(K)$.
+	\item Ist $K = \mathbb{R}$ und $\phi$ symmetrisch ($\Leftrightarrow G$ symmetrisch), so existiert\\
+	$H = \left( \begin{matrix}
+		E_s \\
+		& -E_t \\
+		& & 0\\
+	\end{matrix} \right)$ mit $s,t$ eindeutig.
+	Folgerung:(Aus Beweis) $G$ und $H = S^TGS$ haben gleich viele positive und negative EWe.
+	\item Es existiert Verallgemeinerung für $K = \mathbb{C}$ und $\phi$ hermitesche Sesquilinearform.
+\end{enumerate}
+\subsection*{Definition 11.5}
+Sei $V$ ein K-VR. Eine Abbildung $q:V \longrightarrow K$ heißt quadratische Form, falls eine symmetrische Bilinearform $\phi: V \times V \longrightarrow K$ existiert mit $q(v) = \phi(v,v) \forall v \in V$.\\
+(also gilt $q(\lambda v)= \lambda^2\phi(v)\forall \lambda \in K$.)
+\subsection*{Bemerkung}
+Ist $2 \neq 0$ in $K$, so ist die symmetrische Bilinearform $\phi$ eindeutig bestimmt durch $q$ via $\phi(v,w) = \frac{1}{2}(q(v+w) - q(v) - q(w)).$
+\subsection*{Beispiel}
+\begin{enumerate}
+	\item Ist $q = \skalar{\cdot}{\cdot}$ Skalarprodukt, so ist $q(v)= \norm{v}^2$ quadratische Form, z.B. $q(x) = \sum_{i=1}^{n}x_i^2$ beim Standardskalarprodukt.
+	\item Ist $V$ endlich dimensional, Basis $B=(v_1,...,v_n), q:V\longrightarrow K$ quadratische Form und $\phi$ zugehörige Bilinearform mit Gram'scher Matrix $G$, so gilt \\
+	$q(\sum x_iv_i)=x^TGx = \sum g_{ii}x_i^2 + \sum_{i<j}2g_{ij}x_ix_j$.\\
+	speziell $V=K: q(x) =ax^2, (2 \neq 0) V= K^2: q\left(\begin{matrix}x \\y\\ \end{matrix} \right) = ax^2 + bxy + cy^2 ((xy)\left(\begin{matrix}
+		a & \frac{b}{2}\\
+		\frac{b}{2} & c \\
+	\end{matrix}\right) \left(\begin{matrix}
+		x \\ y \\ \end{matrix}\right)$\\
+	"homogenes quadratisches Polynom"$V = K^3 : q\left(\begin{matrix}x \\ y \\ z\end{matrix}\right) = ax^2 + bxy + cxz + dy^2 + eyz + fz^2, (a,b,c,d,e,f \in K)$
+	\item Quadratische Formen treten in vielen mathematischen Gebieten auf, z.B. in der Zahlentheorie."Für welche $n\in \mathbb{N}$ ist $n = x^2 + y^2$ ganzzahlig lösbar?"
+\end{enumerate}
+\subsection*{Satz 11.6 (Hauptachsentransformation)}
+Sei $V$ endlich dimensionaler $\mathbb{R} - VR$ und $q: V\longrightarrow \mathbb{R}$ quadratische Form.\\
+Dann existiert Basis $C = (w_1,...,w_n)$ von $V$, sodass gilt \\
+$q(\sum_{i=1}^{n}x_iw_i) = x_1^2 + ... + x_s^2 - x_{s+1}^2 - ... - x_{s+t}^2$(dabei sind $s,t$ eindeutig).
+\subsubsection*{Beweis}
+Sei $ \phi$ symmetrische Bilinearform zu $q \Rightarrow_{\text{Satz 11.4}}$ existiert Basis $C$ mit $\phi(\sum x_iw_i, \sum y_jw_j) = \sum_{i=1}^{s}x_iy_i - \sum_{i=s+1}^{s+t}x_iy_i$.
+\subsection*{Beispiel}
+$q : \mathbb{R}^2 \longrightarrow \mathbb{R}, q(x) := ax_1^2 + 2bx_1x_2 + ax_2^2 = x^T \underbrace{\left(\begin{matrix}
+		a & b \\
+		c & d \\
+	\end{matrix}\right)}_{=: G}x$ \\
+beschreibt "Kurve" $C := \{ x \in \mathbb{R}^2 | q(x) = 1\}.$\\
+EWe? $p_G = X^2 - 2aX + (a^2-b^2)$ hat NSt. $a \pm b$ mit EVen $v_1 := \frac{1}{\sqrt{2}} \left(\begin{matrix} 1 \\ 1 \\ \end{matrix}\right), v_2 := \frac{1}{\sqrt{2}}\left(\begin{matrix}1 \\ -1 \\ \end{matrix}\right)$\\
+$\Rightarrow H = S^TGS = \left(\begin{matrix}
+	a + b & 0 \\
+	0 & a-b \\
+\end{matrix}\right)$\\
+$\Rightarrow q(y_1v_1 + y_2v_2) = (a+b)y_1^2 + (a-b) y_2^2$.\\
+Sei $a+b > 0$ , so ist $C$ Ellipse, falls $a-b > 0$, Hyperbel, falls $a-b < 0$.
+\subsection*{Definition 11.7}
+Eine quadratische Form $q: V\longrightarrow \mathbb{R}$ heißt positiv (negativ) definit, falls \\
+$q(v) > 0 (q(v) < 0) \forall v\in V \setminus \{0\}$.\\
+Entsprechend heißt symmetrische $G \in Mat_{n \times n}(\mathbb{R})$ positiv (negativ) definit, falls \\
+$x^TGx > 0 (<0) \forall x \neq 0$.
+\subsection*{Propostition 11.8}
+$G \in Mat_{n\times n}(\mathbb{R})$ symmetrisch ist positiv (negativ) definit $\Leftrightarrow$ alle EWe von $G$ sind $>0 (<0)$.
+\subsubsection*{Beweis}
+Satz 9.8 $\Rightarrow \exists O$ orthogonal mit $O^TGO = D$ diagonal mit reellen EWen $\lambda_1,...,\lambda_n$. Also: $x^TGx > 0 \forall x \neq 0 \Leftrightarrow \sum_{i=1}^{n} \lambda_i x_i^2 = x^TDx > 0 \forall x \neq0 \Leftrightarrow$ alle EWe $\lambda_i > 0$.
+%----------------------------------Vorlesung 22----------------------------------
 \end{document}
