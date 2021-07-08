@@ -2077,4 +2077,66 @@ $G \in Mat_{n\times n}(\mathbb{R})$ symmetrisch ist positiv (negativ) definit $\
 \subsubsection*{Beweis}
 Satz 9.8 $\Rightarrow \exists O$ orthogonal mit $O^TGO = D$ diagonal mit reellen EWen $\lambda_1,...,\lambda_n$. Also: $x^TGx > 0 \forall x \neq 0 \Leftrightarrow \sum_{i=1}^{n} \lambda_i x_i^2 = x^TDx > 0 \forall x \neq0 \Leftrightarrow$ alle EWe $\lambda_i > 0$.
 %----------------------------------Vorlesung 22----------------------------------
+\section*{Quotientenvektorraum, Dualraum}
+Sei $f:V\to W$ eine lineare Abbildung, V, W K-VRe. Dann sind $ker f$ und $im f$ UVRe und es gilt $dimV-dimkerf=dimimf$ (Dimensionsformel für $dimV < \infty$). Gibt es Isomorphismus $im f \cong "V/ kerf"$ ? Konstruiere VR "V/U".
+\subsection*{Definition 12.1.}
+Sei V ein K-VR und $U\subseteq V$ ein UVR. $V/U := \{v+U | v\in V\}$ Menge aller affinen Räume bzgl. U. \\
+Auf V def. $v \sim_U v' :\gdw v-v'\in U$ Äquivalenzrelation mit Klassen $[v]_{\sim_U} = \{w\in V | v-w \in U\} = v+U$, somit $V|\sim_U = V|U$.
+\subsection*{Beispiel}
+Sei $V = \mathbb R^3$ und $U:= span\{u_1, u_2\}$, $u_1 = \vecThree{1}{-1}{0}, u_2 = \vecThree{1}{0}{-1} \Rightarrow v+U = v+U = \{v+\lambda_1u_1 + \lambda_2u_2 | \lambda_i \in \mathbb R\}$ . \\
+Die affinen Ebenen $v + U$ bilden Zerlegung der $\mathbb R^3$
+\subsection*{Proposition + Defininition 12.2.}
+Seien $U\subseteq V$ wie oben.
+\begin{enumerate}[label=\alph*)]
+	\item  Gilt $v\sim_U v'$ und $w\sim_U w'$, so folgt (für $\lambda \in K$) $v+w \sim_U v'+w'$, $\lambda v \sim_U \lambda v'$.
+	\item Auf $V|U$ wird durch
+	$$(v+U) + (w+U) := v+w+U \tn{, d.h. } [v] + [w] := [v+w]$$
+	$$\lambda \cdot (v+U) := \lambda \cdot v + U \tn{, } \lambda \cdot [v] := [\lambda v]$$
+	eine K-VR-Struktur definiert, Quotientenvektorraum.
+\end{enumerate}
+\subsubsection*{Beweis}
+\begin{enumerate}[label=\alph*)]
+	\item
+	Gelte $v-v', w-w' \in U$ \\ 
+	$ \Rightarrow (v+w)-(v'+w') = (v-v') + (w-w' \in U) \checkmark$ \\
+	$\lambda v - \lambda v' = \lambda (v-v') \in U \checkmark$
+	\item
+	Nach a) gilt: $[v]=[v'], [w]=[w'] \Rightarrow [v+w] = [v'+w'], [\lambda v] = [\lambda v']$, also sind die Verknüpfungen wohldefiniert. \\
+	Die Vektorraumaxiome (V1)-(V7) folgen da V ein K-VR ist. \\
+	z.B.: $[v]+([w] + [x]) = [v] + [w+x] = [v+(w+x)] = [(v+w) + x] = [v+w] + [x] = ([v] + [w]) + [x]$ \\
+	analog (V2)-(V7), wobei $0_{V|U} = [0] (=U)$.
+\end{enumerate}
+\subsection*{Bemerkung}
+Es existiert natürliche lineare Abbildung $\pi_U: V\to V|U, v\mapsto [v] = v+U$ \\
+linear:\\
+$\pi_U(v+w) = \pi_U(v) + \pi_U(w)$ d.h. $[v+w] = [v] + [w]$ \\
+$\pi_U(\lambda v) = \lambda \pi_U (v)$ d.h. $[\lambda v] = \lambda [v] \checkmark $ nach Definition 12.2. \\
+surjektiv klar $ker \pi_U = U: \pi_U(v) = 0 \gdw v\sim_U 0 \gdw v\in U$. \\
+Im Fall $dim V < \infty$ folgt $dim(V|U) = dim im \pi_U = dim V - dim U$  (Dimensionsformel).
+\subsection*{Satz 12.3. (Homomorphiesatz für VRe).}
+Sei $f:V\to W$ linear und sei $U\subseteq ker f$. \\
+Dann existiert genau ein $\tilde f: V|U \to W$ linear mit $f = \tilde f \circ \pi_U.$ \\
+Weiter gilt $im \tilde f = im f$ und $\tilde f$ injektiv $\gdw U = kerf.$ \\
+Insbesondere def. $\tilde f: V|kerf \tilde\to imf$ einen Isomorphismus.
+\subsubsection*{Beweis}
+\begin{itemize}
+	\item "Eindeutigkeit" \\
+	$\tilde f([v]) := f(v)$ left $\tilde f$ fest (*)
+	\item "Existenz" \\
+	zeige (*) def. $\tilde f:V|U\to W$ Abb.(wohldef.): \\
+	$[v] =[v'] \Rightarrow v\sim_U v' \Rightarrow v-v'\in U \subseteq kerf \Rightarrow_{f(v-v')=0} f(v) = f(v')$. \\ \\
+	linear:$\tilde f ([v] + [w]) = \tilde f ([v+w]) =^{(*)} f(v+w) = _{\tn{f linear}} f(v) + f(w) =^{(*)} \tilde f([v]) + \tilde f([w])$ \\
+	$\tilde f(\lambda [v]) = \tilde f([\lambda v]) =^{(*)} f(\lambda v) = \lambda f(v) =^{(*)} \lambda \tilde f([v])$
+	\item
+	$im\tilde f = \{\tilde f([v]) | v\in V\} =_{(*)} \{f(v) | v\in V\} = imf$
+	\item 
+	$\tilde f([v]) = 0 \gdw_{(*)} f(v) = 0 \gdw v\in kerf$, also $ker \tilde f = ker f|U = \{[0]\} \gdw U = kerf$
+\end{itemize}
+\subsection*{Beispiel}
+\begin{enumerate}[label=\arabic*)]
+	\item $f:\mathbb R^3\to \mathbb R, x\mapsto x_1+x_2+x_3$ hat $kerf = U = span\{\vecThree{1}{-1}{0}, \vecThree{1}0{-1}{arg3}\}$
+	\item (mögliche Konstruktion von $\mathbb R$ aus $\mathbb Q$) Sei $V\subseteq \mathbb Q^\mathbb N$ UVR aller rationalen Cauchy-Folgen und $U\subseteq V$ UVRaller gegen 0 konv. Folgen.\\
+	Dann ist $V|U$ ein $\mathbb Q$-VR, kann mit $\mathbb R$ identifizieren.
+\end{enumerate}
+%----------------------------------Vorlesung 23----------------------------------
 \end{document}
