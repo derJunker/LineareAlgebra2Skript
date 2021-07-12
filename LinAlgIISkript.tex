@@ -2199,4 +2199,56 @@ Da: $v \in \tn{ker}\varphi_i$ f.a. $i \Leftrightarrow \iota(v) \in U^{00} \Leftr
 Ist konkret $U := \tn{span}\{u_1, \dots, u_k\} =$ SR($B$) (Spaltenraum), so ist $U^0 \hat{=}\{x^T | x^T\cdot B = 0\}$.\\
 $\Rightarrow$ Zeilen von $A \cong$ Lösungsvektoren $v$. $B^Tx = 0$.
 %----------------------------------Vorlesung 24----------------------------------
+\subsection*{}
+Sei $A \in Mat_{n \times k}(\mathbb{R})$ und $b \in mathbb{R}^n$ (mit $n > k$). Im allgemeinen hat das lineare Gleichungssystem $Ax = b$ keine Lösung $\xi \in \mathbb{R}^k$. Was kann man machen? Man sucht $z \in \mathbb{R}^k$, sodass $Az$ "möglichst nah" an b, d.h. mit $\norm{b- Az}$ minimal.(*)\\
+\subsection*{Wiederholung}
+Zu $(V,\skalar{\cdot}{\cdot})$ ein euklidischer Vektorraum und sei $U \subseteq V$ ein Untervektorraum und $v \in V$. Eine Bestapproximation von $v$ in $U$ ist $v^m \in U$ mit $\norm{v-v^*}$ minimal, d.h.\\
+ $\norm{v-v^*} \leq \norm{v-u} \forall u \in U$.\\
+ Charakterisierung, vergleiche Proposition 8.6:\\
+ $v*\in U$ Bestapproximation $\Leftrightarrow v-v^* \perp u \forall u \in U$.\\
+ Anwendung auf (*). \\
+ Sei $f_a : \mathbb{R}^k \longrightarrow \mathbb{R}^n, x \longrightarrow Ax$.\\
+ Setze $V : \mathbb{R}^n$ und $U := imf_A = span\{v_1,...,v_k\}$ mit $v_i \in \mathbb{R}^n$ Spalten von $A$.\\
+ Sei (o.E.) $v_1,...v_k$ linear unabhängig, d.h. $rang(A) = k$.
+ \subsection*{Satz}
+ Sei $A \in Mat_{n \times k}, rang(A) = k$ und $b \in \mathbb{R}^n$.
+ Ein $z \in \mathbb{R}^k$ mit $\norm{b-Az}$ minimal ist eindeutig und zwar gegeben durch $z := (A^TA)^{-1}A^Tb$.
+ \subsubsection*{Beweis}
+ Im $\mathbb{R}^n$ gilt für das Standardskalarprodukt $\skalar{x}{y} = x^Ty$.\\
+ Zeige: $A^TA \in Mat_{k \times k}(\mathbb{R})$ ist invertierbar.\\
+ Bew.: Sei $A^TA = 0 \Rightarrow \skalar{Ax}{Ax} = x^TA^TAx = 0 \Rightarrow Ax = 0 \Rightarrow_{\text{Voraussetzung}} x = 0$. Somit $rang(A^TA) = k$.\\
+ Nun zeige, dass $Az$ Bestapproximation von $b$ in $U := imf_A$.\\
+ Dafür zeige $b-Az \perp Ax \forall x \in \mathbb{R}^k$.\\
+$\skalar{b-Az}{Ax} = 0 \Leftrightarrow \skalar{Ax}{Az} = \skalar{Ax}{b} \Leftrightarrow x^TA^tAz = x^TA^Tb \forall x \in \mathbb{R}^k$.\\
+Dazu äquivalent ist nun $A^TAz = A^Tb \Leftrightarrow z = (A^TA)^{-1}A^Tb$.
+\subsection*{Interpolationsprobleme}
+Seien $x_1,...x_n \in X$ fix (eventuell mehrfach), $X$ beliebige Menge. Zu Funktionen $f:x \longrightarrow \mathbb{R}$ betrachte $v_f := \left( \begin{matrix}
+	f(x_1) \\ \vdots \\ f(x_n)\\
+\end{matrix} \right) \in \mathbb{R}^n$. \\
+Seien $f_1,...,f_k : X \longrightarrow \mathbb{R}$ mit $v_1, ... , v_k$ linear unabhängig, $v_i := f_{fi}$.
+Suche zu gegebenen $y_1, ... , f_n \in \mathbb{R}$ geeignete $\lambda_1, ... , \lambda_k \in \mathbb{R}$ mit $\norm{y- \sum_{i =1}^{k}}(\lambda_i v_i)$ minimal\\
+ (Funktionen $\sum \lambda_i f_i : X \longrightarrow \mathbb{R}$ "erklärt" Datensatz $\left( \begin{matrix}
+	y_1 \\ \vdots \\ y_n
+\end{matrix}\right)$.)\\
+Klassisch: $X = \mathbb{R}$ und $f_i : \mathbb{R} \longrightarrow \mathbb{R} , x \longrightarrow x^{i-1}$: Approximation eines Datensatz durch ein Polynom vom $Grad < k$.\\
+ Lineare Regresseion (Ausgleichsgerade)\\
+ Hier: $X = \mathbb{R}, f_1 = 1, f_2 = id, v_1 = \left( \begin{matrix}
+ 	1 \\ \vdots \\ 1
+ \end{matrix} \right), v_2 = \left( \begin{matrix}
+ x_1 \\ \vdots \\ x_n
+\end{matrix}\right)$. \\
+Dann: $B := A^TA = \left(\begin{matrix}
+	n & \sum x_i \\
+	\sum x_i & \sum x_i^2\\
+\end{matrix}\right), B^{-1} = \frac{1}{detB} \left( \begin{matrix}
+	\sum x_i^2 & -\sum x_i \\
+	-\sum x_i & n \\
+\end{matrix}\right),\\ detB = n\sum x_i^2 - (\sum x_i)^2$\\
+und $A^Ty = \left(\begin{matrix}
+\sum y_i \\
+\sum x_iy_i\\
+\end{matrix}\right) \Rightarrow \left( \begin{matrix}
+\lambda_1 \\
+\lambda_2 \\
+\end{matrix}\right) = B^{-1}A^Ty$ liefern Regressionsgerade. $x \longrightarrow \lambda_1 + \lambda_2x$
 \end{document}
