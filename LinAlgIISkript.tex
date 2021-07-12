@@ -2135,8 +2135,68 @@ Insbesondere def. $\tilde f: V|kerf \tilde\to imf$ einen Isomorphismus.
 \subsection*{Beispiel}
 \begin{enumerate}[label=\arabic*)]
 	\item $f:\mathbb R^3\to \mathbb R, x\mapsto x_1+x_2+x_3$ hat $kerf = U = span\{\vecThree{1}{-1}{0}, \vecThree{1}0{-1}{arg3}\}$
-	\item (mögliche Konstruktion von $\mathbb R$ aus $\mathbb Q$) Sei $V\subseteq \mathbb Q^\mathbb N$ UVR aller rationalen Cauchy-Folgen und $U\subseteq V$ UVRaller gegen 0 konv. Folgen.\\
+	\item (mögliche Konstruktion von $\mathbb R$ aus $\mathbb Q$) Sei $V\subseteq \mathbb Q^\mathbb N$ UVR aller rationalen Cauchy-Folgen und $U\subseteq V$ UVR aller gegen 0 konv. Folgen.\\
 	Dann ist $V|U$ ein $\mathbb Q$-VR, kann mit $\mathbb R$ identifizieren.
 \end{enumerate}
 %----------------------------------Vorlesung 23----------------------------------
+Erinnerung: Zu $V, W$ K-VRen ist $Hom(V, W) := \{f:V\longrightarrow W | f \tn{ linear}\}$ ein K-VR.
+\subsection*{Definition 12.4.}
+Zu $V$ K-VR sei $V^* := Hom(V, K)$ der Dualraum zu $V$ (Vektorraum aller "Linearformen" auf $V$).
+\subsubsection*{Bemerkung:}
+\begin{enumerate}[label=\alph*)]
+	\item Sei dim$V = n$ mit Basis $\mathcal{B} = (v_1, \dots, v_n)$.\\
+	Dann ist  $V^*\longrightarrow K^n, \varphi \mapsto (\varphi(v_1), \dots, \varphi(v_n))$ ein Isomorphismus \transp{(für $(w_1, \dots, w_n) \in K^n$ existiert genau ein $\varphi:V\longrightarrow K$ linear mit $\varphi(v_i) = w_i$ f.a.$i$)},\\ \transp[100]{also $V^* \cong K^n(\cong V)$, insbesondere dim$V^* = $ dim$V$.}
+	\begin{itemize}
+		\item Der Isomorphismus $V^*\cong V$ nicht "natürlich", abhängig von $\mathcal{B}$.
+		\item $(\varphi_1, \dots, \varphi_n)$ heißt \textbf{Dualbasis} zu $\mathcal{B}$ falls $\varphi_i(v_j) = \delta_{ij}$.
+	\end{itemize}
+	\item Sei $\varphi:V\times V\longrightarrow K$ eine Bilinearform (z.B. reelles Skalarprodukt)\\
+	$\Rightarrow f:V\longrightarrow V^*, v \mapsto \varphi(v, \cdot)$ lineare Abbildung\\
+	$(\varphi(v, \cdot): w\mapsto \varphi(v, w) \tn{ ist Linearform.})$\\
+	(Umgekehrt definiert jedes $f$ via $\varphi(v, w) := (f(v)(w))$ Bilinearform)\\
+	Für $\varphi$ symmetrisch ist ker$f$ gerade Ausartungsraum. Ist dim$V < \infty$ und $f$ injektiv $\Rightarrow f$ Isomorphismus.
+	\begin{itemize}
+		\item $V$ endlich-dimensional euklidisch $\Rightarrow V \cong V^*$ "natürlich" (via $f$).
+	\end{itemize} 
+	\item Für beliebige VR $V \neq 0$ ist erst mal nicht klar, ob $V^* \neq 0$.\\
+	Dafür nützlich:
+\end{enumerate}
+\subsubsection*{Bemerkung:}
+Ist $V = U \oplus W$ diskrete Summe, so ist $U\times W \longrightarrow V, (u, w) \mapsto u+w$ Isomorphismus, und die Umkehrabb. liefert lineare Abb. $\pi:V\longrightarrow U, v = u+w \mapsto u$ mit ker$\pi = W$ und $\pi_{|U} = id_U$. (sowie $\rho = id_V - \pi: V\longrightarrow W$ entsprechend).
+\subsection*{Proposition 12.5.}
+Jeder UVR besitzt ein "algebraisches Komplement", d.h. zu $U \subseteq V$ existiert ein $W\subset V$ mit $V = U\oplus W$.
+\subsubsection*{Beweisidee:}
+Wähle Basis $\mathcal{B}$ von $U$ (s. §2).\\
+Wie in §2 zeige, dass es $\mathcal{C} \supseteq \mathcal{B}$ max. linear unabh. ex. $\Rightarrow \mathcal{C}$ Basis von $V$.\\
+Setze dann $W := \tn{span}\{w | w\in \mathcal{C}\setminus\mathcal{B}\}$.
+\subsection*{Satz 12.6. Fortsetzungssatz}
+Sei $U \subseteq V$ UVR. Zu $\psi \in U^*$ ex. $\varphi \in V^*$ mit $\varphi_{|U} = \psi$.\\
+Insbesondere zu $0 \neq v \in V$ ex. $\varphi \in V^*$ mit $\varphi(v) \neq 0$.\\
+\subsubsection*{Beweis:}
+Wähle nach Prop. 12.5. algebraisches Komplement $W$ von $U$. Betrachte $\pi:V \longrightarrow U$ mit $\pi_{|U}=id_U$ wie in Bemerkung, setze $\varphi := \psi \circ \pi$.\\
+Zusatz: Setze $\psi: \tn{span}\{v\}\longrightarrow K, \lambda v \mapsto \lambda$ fort.
+\subsection*{Definition 12.7.}
+Zu $U \subseteq V$ definiere UVR $U^0 \subseteq V^*$ \textbf{Annulator} von $U$, durch $U^0 := \{\varphi\in V^* | \varphi_{|U} = 0\}$.
+\subsection*{Proposition 12.8.}
+Es gilt $U^* \cong V^*/U^0$, insb. dim$U^0 = $ dim$V -$ dim$U$, falls $V$ endlich-dimensional.
+\subsubsection*{Beweis:}
+Die Abb. $f: V^*\longrightarrow U^*, \varphi\mapsto\varphi_{|U}$ ist linear, ker$f = U^0$, surjektiv nach Satz 12.6. $\Rightarrow_{\tn{Satz 12.4.}} U^*\cong V^*/U^0$.
+\subsection*{Definition 12.9.}
+Zu $V$ K-VR sei $V^{**} := (V^*)^*$ \textbf{Bidualraum}.\\
+Dazu natürliche Abb. $\iota: V \longrightarrow V^{**}, v \mapsto [\varphi\mapsto\varphi(v)]$.
+\subsection*{Proposition 12.10.}
+Abb. $\iota$ ist linear, injektiv, also Isomorphismus falls dim$V < \infty$.\\
+Es gilt $\iota(U) \subseteq U^{00}$ und $\iota(U) = U^{00}$ falls dim$V < \infty$.
+\subsubsection*{Beweis:}
+linear$\checkmark$, injektiv: Satz 12.6., Isomorphismus, da dim$V^{**} = \tn{dim}V$.\\
+Sei $u\in U, \varphi\in U^0 \Rightarrow (\iota u)(\varphi) = \varphi(u) = 0 \checkmark$\\
+Gleichheit, da dim$U^{00} = \tn{dim} U$ nach Prop. 12.8.
+\subsubsection*{Anwendung:}
+Zu $U \subseteq K^n$ UVR, dim$U = k$\\
+finde $A \in \tn{Mat}_{m\times n}(K)$ mit $U = \tn{ker}f_A$ ($m = n-k$).\\
+Antwort: Zeilen von $A \hat{=}$ Basis $(\varphi_1, \dots, \varphi_m)$ von $U^0$.\\
+Da: $v \in \tn{ker}\varphi_i$ f.a. $i \Leftrightarrow \iota(v) \in U^{00} \Leftrightarrow v \in U$.\\
+Ist konkret $U := \tn{span}\{u_1, \dots, u_k\} =$ SR($B$) (Spaltenraum), so ist $U^0 \hat{=}\{x^T | x^T\cdot B = 0\}$.\\
+$\Rightarrow$ Zeilen von $A \cong$ Lösungsvektoren $v$. $B^Tx = 0$.
+%----------------------------------Vorlesung 24----------------------------------
 \end{document}
