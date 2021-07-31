@@ -134,7 +134,7 @@
 \section{Relationen}
 Relationen beschreiben Beziehungen zwischen Elementen von Mengen. \\
 Wdh. $X{\times}Y := \{(x,y) | x \in X, y \in Y\}$ \\
-Menge der (geordneten) Paare, "kartesiches Produkt".
+Menge der (geordneten) Paare, "kartesisches Produkt".
 
 \subsection*{Definition 1.1.}
 Seien X,Y Mengen. Eine \textbf{Relation} zwischen X und Y ist eine Teilmenge $R \subseteq X{\times}Y$. \\
@@ -330,7 +330,7 @@ Also ist f injektiv. \\
 \\
 $"\Rightarrow"$\\
 Sei $Y_0 := im f$ und betrachte $f_0 : X \rightarrow Y_0$, $f_0(x) := f(x)$ ist bijektiv \\
- $\Rightarrow \exists g_0 := f_0^{-1} Y_0 \rightarrow X$,\\
+ $\Rightarrow \exists g_0 := f_0^{-1}: Y_0 \rightarrow X$,\\
 setze fort zu $g: Y \rightarrow X$,\\
 das heißt $g(y) := g_0(y)$ für $y\in Y_0$, sonst beliebig.\\
 $\Rightarrow g(f(x)) = x \forall  x \in X (f(x) \in Y_0)$.\\
@@ -352,7 +352,7 @@ Definiere also $g: Y \rightarrow X$ durch $Y \rightarrow X$ mit $f(x) = y$.\\
 Dass eine solche Auswahl stets existiert, besagt das Axiom.
 
 \subsection*{Definition 2.3.}
-Zwei Mengen $X,Y$ heißen gleichmächtig, falls eine Bijektion $\phi X \rightarrow Y$ existiert; $X$ hat Mächtigkeit $Y$.(Dies erfüllt Eigenschaften einer Äquivalenzrelation)\\
+Zwei Mengen $X,Y$ heißen gleichmächtig, falls eine Bijektion $\phi: X \rightarrow Y$ existiert; $X$ hat Mächtigkeit $Y$.(Dies erfüllt Eigenschaften einer Äquivalenzrelation)\\
 Eine Menge $X \neq \emptyset$ heißt abzählbar, falls Surjektion $\mathbb{N} \rightarrow X$ existiert. ($\emptyset$ sei abzählbar; $f: \mathbb{N} \rightarrow X$ surjektiv $\Rightarrow X = \{f(0), f(1), ...\}$), das heißt (Auswahlaxiom) falls  Injektion $X \rightarrow \mathbb{N}$ besteht.\\
 Andernfalls heißt $X$ überabzählbar.
 
@@ -585,7 +585,7 @@ $(Z1): P_{ij} := \left( \begin{matrix}
 \end{matrix} \right), 
 P_{kl} := \left \{\begin{array}{ll} 1 \tn{ falls } k = l \neq i,j \\
 1 \tn{ falls } (k,l) = (i,j) od. (j,i) \\
-0 \tn sonst\\
+0 \tn{ sonst}\\
 \end{array} \right.$\\
 $(Z2): S_i(\lambda):= \left(\begin{matrix}
 1 \\
@@ -1040,7 +1040,7 @@ Allgemein gilt $c_{n-1} = -trA$ und $c_0 = (-1)^n detA$ (Übung).\\
 \subsection*{Der Polynomring K[X]}
 Was ist eigentlich ein Polynom? \\
 Idee: formaler Ausdruck $\sum_{i=0}^{n}a_iX^i$ mit $a_i \in K$ - hier $X$ formale Variable \\
-versus Polynomfunktion $x \rightarrow \sum_{i=0}^{n} a_i x^i , x\in K$ - hier $x$ Körperelement\\
+versus Polynomfunktion $x \mapsto \sum_{i=0}^{n} a_i x^i , x\in K$ - hier $x$ Körperelement\\
 Wiederholung: zu Menge $I$ sei $K^{(I)} := \{ a: I \rightarrow K abb. | \{i \in I | a(i) \neq 0 \} endlich \}$ K-Vektorraum (mit Basis $\{ e_i | i\in I\}$).\\
 
 \subsection*{Definition 5.2}
@@ -1129,11 +1129,11 @@ $$\Rightarrow {}_BM_B(f) =
 $$\Rightarrow p_f = p_{f|_U} \cdot p_C\tn{, denn }det\twoXtwo	{A}{B}{0}{C} = det\twoXtwo{E}{0}{0}{C}\twoXtwo{A}{B}{0}{E} = detC \cdot detA$$\\
 $$\tn{bzw. } det \twoXtwo{XE-A}{-B}{0}{XE-C} = det(XE-A)\cdot det(XE-C)$$
 \subsection*{Beispiel}
-Die Linksdrehung $f:\mathbb R^2 \to \mathbb R^2$, $\vecTwo{x}{y} \mapsto \vecTwo{-y}{x} = \twoXtwo{0}{-1}{1}{0}\vecTwo{x}{y}$ hat charakteristisches Polynom $p_f = x^2+1 \leadsto$ keine Teiler $q|X^2+1$.\\
+Die Linksdrehung $f:\mathbb R^2 \to \mathbb R^2$, $\vecTwo{x}{y} \mapsto \vecTwo{-y}{x} = \twoXtwo{0}{-1}{1}{0}\vecTwo{x}{y}$ hat charakteristisches Polynom $p_f = x^2+1 \leadsto$ keine Teiler $q|x^2+1$.\\
 $_{\tn{Lemma 6.3.}}\Rightarrow$ es existieren nur triviale invariante Unterräume.
 \subsection*{Definition 6.4.}
 \begin{enumerate}[label=(\alph*)]
-	\item Eine Fahne $(U_j)$ in V ist eine Kette ${0} = U_0 \subset U_1 \subset ... \subset U_n = V$ von Unterräumen $U_j$ mit $dim U_j = j$, $\forall j\in \{0,..., n\}$
+	\item Eine Fahne $(U_j)$ in V ist eine Kette $0 = U_0 \subset U_1 \subset ... \subset U_n = V$ von Unterräumen $U_j$ mit $dim U_j = j$, $\forall j\in \{0,..., n\}$
 	\item Ein K-Endomorphismus $f:V\to V$ heißt \textbf{trigonalisierbar}, falls Basis B von V mit $A:= {}_BM_B(f)$ obere Dreiecksmatrix, d.h. $a_{ij}=0$ für $i>j$: $\threeXthree	{*}{ }{*}
 																	{ }{\ddots}{ }
 																	{0}{ }{*}$
@@ -1147,7 +1147,7 @@ Sei $A:={}_BM_B(f)$ obere Dreiecksmatrix, $B=(v_1,...,v_n)$. \\
 Setze $U_j:=span\{v_1,...,v_j\}$ für $j\in \{0,...,n\}$. Eindeutige Fahne. \\
 Außerdem: $f(v_j) = \sum_{i\leq j} a_{ij}v_i \in U_j \Rightarrow f(U_j) \subseteq U_j$. \\ \\
 $"\Leftarrow"$ \\
-Sei  ${0} = U_0 \subset U_1 \subset ... \subset U_n = V$ f-invariante Fahne, \\
+Sei  $\{0\} = U_0 \subset U_1 \subset ... \subset U_n = V$ f-invariante Fahne, \\
 wähle $(v_1,...,v_n)$ in V mit span $\{v_1,...,v_j\} = U_j$ für $j\in\{0,...,n\}$ d.h. wähle $v_j \in U_j\backslash U_{j-1}$\\
 $\Rightarrow$ alle $\{v_1,...,v_n\}$ linear unabhängig $\Rightarrow B=(v_1,...,v_n)$ Basis von V und $f(v_j)\in U_j = span \{v_1,...,v_j\}$ d.h. $f(v_j) = \sum_{i\leq j} a_{ij}v_i \Rightarrow A=(a_{ij})={}_BM_B(f)$ obere Dreiecksmatrix. $\square$
 \subsection*{Satz 6.6.}
@@ -1175,16 +1175,16 @@ $$A:= {}_BM_B(f) =
 \end{array}
 $$
 $\Rightarrow p_f = (X-\lambda_1)\cdot p_g$ und $p_g$ zerfällt $\Rightarrow$ es existiert g-invariante Fahne 
-$\{0\} = W_0 \subset W_1 \subset ... \subset W_n = W$ \\
-Setze $V_1 := KV_1$ und $U_j := V_1 + W_j-1$ für $j\in\{0,...,n\}$ ($\Rightarrow dimU_j = 1+ dim W_{j-1}=j$)\\
+$\{0\} = W_0 \subset W_1 \subset ... \subset W_{n-1}= W$ \\
+Setze $V_1 := KV_1$ und $U_j := V_1 + W_{j-1}$ für $j\in\{0,...,n\}$ ($\Rightarrow dimU_j = 1+ dim W_{j-1}=j$)\\
 $\Rightarrow \{0\} = U_0 \subset U_1 \subset ... \subset U_n = V$ Fahne und f-invariant: \\
 $$
-f(dv_1+w)\lambda_1dv_1+cv_1+g(w)\in V_1 + W_{j-1} = U_j\tn{ (mit }c\in K).
+f(\alpha v_1+w)\lambda_1 \alpha v_1+cv_1+g(w)\in V_1 + W_{j-1} = U_j\tn{ (mit }c\in K).
 $$
 \subsection*{Beispiel}
 $A:= \threeXthree{1}{-1}{0}{-1}{1}{-2}{-2}{2}{-2}$, $p_A = (X-1)^2(X+2)+4+4(X-1)-(X+2)=X^3$. 
 Einziger EW 0, aber A nicht diagonalisierbar denn geometrische Vielfachheit = 1. \\
-Setze EV $v_1:= \vecThree{1}{1}{1}$, $B_1=(v_1, e_2, e_2)$, $J_1:= {}_{B_1}M_A(id) = \threeXthree{1}{1}{0}{1}{0}{0}{0}{0}{1}$, $J^{-1}_1AJ_1 = \threeXthree{0}{-1}{-2}{0}{2}{2}{0}{-2}{-2}$ \\
+Setze EV $v_1:= \vecThree{1}{1}{0}$, $B_1=(v_1, e_2, e_3)$, $J_1:= {}_{B_1}M_A(id) = \threeXthree{1}{1}{0}{1}{0}{0}{0}{0}{1}$, $J^{-1}_1AJ_1 = \threeXthree{0}{-1}{-2}{0}{2}{2}{0}{-2}{-2}$ \\
 $B:= \twoXtwo{2}{2}{-2}{-2}$ hat $p_B = X^2$, EV $\vecTwo{-1}{1}$, $B_2'=(\vecTwo{-1}{1}, e_1)$, \\ $S:=\twoXtwo{-1}{1}{1}{0}$, $J_2:=\left( 
 \begin{matrix}
 	1 & \begin{matrix} 0 & 0 \end{matrix} \\
@@ -1245,26 +1245,26 @@ $\Rightarrow$ $\sum c_iA^ie_1 = c_0e_1+c_1e_2+\dots+c_{n-1}e_n+(-c_0e_1-\dots-c_
 Dann: \begin{enumerate}[label=\alph*)]
 	\item $f^r(v)\in U := \tn{span}\{v, \dots, f^{r-1}(v)\}$,
 	\item $U$ ist $f$-invariant,
-	\item mit $f^r(v) + \sum c_if^i(v) = 0$ ist $p_{f|_u} = X^r+\sum c_iX^i$,
-	\item $p_{f|_u}(f)(v) = 0$.
+	\item mit $f^r(v) + \sum c_if^i(v) = 0$ ist $p_{f|_U} = X^r+\sum c_iX^i$,
+	\item $p_{f|_U}(f)(v) = 0$.
 \end{enumerate}
 \subsubsection*{Beweis:}
 \begin{enumerate}[label=\alph*)]
-	\item Wegen $\{v, f(v), \dots, f^r(v)\}$ linear unabhängig klar.
+	\item Wegen $\{v, f(v), \dots, f^r(v)\}$ linear abhängig klar.
 	\item $f(f^i(v)) = f^{i+1}(v)\in U$ f.a. $i \in \{0, \dots, r-1\}$
-	\item $\mathcal{B} := (v, f(v), \dots, f^{r-1}(v))$ Basis und ${_\mathcal{B}}M_{\mathcal{B}}(f|_u) = \left(\begin{matrix}
+	\item $\mathcal{B} := (v, f(v), \dots, f^{r-1}(v))$ Basis und ${_\mathcal{B}}M_{\mathcal{B}}(f|_U) = \left(\begin{matrix}
 		0 & & & -c_0\\
 		1 & \ddots & & \colon\\
 		& \ddots & 0 & \colon\\
 		& & 1 & -c_{n-1}
 	\end{matrix}\right)$ Begleitmatrix.
-\item $p_{f|_u}(f)(v) = f^r(v)+\sum_{i=0}^{r-1}c_if^i(v) = 0.$
+\item $p_{f|_U}(f)(v) = f^r(v)+\sum_{i=0}^{r-1}c_if^i(v) = 0.$
 \end{enumerate}
 \subsection*{Beweis (Satz):}
 Zeige $p_f(f)(v) = 0$ f.a. $0\neq v \in V$. Sei $U$ wie in Vorbemerkung\\
-$\Rightarrow_{Lemma 6.3.} p_f = p_c \cdot p_{f|_u}$ für ein Polynom $p_c \in K[X]$\\
-$\Rightarrow p_f(f) = p_c(f) \circ p_{f|_u}(f)$\\
-$\Rightarrow p_f(f)(v) = p_c(f)(\underbrace{p_{f|_u}(f)(v)}_{=0\tn{ nach Vorbem.}}) = 0$.
+$\Rightarrow_{Lemma 6.3.} p_f = p_c \cdot p_{f|_U}$ für ein Polynom $p_c \in K[X]$\\
+$\Rightarrow p_f(f) = p_c(f) \circ p_{f|_U}(f)$\\
+$\Rightarrow p_f(f)(v) = p_c(f)(\underbrace{p_{f|_U}(f)(v)}_{=0\tn{ nach Vorbem.}}) = 0$.
 \subsection*{Beispiel:}
 $A:= \left(\begin{matrix}
 	3 & 0 & -1\\
@@ -1345,7 +1345,7 @@ Sei $g:= f - \lambda \cdot id_v \in EndV.$ betrachte Ketten\\
 ${0} \subseteq kerg \subseteq kerg^2$ ...\\
 $V \supseteq img \supseteq img^2$...\\
 Es gilt $dim kerg^i + dim img^i = n \forall i (*).$\\
-Sei $s (\leq n)$ minimal mit $kerg^s = kerg^{s+1} \Rightarrow_{(*)} img^s = im^{s+1}$\\
+Sei $s (\leq n)$ minimal mit $kerg^s = kerg^{s+1} \Rightarrow_{(*)} img^s = im g^{s+1}$\\
  und es gilt $kerg^s = kerg^{s+i}, img^s = img^{s+i} \forall i$.\\
 Denn $g^{-1}(kerg^k) = kerg^{k+1}, g(img^k) = img^{k+1}$.
 \subsection*{Lemma 7.4}
@@ -1565,7 +1565,7 @@ FAZIT: Die Jordansche Normalform (JNF) löst das eindeutige Repräsentantenprobl
 \section{Euklidische Vektorräume}
 \subsection*{Erinnerung (Lin Alg I, Ausblick)}
 Zu $x, y \in \mathbb{R}^n$ sei ${\skalar{x}{y}} := \sum_{i=1}^{n}x_iy_i$ "Standardskalarprodukt"\\
-$\parallel x\parallel := \sqrt{\skalar{x}{y}}$ "Norm"\\
+$\parallel x\parallel := \sqrt{\skalar{x}{x}}$ "Norm"\\
 $x \perp y \Leftrightarrow {\skalar{x}{y}} = 0$
 
 \subsection*{Definition 8.1.}
@@ -1609,20 +1609,20 @@ $\parallel v \parallel := \sqrt{\skalar{v}{v}}$ die \textbf{Norm} von $v \in V$,
 \subsection*{Corollar 8.3.}
 Die Abbildung $\parallel \cdot \parallel: V \longrightarrow \mathbb{R}$ erfüllt:
 \begin{enumerate}[label=\alph*)]
-	\item $\genskalar{v} \geq 0$ und $\genskalar{v} = 0 \Leftrightarrow v = 0$
-	\item $\genskalar{\lambda v} = |\lambda|\cdot \genskalar{v}$
-	\item $\genskalar{v+w} \leq \genskalar{v}+\genskalar{w}$ (Dreiecksungleichung)
+	\item $\norm{v} \geq 0$ und $\norm{v} = 0 \Leftrightarrow v = 0$
+	\item $\norm{\lambda v} = |\lambda|\cdot \norm{v}$
+	\item $\norm{v+w} \leq \norm{v}+\norm{w}$ (Dreiecksungleichung)
 \end{enumerate}
 (f.a. $v, w \in V, \lambda \in \mathbb{R}$).
 \subsubsection*{Beweis:}
 \begin{enumerate}[label=\alph*)]
 	\item (S3) $\checkmark$
 	\item ${\skalar{\lambda v}{\lambda v}} = \lambda^2{\skalar{v}{v}}$ wg. (S1) $\checkmark$
-	\item $\genskalar{v+w}^2 = {\skalar{v+w}{v+w}} = {\skalar{v}{v}}+2{\skalar{v}{w}}+{\skalar{w}{w}}\\ \leq_{\tn{CSU}} \genskalar{v}^2 + 2\genskalar{v}\cdot\genskalar{w}+\genskalar{w}^2 = (\genskalar{v}+\genskalar{w})^2$.
+	\item $\eskalar{v+w}^2 = {\skalar{v+w}{v+w}} = {\skalar{v}{v}}+2{\skalar{v}{w}}+{\skalar{w}{w}}\\ \leq_{\tn{CSU}} \norm{v}^2 + 2\norm{v}\cdot\norm{w}+\norm{w}^2 = (\norm{v}+\norm{w})^2$.
 \end{enumerate}
 
 \subsection*{Definition 8.4.}
-Zu ($V, \genskalar$) euklidischer Vektorraum und $0 \neq v, w \in V$,\\ definiere $\alpha \in [0, \pi]$ mit $cos \alpha = \frac{\skalar{v}{w}}{\genskalar{v}\cdot\genskalar{w}}$ ($\in_{\tn{CSU}} [-1, 1]$)
+Zu ($V, \genskalar$) euklidischer Vektorraum und $0 \neq v, w \in V$,\\ definiere $\alpha \in [0, \pi]$ mit $cos \alpha = \frac{\skalar{v}{w}}{\norm{v}\cdot\norm{w}}$ ($\in_{\tn{CSU}} [-1, 1]$)
 \textbf{Winkel} $\sphericalangle(v, w)$ zwischen $v, w$.
 \newpage
 \subsubsection*{Begründung:}
@@ -1655,7 +1655,7 @@ Weiterer Beispiele für Skalarprodukte:
 \end{enumerate}
 %----------------------------------Vorlesung 15----------------------------------
 \subsection*{Bemerkung}
-Ist $(V, \genskalar)$ euklidischer Vektorraum und $U \subseteq V$ ein Untervektorraum, so ist auch $\genskalar_U:UxU \to \mathbb R$ (Einschränkung) Skalarprodukt. \\
+Ist $(V, \genskalar)$ euklidischer Vektorraum und $U \subseteq V$ ein Untervektorraum, so ist auch $\genskalar_U:U\times U \to \mathbb R$ (Einschränkung) Skalarprodukt. \\
 Sei nun $(V, \genskalar)$ euklidischer VR und sei $U \subseteq V$ Untervektorraum.
 \subsection*{Definition 8.5.} Zu $v\in V$ heißt $v^*\in U$ Bestapproximation von V in U falls $||v-v^*||$ kleinstmöglich ist, d.h. $||v-v^*|| \leq ||v-u||$, $\forall u \in U$
 \subsection*{Proposition 8.6.}
@@ -1683,7 +1683,7 @@ Insbesondere hat jeder endlich-dim. euklidischer VR eine Orthonormalbasis.
 "Gram-Schmidt'sches Orthonormalisierungsverfahren" \\
 Induktion/n. $n=1$: $u_1 := \frac{v_1}{||v_1||}$ \\
 $n \leadsto n+1$: Sei $u_1,..., u_n$ ONB von $U:=span\{v_1,...,v_n\}$. \\
-Dann ist $v_{n+1} \notin U$. Betrachte $v^*_{n+1} := \sum_{i=1}^n \skalar{v_{n+1}}{u_i}u_i$ Bestapproximation in U, sei $v_{n+1}' := v_{n+1} - v^*_{n+1}$, $u_{n+1} := \frac{v_{n+1}}{||v_{n+1}'||}$. \\
+Dann ist $v_{n+1} \notin U$. Betrachte $v^*_{n+1} := \sum_{i=1}^n \skalar{v_{n+1}}{u_i}u_i$ Bestapproximation in U, sei $v_{n+1}' := v_{n+1} - v^*_{n+1}$, $u_{n+1} := \frac{v_{n+1}'}{||v_{n+1}'||}$. \\
 Dann gilt $\skalar{u_{n+1}}{u_j} = 0$, $\forall j \leq n$, \\
 sowie $span \{u_1,...,u_{n+1}\} = span \{v_1,...,v_{n+1}\}$
 \subsection*{Definition 8.9}
@@ -1705,7 +1705,7 @@ Für die Theorie der Endomorphismen von euklidischen VRen benötigen wir auch Sk
 Für $x,y\in \mathbb C$ definiere $\skalar{x}{y}:= \sum_{i=0}^{n}x_i\bar{y_i}$ Standardskalarprodukt. \\
 Dann $\skalar{x}{x} = \sum_{i=0}^{n}|x_i|^2$ und $\norm{x} := \sqrt{\skalar{x}{x}}$ wie vorher.
 \subsection*{Definition 9.1.}
-Sein V ein komplexer VR. Eine Abbildung $\genskalar:VxV\to \mathbb C$ heißt Skalarprodukt falls gilt: \\
+Sein V ein komplexer VR. Eine Abbildung $\genskalar:V\times V\to \mathbb C$ heißt Skalarprodukt falls gilt: \\
 \begin{enumerate}[start=1,label={(\bfseries S\arabic*)':}]
 	\item $\skalar{\lambda v+\mu v'}{w} = \lambda\skalar{v}{w} + \mu \skalar{v'}{w}$ \\
  	$\skalar{v}{\lambda w+\mu w'} = \bar\lambda\skalar{v}{w} + \bar\mu\skalar{v}{w'}$ (sesquilinear)
@@ -1829,16 +1829,16 @@ Eine lineare Abbildung $f: V \longrightarrow W$ zwischen VR mit Skalarprodukt he
 		sin(\alpha) & -cos(\alpha) \\
 	\end{matrix}\right)$ Achsenspiegelung.
 \end{enumerate}
-Ein System $S\subseteq V$ heißt Orthonormalsystem (ONS), falls $\skalar{v}{w} = \twopartdef{0}{\text{falls} v \neq w}{1}{\text{falls} v = w} (v,w\in S).$ D.h. ONB ist erzeugendes ONS.
+Ein System $S\subseteq V$ heißt Orthonormalsystem (ONS), falls $\skalar{v}{w} = \twopartdef{0}{\text{falls } v \neq w}{1}{\text{falls } v = w} (v,w\in S).$ D.h. ONB ist erzeugendes ONS.
 \subsection*{Lemma 10.2}
 Sei B ONB von $V$ und $f: V \longrightarrow W$ linear.\\
 Dann $f$ Isometrie $\Leftrightarrow f(B)$ ist ONS und $f$ injektiv.
 \subsubsection*{Beweis}
 $"\Rightarrow"$\\
-$\skalar{f(v)}{f(w)} =_{\text{f Iso.}} \skalar{v}{w} =_{\text{ONB}}  \twopartdef{0}{\text{falls} f(v) \neq f(w)}{0}{\text{falls} f(v) = f(w)}$(da $f$ injektiv).\\
+$\skalar{f(v)}{f(w)} =_{\text{f Iso.}} \skalar{v}{w} =_{\text{ONB}}  \twopartdef{0}{\text{falls } f(v) \neq f(w)}{0}{\text{falls } f(v) = f(w)}$(da $f$ injektiv).\\
 $"\Leftarrow"$\\
 Seien $v = \sum_{i}\lambda_i u_i, w= \sum_{j} \mu_j u_j$ mit $u_i, u_j \in B$\\
-$\Rightarrow \skalar{f(v)}{f(w)} = \sum_{i, j} \lambda_i\bar\mu_j \skalar{f(u_i)}{f(u_j)} =_{f(B)\text{ONS}, B \text{ONS}} \sum_{i,j}\lambda_i\bar\mu_j \skalar{u_i}{u_j}$
+$\Rightarrow \skalar{f(v)}{f(w)} = \sum_{i, j} \lambda_i\bar\mu_j \skalar{f(u_i)}{f(u_j)} =_{f(B)\text{ ONS}, B \text{ ONS}} \sum_{i,j}\lambda_i\bar\mu_j \skalar{u_i}{u_j}$
 \subsection*{Lemma 10.3}
 Sei $f: V \longrightarrow W$ mit adj. Abb. $f^* : W \longrightarrow V$. Dann $f$ Isometrie $\Leftrightarrow f^* \circ f = id_v$.
 \subsubsection*{Beweis}
@@ -1855,7 +1855,7 @@ Für $f: V\longrightarrow V$ und ONB $B$ von $V$ ist dann $A := {}_BM_B(f) \begi
 \end{matrix}$ denn $A^*A = E$.
 \subsection*{Definition 10.4}
 Sei V VR mit Skalarprodukt.\\
-$Iso(V) := \{f:V\longrightarrow V | f \text{surj. Isometrie}\}$ ist die Isometriegruppe von $(V, \skalar{\cdot}{\cdot})$.\\
+$Iso(V) := \{f:V\longrightarrow V | f \text{ surj. Isometrie}\}$ ist die Isometriegruppe von $(V, \skalar{\cdot}{\cdot})$.\\
 \subsection*{Bemerkung}
 Sind $f,g \in Iso(V)$, so auch $f\circ g, f^{-1} \in Iso(V)$.\\
 Speziell $(V = K^n)$ heißt\\
@@ -1919,7 +1919,7 @@ Wie sehen die Isometrien ("orthogonale Abb.") von euklidischen VR (also K= $\mat
 \subsection*{Lemma 10.8.}
 Sei V ein endl.-dim. $\mathbb R$-VR (kein Skalarprodukt) und $f\in End(V)$. Dann existiert $U\subseteq V$ mit $1\leq dim U \leq 2$ und $f(U)\subseteq U$.
 \subsubsection*{Beweis}
-Wähle Basis B und betrachte $A:= {}_BM_B(f) \in Mat_{nxn}(\mathbb C)$ $\Rightarrow \exists$ EW $\lambda = \alpha+i\beta \in mathbb C$ und EV v $v= x+ iy \in \mathbb C^n$ mit $\alpha, \beta \in \mathbb R$ und $x,y \in \mathbb R^n$. \\
+Wähle Basis B und betrachte $A:= {}_BM_B(f) \in Mat_{nxn}(\mathbb C)$ $\Rightarrow \exists$ EW $\lambda = \alpha+i\beta \in \mathbb C$ und EV v $v= x+ iy \in \mathbb C^n$ mit $\alpha, \beta \in \mathbb R$ und $x,y \in \mathbb R^n$. \\
 Also $A\cdot v = \lambda v$ und $A\cdot\overline v = \overline{A\cdot v} = \overline \lambda \cdot \overline v$. \\
 Behauptung $Ax,Ay\in span\{x,y\} (\Rightarrow U:= \Phi_B(span\{x,y\}\checkmark)$ \\
 $$Ax = \frac{1}{2}(Av+A\overline v) = \frac{1}{2}(\lambda v + \overline\lambda \overline v) = Re(\lambda v) = \alpha x - \beta y$$ \\
@@ -1947,9 +1947,9 @@ Eine Abbildung $\varphi :V\times V \longrightarrow K$ heißt \textbf{Bilinearfor
 	\item $\varphi(v, \lambda w + \mu w') = \lambda \varphi(v, w) + \mu \varphi(v, w')$
 \end{itemize}
 $\forall v, v', w, w' \in V \tn{ und } \lambda, \mu \in K$.\\
-Sie ist $\begin{matrix}\tn{\textbf{symmetrisch} falls} \varphi(v, w) = \varphi(w, v)\\
+Sie ist $\begin{array}{ll}\tn{\textbf{symmetrisch} falls} \varphi(v, w) = \varphi(w, v)\\
 	\tn{\textbf{alternierend} falls} \varphi(v, v) = 0 (\Rightarrow \varphi(v, w) = -\varphi(w, v))
-\end{matrix} \forall v, w \in V$.\newpage
+\end{array} \forall v, w \in V$.\newpage
 Beispiele:
 \begin{itemize}
 	\item $V \tn{ euklidischer VR, } \varphi := \genskalar$ (symmetrisch)
@@ -2040,11 +2040,11 @@ Ist $2 \neq 0$ in $K$, so ist die symmetrische Bilinearform $\phi$ eindeutig bes
 	\item Ist $q = \skalar{\cdot}{\cdot}$ Skalarprodukt, so ist $q(v)= \norm{v}^2$ quadratische Form, z.B. $q(x) = \sum_{i=1}^{n}x_i^2$ beim Standardskalarprodukt.
 	\item Ist $V$ endlich dimensional, Basis $B=(v_1,...,v_n), q:V\longrightarrow K$ quadratische Form und $\phi$ zugehörige Bilinearform mit Gram'scher Matrix $G$, so gilt \\
 	$q(\sum x_iv_i)=x^TGx = \sum g_{ii}x_i^2 + \sum_{i<j}2g_{ij}x_ix_j$.\\
-	speziell $V=K: q(x) =ax^2, (2 \neq 0) V= K^2: q\left(\begin{matrix}x \\y\\ \end{matrix} \right) = ax^2 + bxy + cy^2 ((xy)\left(\begin{matrix}
+	speziell $V=K: q(x) =ax^2, (2 \neq 0) V= K^2: q\left(\begin{matrix}x \\y\\ \end{matrix} \right) = ax^2 + bxy + cy^2 \left(=(xy)\left(\begin{matrix}
 		a & \frac{b}{2}\\
 		\frac{b}{2} & c \\
 	\end{matrix}\right) \left(\begin{matrix}
-		x \\ y \\ \end{matrix}\right)$\\
+		x \\ y \\ \end{matrix}\right)\right)$\\
 	"homogenes quadratisches Polynom"$V = K^3 : q\left(\begin{matrix}x \\ y \\ z\end{matrix}\right) = ax^2 + bxy + cxz + dy^2 + eyz + fz^2, (a,b,c,d,e,f \in K)$
 	\item Quadratische Formen treten in vielen mathematischen Gebieten auf, z.B. in der Zahlentheorie."Für welche $n\in \mathbb{N}$ ist $n = x^2 + y^2$ ganzzahlig lösbar?"
 \end{enumerate}
@@ -2107,7 +2107,7 @@ Seien $U\subseteq V$ wie oben.
 	analog (V2)-(V7), wobei $0_{V|U} = [0] (=U)$.
 \end{enumerate}
 \subsection*{Bemerkung}
-Es existiert natürliche lineare Abbildung $\pi_U: V\to V|U, v\mapsto [v] = v+U$ \\
+Es existiert natürliche lineare Abbildung $\pi_U: V\to V|_U, v\mapsto [v] = v+U$ \\
 linear:\\
 $\pi_U(v+w) = \pi_U(v) + \pi_U(w)$ d.h. $[v+w] = [v] + [w]$ \\
 $\pi_U(\lambda v) = \lambda \pi_U (v)$ d.h. $[\lambda v] = \lambda [v] \checkmark $ nach Definition 12.2. \\
